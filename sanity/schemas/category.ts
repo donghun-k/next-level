@@ -9,11 +9,19 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'text',
+      name: 'bannerImage',
+      title: 'BannerImage',
+      type: 'image',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'cardImage',
+      title: 'CardImage',
+      type: 'image',
+      validation: (Rule) => Rule.required(),
     }),
   ],
 })
