@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import { Noto_Sans_KR } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+import "./globals.css";
+import Header from "@/components/Header";
+
+const inter = Noto_Sans_KR({
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "NEXT LEVEL",
@@ -15,8 +19,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko">
-      <body className={inter.className}>{children}</body>
+    <html lang="ko" className={inter.className}>
+      <body className="flex flex-col items-center">
+        <Header />
+        <main className="w-full max-w-screen-lg grow">{children}</main>
+      </body>
     </html>
   );
 }
