@@ -3,6 +3,7 @@ import { Noto_Sans_KR } from "next/font/google";
 
 import "./globals.css";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const inter = Noto_Sans_KR({
   subsets: ["latin"],
@@ -20,9 +21,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" className={inter.className}>
-      <body className="flex flex-col items-center">
+      <body className="flex min-h-[100vh] flex-col items-center">
         <Header />
         <main className="w-full max-w-screen-lg grow">{children}</main>
+        <Footer />
       </body>
     </html>
   );
