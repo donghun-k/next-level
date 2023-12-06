@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" className={inter.className}>
-      <body className="flex min-h-[100vh] flex-col items-center">
+      <body className="flex min-h-[100vh] min-w-[1024px] flex-col items-center overflow-x-auto">
         <Header />
         <main className="w-full max-w-screen-lg grow">{children}</main>
         <Footer />
