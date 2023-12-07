@@ -5,7 +5,7 @@ import { SiNextdotjs } from "react-icons/si";
 
 const AboutPage = () => {
   return (
-    <section className="flex h-[800px] items-center justify-center">
+    <section className="flex items-center justify-center pb-[100px] pt-[150px]">
       <div className="relative flex h-[500px] w-[600px] flex-col items-center justify-center rounded-xl bg-gray-50 pt-[50px] shadow-xl">
         <Image
           className="absolute top-[-100px] rounded-[50%]  shadow-xl"

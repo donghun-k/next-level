@@ -7,7 +7,7 @@ const ContactPage = async () => {
     e.preventDefault();
   };
   return (
-    <section className="flex flex-col items-center justify-center gap-6 py-10">
+    <section className="flex flex-col items-center justify-center gap-6 pb-[100px] pt-[50px]">
       <h1 className="text-2xl font-extrabold text-gray-700">CONTACT ME</h1>
       <form
         onSubmit={handleSubmit}
