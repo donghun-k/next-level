@@ -1,11 +1,17 @@
 import PopularPostGrid from "@/components/PopularPostGrid";
+import PostList from "@/components/PostList";
 
 const HomePage = () => {
   return (
-    <section className="flex flex-col gap-3 py-6">
-      <h2 className="text-2xl font-extrabold text-gray-700">Popular</h2>
-      <PopularPostGrid />
-      <h2 className="text-2xl font-extrabold text-gray-700">Recent</h2>
+    <section className="flex flex-col gap-16 pb-16 pt-6">
+      <section>
+        <h2 className="mb-6 text-2xl font-extrabold text-gray-700">Popular</h2>
+        <PopularPostGrid />
+      </section>
+      <section>
+        <h2 className="mb-6 text-2xl font-extrabold text-gray-700">Recent</h2>
+        <PostList />
+      </section>
     </section>
   );
 };

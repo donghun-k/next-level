@@ -6,7 +6,7 @@ import { SiNextdotjs } from "react-icons/si";
 const AboutPage = () => {
   return (
     <section className="flex items-center justify-center pb-[100px] pt-[150px]">
-      <div className="relative flex h-[500px] w-[600px] flex-col items-center justify-center rounded-xl bg-gray-50 pt-[50px] shadow-xl">
+      <div className="relative flex h-[460px] w-[600px] flex-col items-center justify-center rounded-xl bg-gray-50 pt-[100px] shadow-xl">
         <Image
           className="absolute top-[-100px] rounded-[50%]  shadow-xl"
           src="/images/profile-image.png"
@@ -14,7 +14,7 @@ const AboutPage = () => {
           width={230}
           height={230}
         />
-        <div className="flex flex-col items-center gap-[80px]">
+        <div className="flex flex-col items-center gap-[60px]">
           <div className="flex flex-col items-center gap-3">
             <p className="text-4xl font-extrabold">DongHun, Kim</p>
             <p className="text-lg font-bold text-gray-500">

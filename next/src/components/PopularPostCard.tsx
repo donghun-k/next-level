@@ -6,7 +6,7 @@ interface Props {}
 const PopularPostCard = () => {
   return (
     <div className="flex h-[300px] w-[300px] flex-col justify-between">
-      <Link href="/" className="relative h-[150px] w-full overflow-hidden">
+      <Link href="/" className="relative h-[150px] w-full">
         <Image
           className="object-cover"
           src="/images/profile-image.png"
@@ -14,13 +14,17 @@ const PopularPostCard = () => {
           fill
         />
       </Link>
-      <Link href="/">
-        <h3 className="w-full overflow-hidden text-ellipsis whitespace-nowrap text-xl font-bold underline-offset-2 hover:underline">
-          Lorem ipsum dolor sit amet consectetur.
-        </h3>
+      <Link
+        href="/"
+        className="w-full overflow-hidden text-ellipsis whitespace-nowrap text-xl font-bold underline-offset-2 hover:underline"
+      >
+        Lorem ipsum dolor sit amet consectetur.
       </Link>
       <div className="flex items-center gap-2 text-gray-500">
-        <Link href="/" className="text-sm underline underline-offset-1">
+        <Link
+          href="/"
+          className="text-sm underline underline-offset-1 hover:text-gray-400"
+        >
           Lorem
         </Link>
         <p>·</p>
