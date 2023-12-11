@@ -1,5 +1,9 @@
-const PostsPage = () => {
-  return <div>PostsPage</div>;
+import { redirect } from "next/navigation";
+import React from "react";
+
+const Redirect = () => {
+  redirect("/posts/All");
+  return <div>Redirect</div>;
 };
 
-export default PostsPage;
+export default Redirect;
