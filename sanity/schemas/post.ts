@@ -31,6 +31,12 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'views',
+      title: 'Views',
+      type: 'number',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'comments',
       title: 'Comments',
       type: 'array',

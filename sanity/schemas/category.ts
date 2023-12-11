@@ -12,14 +12,8 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'bannerImage',
-      title: 'BannerImage',
-      type: 'image',
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: 'cardImage',
-      title: 'CardImage',
+      name: 'defaultImage',
+      title: 'Default Image',
       type: 'image',
       validation: (Rule) => Rule.required(),
     }),
