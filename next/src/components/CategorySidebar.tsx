@@ -5,12 +5,12 @@ const MENU = ["All", "JavaScript", "TypeScript", "React"];
 
 const CategorySidebar = ({ currentCategory }: { currentCategory: string }) => {
   return (
-    <aside className="w-[180px] px-4 py-6">
+    <aside className="sticky top-[140px] w-[180px] self-start px-4 py-6">
       <ul className="flex flex-col gap-4">
         {MENU.map((category) => (
           <li key={category}>
             <Link
-              href={`/posts/${category}`}
+              href={`/category/${category}`}
               className={`text-md flex items-center ${
                 category === currentCategory
                   ? "font-extrabold text-black [text-shadow:_0_2px_2px_rgb(0_0_0_/_20%)]"

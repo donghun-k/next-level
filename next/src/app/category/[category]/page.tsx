@@ -2,14 +2,13 @@
 import { usePathname } from "next/navigation";
 
 import CategorySidebar from "@/components/CategorySidebar";
+import CategoryLeftSection from "@/components/CategoryLeftSection";
 
 const PostsPage = () => {
-  const category = usePathname().replace("/posts/", "");
+  const category = usePathname().replace("/category/", "");
   return (
     <section className="flex">
-      <section className="min-h-[calc(100vh_-_240px)] w-full border-r-2 border-r-gray-100">
-        {category}
-      </section>
+      <CategoryLeftSection category={category} />
       <CategorySidebar currentCategory={category} />
     </section>
   );
