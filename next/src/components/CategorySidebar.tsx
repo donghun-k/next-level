@@ -3,7 +3,7 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 
 const MENU = ["All", "JavaScript", "TypeScript", "React"];
 
-const CategorySidebar = ({ currentCategory }: { currentCategory: string }) => {
+const CategorySidebar = ({ currentCategory }: { currentCategory?: string }) => {
   return (
     <aside className="sticky top-[140px] w-[180px] self-start px-4 py-6">
       <ul className="flex flex-col gap-4">

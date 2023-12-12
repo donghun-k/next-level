@@ -5,7 +5,7 @@ import React from "react";
 const PostListItem = () => {
   return (
     <li className="flex h-[200px] w-full justify-between gap-6">
-      <Link href="/" className="relative h-[200px] w-[300px]">
+      <Link href="/post/test" className="relative h-[200px] w-[300px]">
         <Image
           className="object-cover"
           src="/images/profile-image.png"
@@ -15,7 +15,7 @@ const PostListItem = () => {
       </Link>
       <div className="flex w-full flex-col justify-between overflow-hidden pl-4">
         <Link
-          href="/"
+          href="/post/test"
           className="w-3/4 overflow-hidden text-ellipsis whitespace-nowrap text-2xl font-bold underline-offset-2 hover:underline"
         >
           Lorem ipsum dolor sit amet consectetur.
@@ -23,7 +23,7 @@ const PostListItem = () => {
 
         <div className="flex items-center gap-2 text-gray-500">
           <Link
-            href="/"
+            href="/category/All"
             className="text-md underline underline-offset-1 hover:text-gray-400"
           >
             Lorem
