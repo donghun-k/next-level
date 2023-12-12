@@ -19,7 +19,7 @@ const Navigation = () => {
           <Link
             href={path}
             className={`${
-              currentPath === path
+              currentPath === "/" + path.split("/")[1]
                 ? "font-extrabold text-black [text-shadow:_0_2px_2px_rgb(0_0_0_/_20%)]"
                 : "font-bold text-gray-500"
             } duration-300`}
