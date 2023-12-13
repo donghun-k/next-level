@@ -3,7 +3,7 @@ import { IoIosMail } from "react-icons/io";
 import { useRef, useState } from "react";
 import { useFormStatus } from "react-dom";
 
-import { mailAction } from "@/app/actions";
+import { mailAction } from "@/actions";
 
 import SendingMailBackdrop from "./SendingMailBackdrop";
 
