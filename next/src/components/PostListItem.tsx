@@ -5,7 +5,6 @@ import Link from "next/link";
 import React from "react";
 
 import { SimplePost } from "@/models/post";
-import { convertMarkdownToHtml } from "@/utils/markdown";
 
 const PostListItem = ({
   post: { publishedAt, body, title, category, categoryImage },
@@ -46,7 +45,7 @@ const PostListItem = ({
           <p className="text-sm">{dateString}</p>
         </div>
         <p className="text-md line-clamp-5 h-[120px] w-full overflow-hidden text-ellipsis text-gray-500">
-          {convertMarkdownToHtml(body)}
+          {body}
         </p>
       </div>
     </li>

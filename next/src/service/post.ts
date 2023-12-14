@@ -1,4 +1,5 @@
 import { SimplePost } from "@/models/post";
+import { convertMarkdownToPlainText } from "@/utils/markdown";
 
 import { client, urlFor } from "./sanity";
 
@@ -23,6 +24,7 @@ export const getPosts = async (category: string) => {
       return posts.map((post: SimplePost) => ({
         ...post,
         categoryImage: urlFor(post.categoryImage),
+        body: convertMarkdownToPlainText(post.body),
       }));
     });
 };

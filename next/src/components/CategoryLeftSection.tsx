@@ -6,7 +6,6 @@ import PostListItem from "./PostListItem";
 
 const CategoryLeftSection = ({ category }: { category: string }) => {
   const { data: posts } = usePosts(category);
-  console.log("data", posts);
   return (
     <section className="min-h-[calc(100vh_-_280px)] w-[844px] border-r-2 border-r-gray-100 px-4 pb-6">
       <div className="sticky top-[140px] z-50 flex flex-col gap-3 self-start border-b-2 border-gray-50 bg-white bg-opacity-95 py-4">
