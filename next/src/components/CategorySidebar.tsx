@@ -6,7 +6,6 @@ import useCategories from "@/hooks/useCategories";
 
 const CategorySidebar = ({ currentCategory }: { currentCategory?: string }) => {
   const { data: categories } = useCategories();
-  console.log("category sidebar render");
   const categoryTitles = [
     "All",
     ...(categories?.map((category) => category.title).sort() ?? []),
