@@ -5,20 +5,17 @@ import Link from "next/link";
 import React from "react";
 
 import { SimplePost } from "@/models/post";
+import { converToLocaleString } from "@/utils/date";
 
 const PostListItem = ({
-  post: { publishedAt, body, title, category, categoryImage },
+  post: { publishedAt, body, title, category, categoryImage, id },
 }: {
   post: SimplePost;
 }) => {
-  const dateString = new Date(publishedAt).toLocaleDateString("ko-KR", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const dateString = converToLocaleString(publishedAt);
   return (
     <li className="flex h-[200px] w-full justify-between gap-6">
-      <Link href="/post/test" className="relative h-[200px] w-[300px]">
+      <Link href={`/post/${id}`} className="relative h-[200px] w-[300px]">
         <Image
           className="object-cover"
           src={categoryImage}
@@ -28,7 +25,7 @@ const PostListItem = ({
       </Link>
       <div className="flex w-full flex-col justify-between overflow-hidden pl-4">
         <Link
-          href="/post/test"
+          href={`/post/${id}`}
           className="w-3/4 overflow-hidden text-ellipsis whitespace-nowrap text-2xl font-bold underline-offset-2 hover:underline"
         >
           {title}

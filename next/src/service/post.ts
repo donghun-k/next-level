@@ -28,3 +28,18 @@ export const getPosts = async (category: string) => {
       }));
     });
 };
+
+export const getPost = async (postId: string) => {
+  return client.fetch(
+    `*[_type == "post" && _id == "${postId}"][0]{
+      ...,
+      'id': _id,
+      'category': category->title,
+    }`,
+    {
+      fetch: {
+        cache: "reload",
+      },
+    },
+  );
+};

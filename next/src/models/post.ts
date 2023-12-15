@@ -7,3 +7,5 @@ export interface SimplePost {
   publishedAt: string;
   views: number;
 }
+
+export interface Post extends SimplePost {}
