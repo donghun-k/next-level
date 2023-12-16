@@ -19,12 +19,6 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'publishedAt',
-      title: 'Published at',
-      type: 'datetime',
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
       name: 'body',
       title: 'Body',
       type: 'markdown',
@@ -35,6 +29,7 @@ export default defineType({
       title: 'Views',
       type: 'number',
       validation: (Rule) => Rule.required(),
+      initialValue: 0,
     }),
     defineField({
       name: 'comments',

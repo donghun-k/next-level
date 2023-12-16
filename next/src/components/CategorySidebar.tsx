@@ -8,7 +8,7 @@ const CategorySidebar = ({ currentCategory }: { currentCategory?: string }) => {
   const { data: categories } = useCategories();
   const categoryTitles = [
     "All",
-    ...(categories?.map((category) => category.title).sort() ?? []),
+    ...(categories?.map((category) => category.title) ?? []),
   ];
   return (
     <aside className="sticky top-[140px] w-[180px] self-start px-4 py-6">

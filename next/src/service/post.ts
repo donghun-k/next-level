@@ -8,11 +8,12 @@ export const getPosts = async (category: string) => {
     .fetch(
       `*[_type == "post"${
         category === "All" ? "" : `&& category->title == "${category}"`
-      }]{
+      }] | order(_createdAt desc) {
     ...,
     'id': _id,
     'category': category->title,
     'categoryImage': category->defaultImage,
+    'publishedAt': _createdAt,
   }`,
       {
         fetch: {
@@ -35,6 +36,7 @@ export const getPost = async (postId: string) => {
       ...,
       'id': _id,
       'category': category->title,
+      'publishedAt': _createdAt,
     }`,
     {
       fetch: {

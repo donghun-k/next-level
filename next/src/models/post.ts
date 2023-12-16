@@ -8,4 +8,4 @@ export interface SimplePost {
   views: number;
 }
 
-export interface Post extends SimplePost {}
+export interface Post extends Omit<SimplePost, "categoryImage"> {}

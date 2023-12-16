@@ -2,6 +2,9 @@ import { marked } from "marked";
 import he from "he";
 
 export function convertMarkdownToPlainText(markdownText: string): string {
+  if (!markdownText) {
+    return "";
+  }
   // Markdown을 HTML로 변환
   const htmlText = marked(markdownText) as string;
 
