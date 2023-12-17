@@ -1,14 +1,12 @@
 "use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
-import { SimplePost } from "@/models/post";
 import { converToLocaleString } from "@/utils/date";
+import { SimplePost } from "@/models/post";
 
 const PostListItem = ({
-  post: { publishedAt, body, title, category, categoryImage, id },
+  post: { publishedAt, body, title, category, categoryImage, id, views },
 }: {
   post: SimplePost;
 }) => {
@@ -40,6 +38,10 @@ const PostListItem = ({
           </Link>
           <p>·</p>
           <p className="text-sm">{dateString}</p>
+          <p>·</p>
+          <p className="text-sm">
+            {views} {views === 1 ? "view" : "views"}
+          </p>
         </div>
         <p className="text-md line-clamp-5 h-[120px] w-full overflow-hidden text-ellipsis text-gray-500">
           {body}
