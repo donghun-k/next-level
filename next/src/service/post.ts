@@ -3,7 +3,15 @@ import { convertMarkdownToPlainText } from "@/utils/markdown";
 
 import { client, urlFor } from "./sanity";
 
-export const getPosts = async (category: string) => {
+interface GetPostsParams {
+  category?: string;
+  page?: number;
+}
+
+export const getPosts = async ({
+  category = "All",
+  page = 1,
+}: GetPostsParams) => {
   return client
     .fetch(
       `*[_type == "post"${
@@ -14,7 +22,7 @@ export const getPosts = async (category: string) => {
     'category': category->title,
     'categoryImage': category->defaultImage,
     'publishedAt': _createdAt,
-  }`,
+  }[${(page - 1) * 5}... ${page * 5}]`,
       {
         fetch: {
           cache: "reload",

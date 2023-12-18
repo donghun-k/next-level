@@ -1,5 +1,5 @@
 import PopularPostGrid from "@/components/PopularPostGrid";
-import PostList from "@/components/PostList";
+import RecentPostList from "@/components/RecentPostList";
 
 const HomePage = () => {
   return (
@@ -10,7 +10,7 @@ const HomePage = () => {
       </section>
       <section>
         <h2 className="mb-6 text-2xl font-extrabold text-gray-700">Recent</h2>
-        <PostList />
+        <RecentPostList />
       </section>
     </section>
   );
