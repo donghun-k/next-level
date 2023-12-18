@@ -4,7 +4,7 @@ import { SimplePost } from "@/models/post";
 
 const useRecentPosts = () => {
   return useSWR<SimplePost[]>(
-    `/api/posts?category=All&page=1`,
+    `/api/posts/recent`,
     (url: string) => fetch(url).then((res) => res.json()),
     {
       dedupingInterval: 1000 * 60 * 5,

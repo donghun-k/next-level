@@ -1,4 +1,4 @@
-import { SimplePost } from "@/models/post";
+import { Post, SimplePost } from "@/models/post";
 import { convertMarkdownToPlainText } from "@/utils/markdown";
 
 import { client, urlFor } from "./sanity";
@@ -8,37 +8,54 @@ interface GetPostsParams {
   page?: number;
 }
 
+export interface GetPostsResponse {
+  posts: SimplePost[];
+  totalPosts: number;
+  totalPages: number;
+}
+
 export const getPosts = async ({
   category = "All",
   page = 1,
-}: GetPostsParams) => {
+}: GetPostsParams): Promise<GetPostsResponse> => {
   return client
     .fetch(
-      `*[_type == "post"${
-        category === "All" ? "" : `&& category->title == "${category}"`
-      }] | order(_createdAt desc) {
-    ...,
-    'id': _id,
-    'category': category->title,
-    'categoryImage': category->defaultImage,
-    'publishedAt': _createdAt,
-  }[${(page - 1) * 5}... ${page * 5}]`,
+      `{
+        "totalPosts": count(*[_type == "post"${
+          category === "All" ? "" : `&& category->title == "${category}"`
+        }]),
+        "posts": *[_type == "post"${
+          category === "All" ? "" : `&& category->title == "${category}"`
+        }] | order(_createdAt desc) {
+          ...,
+          'id': _id,
+          'category': category->title,
+          'categoryImage': category->defaultImage,
+          'publishedAt': _createdAt,
+        }[${(page - 1) * 5} ... ${page * 5}]
+      }`,
       {
         fetch: {
           cache: "reload",
         },
       },
     )
-    .then((posts) => {
-      return posts.map((post: SimplePost) => ({
+    .then((data) => {
+      const { posts } = data;
+      const newPosts = posts.map((post: SimplePost) => ({
         ...post,
         categoryImage: urlFor(post.categoryImage),
         body: convertMarkdownToPlainText(post.body),
       }));
+      return {
+        ...data,
+        posts: newPosts,
+        totalPages: Math.ceil(data.totalPosts / 5),
+      };
     });
 };
 
-export const getPost = async (postId: string) => {
+export const getPost = async (postId: string): Promise<Post> => {
   return client.fetch(
     `*[_type == "post" && _id == "${postId}"][0]{
       ...,
@@ -52,4 +69,29 @@ export const getPost = async (postId: string) => {
       },
     },
   );
+};
+
+export const getRecentPosts = async (): Promise<SimplePost[]> => {
+  return client
+    .fetch(
+      `*[_type == "post"] | order(_createdAt desc) {
+      ...,
+      'id': _id,
+      'category': category->title,
+      'categoryImage': category->defaultImage,
+      'publishedAt': _createdAt,
+    }[0...5]`,
+      {
+        fetch: {
+          cache: "reload",
+        },
+      },
+    )
+    .then((posts) => {
+      return posts.map((post: SimplePost) => ({
+        ...post,
+        categoryImage: urlFor(post.categoryImage),
+        body: convertMarkdownToPlainText(post.body),
+      }));
+    });
 };

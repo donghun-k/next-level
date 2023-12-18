@@ -13,11 +13,12 @@ const PostListItem = ({
   const dateString = converToLocaleString(publishedAt);
   return (
     <li className="flex h-[200px] w-full justify-between gap-6">
-      <Link href={`/post/${id}`} className="relative h-[200px] w-[300px]">
+      <Link href={`/post/${id}`} className="relative h-[200px] min-w-[250px]">
         <Image
           className="object-cover"
           src={categoryImage}
           alt="Post thumbnail"
+          sizes="300px 200px"
           fill
         />
       </Link>
