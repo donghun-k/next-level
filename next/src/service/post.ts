@@ -1,5 +1,6 @@
 import { Post, SimplePost } from "@/models/post";
 import { convertMarkdownToPlainText } from "@/utils/markdown";
+import { converToLocaleString } from "@/utils/date";
 
 import { client, urlFor } from "./sanity";
 
@@ -46,6 +47,7 @@ export const getPosts = async ({
         ...post,
         categoryImage: urlFor(post.categoryImage),
         body: convertMarkdownToPlainText(post.body),
+        publishedAt: converToLocaleString(post.publishedAt),
       }));
       return {
         ...data,
@@ -56,19 +58,24 @@ export const getPosts = async ({
 };
 
 export const getPost = async (postId: string): Promise<Post> => {
-  return client.fetch(
-    `*[_type == "post" && _id == "${postId}"][0]{
+  return client
+    .fetch(
+      `*[_type == "post" && _id == "${postId}"][0]{
       ...,
       'id': _id,
       'category': category->title,
       'publishedAt': _createdAt,
     }`,
-    {
-      fetch: {
-        cache: "reload",
+      {
+        fetch: {
+          cache: "reload",
+        },
       },
-    },
-  );
+    )
+    .then((post) => ({
+      ...post,
+      publishedAt: converToLocaleString(post.publishedAt),
+    }));
 };
 
 export const getRecentPosts = async (): Promise<SimplePost[]> => {
@@ -92,6 +99,33 @@ export const getRecentPosts = async (): Promise<SimplePost[]> => {
         ...post,
         categoryImage: urlFor(post.categoryImage),
         body: convertMarkdownToPlainText(post.body),
+        publishedAt: converToLocaleString(post.publishedAt),
+      }));
+    });
+};
+
+export const getPopularPosts = async (): Promise<SimplePost[]> => {
+  return client
+    .fetch(
+      `*[_type == "post"] | order(views desc) {
+      ...,
+      'id': _id,
+      'category': category->title,
+      'categoryImage': category->defaultImage,
+      'publishedAt': _createdAt,
+    }[0...6]`,
+      {
+        fetch: {
+          cache: "reload",
+        },
+      },
+    )
+    .then((posts) => {
+      return posts.map((post: SimplePost) => ({
+        ...post,
+        categoryImage: urlFor(post.categoryImage),
+        body: convertMarkdownToPlainText(post.body),
+        publishedAt: converToLocaleString(post.publishedAt),
       }));
     });
 };

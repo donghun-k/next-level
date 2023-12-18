@@ -10,7 +10,6 @@ const PostListItem = ({
 }: {
   post: SimplePost;
 }) => {
-  const dateString = converToLocaleString(publishedAt);
   return (
     <li className="flex h-[200px] w-full justify-between gap-6">
       <Link href={`/post/${id}`} className="relative h-[200px] min-w-[250px]">
@@ -38,7 +37,7 @@ const PostListItem = ({
             {category}
           </Link>
           <p>·</p>
-          <p className="text-sm">{dateString}</p>
+          <p className="text-sm">{publishedAt}</p>
           <p>·</p>
           <p className="text-sm">
             {views} {views === 1 ? "view" : "views"}

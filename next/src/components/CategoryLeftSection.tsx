@@ -48,28 +48,25 @@ const CategoryLeftSection = ({ category }: { category: string }) => {
               (totalPosts === 1 ? `${totalPosts} post` : `${totalPosts} posts`)}
           </h5>
         </div>
-
-        <div className="flex w-full justify-between">
-          <input
-            className="h-10 w-[400px] rounded-md border-2 border-gray-500 px-2 text-gray-700"
-            placeholder="Search"
-          />
-          <div className="flex items-center gap-2">
-            <p className="text-gray-500">Page</p>
-            <select
-              value={page}
-              onChange={handlePageChange}
-              className="h-10 w-[60px] rounded-md border-2 border-gray-500 px-2 font-bold text-black"
-            >
-              {optionArray.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-            <p className="text-gray-500">of</p>
-            <p className="text-lg font-bold text-black">{totalPages}</p>
-          </div>
+        <input
+          className="h-10 w-[400px] rounded-md border-2 border-gray-500 px-2 text-gray-700"
+          placeholder="Search"
+        />
+        <div className="flex items-center gap-2">
+          <p className="text-gray-500">Page</p>
+          <select
+            value={page}
+            onChange={handlePageChange}
+            className="w-[60px] rounded-md border-2 border-gray-500 px-2 font-bold text-black"
+          >
+            {optionArray.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+          <p className="text-gray-500">of</p>
+          <p className="text-lg font-bold text-black">{totalPages}</p>
         </div>
       </div>
       <ul className="mb-8 mt-4 flex flex-col gap-6">

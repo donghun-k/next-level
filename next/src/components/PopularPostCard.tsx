@@ -1,40 +1,48 @@
 import Image from "next/image";
 import Link from "next/link";
+import { FaEye } from "react-icons/fa";
 
-interface Props {}
+import { SimplePost } from "@/models/post";
 
-const PopularPostCard = () => {
+const PopularPostCard = ({
+  post: { publishedAt, body, title, category, categoryImage, id, views },
+}: {
+  post: SimplePost;
+}) => {
   return (
     <div className="flex h-[300px] w-[300px] flex-col justify-between">
-      <Link href="/post/test" className="relative h-[150px] w-full">
+      <Link href={`/post/${id}`} className="relative h-[150px] w-full">
         <Image
           className="object-cover"
-          src="/images/profile-image.png"
+          src={categoryImage}
           alt="Card image"
+          sizes="300px 150px"
           fill
         />
       </Link>
       <Link
-        href="/post/test"
+        href={`/post/${id}`}
         className="w-full overflow-hidden text-ellipsis whitespace-nowrap text-xl font-bold underline-offset-2 hover:underline"
       >
-        Lorem ipsum dolor sit amet consectetur.
+        {title}
       </Link>
-      <div className="flex items-center gap-2 text-gray-500">
-        <Link
-          href="/category/All"
-          className="text-sm underline underline-offset-1 hover:text-gray-400"
-        >
-          Lorem
-        </Link>
-        <p>·</p>
-        <p className="text-xs">2021-09-22</p>
+      <div className="flex items-center justify-between text-gray-500">
+        <div className="flex items-center gap-2">
+          <Link
+            href={`/category/${category}`}
+            className="text-sm underline underline-offset-1 hover:text-gray-400"
+          >
+            {category}
+          </Link>
+          <p>·</p>
+          <p className="text-xs">{publishedAt}</p>
+          <div className="ml-2 flex items-center gap-1 text-sm text-gray-500">
+            <FaEye className="pt-0.5" /> {views}
+          </div>
+        </div>
       </div>
       <p className="line-clamp-4 h-[80px] w-full overflow-hidden text-ellipsis text-sm text-gray-500">
-        Lorem ipsum dolor sit amet consectetur. In platea consectetur
-        pellentesque suspendisse tellus ut. Phasellus tristique risus ipsum nunc
-        donec sapien. Volutpat aliquam mattis consectetur feugiat viverra odio
-        aliquam.
+        {body}
       </p>
     </div>
   );
