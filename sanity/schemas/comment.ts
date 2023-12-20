@@ -3,8 +3,15 @@ import {defineField, defineType} from 'sanity'
 export default defineType({
   name: 'comment',
   title: 'Comment',
-  type: 'object',
+  type: 'document',
   fields: [
+    defineField({
+      name: 'postRef',
+      title: 'PostRef',
+      type: 'reference',
+      to: [{type: 'post'}],
+      validation: (Rule) => Rule.required(),
+    }),
     defineField({
       name: 'author',
       title: 'Author',
@@ -12,10 +19,10 @@ export default defineType({
       validation: (Rule) => Rule.required().min(2).max(10),
     }),
     defineField({
-      name: 'password',
-      title: 'Password',
+      name: 'authorId',
+      title: 'AuthorId',
       type: 'string',
-      validation: (Rule) => Rule.required().min(8).max(20),
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'content',

@@ -31,12 +31,6 @@ export default defineType({
       validation: (Rule) => Rule.required(),
       initialValue: 0,
     }),
-    defineField({
-      name: 'comments',
-      title: 'Comments',
-      type: 'array',
-      of: [{type: 'comment'}],
-    }),
   ],
 
   preview: {
