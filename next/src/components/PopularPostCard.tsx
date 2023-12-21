@@ -36,7 +36,7 @@ const PopularPostCard = ({
           </Link>
           <p>·</p>
           <p className="text-xs">{publishedAt}</p>
-          <div className="ml-2 flex items-center gap-1 text-sm text-gray-500">
+          <div className="ml-3 flex items-center gap-1 text-xs text-gray-500">
             <FaEye className="pt-0.5" /> {views}
           </div>
         </div>

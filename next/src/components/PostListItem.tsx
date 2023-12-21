@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { FaEye } from "react-icons/fa";
 
 import { converToLocaleString } from "@/utils/date";
 import { SimplePost } from "@/models/post";
@@ -38,10 +39,9 @@ const PostListItem = ({
           </Link>
           <p>·</p>
           <p className="text-sm">{publishedAt}</p>
-          <p>·</p>
-          <p className="text-sm">
-            {views} {views === 1 ? "view" : "views"}
-          </p>
+          <div className="ml-4 flex items-center gap-2 text-sm text-gray-500">
+            <FaEye className="pt-0.5" /> {views}
+          </div>
         </div>
         <p className="text-md line-clamp-5 h-[120px] w-full overflow-hidden text-ellipsis text-gray-500">
           {body}
