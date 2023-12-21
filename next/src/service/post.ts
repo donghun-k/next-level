@@ -88,11 +88,6 @@ export const getRecentPosts = async (): Promise<SimplePost[]> => {
       'categoryImage': category->defaultImage,
       'publishedAt': _createdAt,
     }[0...5]`,
-      {
-        fetch: {
-          cache: "reload",
-        },
-      },
     )
     .then((posts) => {
       return posts.map((post: SimplePost) => ({
@@ -114,11 +109,6 @@ export const getPopularPosts = async (): Promise<SimplePost[]> => {
       'categoryImage': category->defaultImage,
       'publishedAt': _createdAt,
     }[0...6]`,
-      {
-        fetch: {
-          cache: "reload",
-        },
-      },
     )
     .then((posts) => {
       return posts.map((post: SimplePost) => ({

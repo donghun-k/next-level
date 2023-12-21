@@ -24,6 +24,9 @@ const ContactForm = () => {
       }}
       className="w-[600px] rounded-xl bg-gray-50 p-5 shadow-xl"
     >
+      <h1 className="w-full p-2 pb-6 text-center text-3xl font-extrabold text-gray-700">
+        Contact Me
+      </h1>
       <div className="flex w-full flex-col items-start gap-2 p-2">
         <label htmlFor="name" className="text-xl font-bold text-gray-500">
           Name
@@ -72,7 +75,7 @@ const ContactForm = () => {
           id="message"
         />
       </div>
-      <div className="mt-1 flex w-full justify-end p-1">
+      <div className="mt-1 flex w-full justify-end p-2">
         <button
           className="flex items-center gap-2 rounded-md bg-gray-500 px-6 py-2 shadow-md duration-500 hover:bg-gray-400 active:bg-gray-700"
           type="submit"

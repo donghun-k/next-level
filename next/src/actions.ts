@@ -2,8 +2,6 @@
 
 import { sendMail } from "@/service/mail";
 
-import { getCategories } from "./service/category";
-
 export const mailAction = async (formData: FormData) => {
   const author = formData.get("name");
   const from = formData.get("email");
