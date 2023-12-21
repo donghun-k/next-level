@@ -19,22 +19,16 @@ export default defineType({
       validation: (Rule) => Rule.required().min(2).max(10),
     }),
     defineField({
-      name: 'authorId',
-      title: 'AuthorId',
+      name: 'password',
+      title: 'Password',
       type: 'string',
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().min(8).max(20),
     }),
     defineField({
       name: 'content',
       title: 'Content',
       type: 'text',
       validation: (Rule) => Rule.required().min(10).max(100),
-    }),
-    defineField({
-      name: 'createdAt',
-      title: 'CreatedAt',
-      type: 'datetime',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'reply',
@@ -56,4 +50,10 @@ export default defineType({
       ],
     }),
   ],
+  preview: {
+    select: {
+      title: 'postRef.title',
+      subtitle: 'content',
+    },
+  },
 })

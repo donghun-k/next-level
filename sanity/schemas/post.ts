@@ -32,7 +32,6 @@ export default defineType({
       initialValue: 0,
     }),
   ],
-
   preview: {
     select: {
       title: 'title',
