@@ -1,6 +1,8 @@
 import PopularPostGrid from "@/components/PopularPostGrid";
 import RecentPostList from "@/components/RecentPostList";
 
+export const revalidate = 60;
+
 const HomePage = () => {
   return (
     <section className="flex flex-col gap-16 px-4 pb-16 pt-6">
