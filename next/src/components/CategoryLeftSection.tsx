@@ -1,6 +1,7 @@
 "use client";
 
 import { ChangeEventHandler, useEffect, useState } from "react";
+import { PiSmileySadBold } from "react-icons/pi";
 
 import usePosts from "@/hooks/usePosts";
 
@@ -52,26 +53,36 @@ const CategoryLeftSection = ({ category }: { category: string }) => {
           className="h-10 w-[400px] rounded-md border-2 border-gray-500 px-2 text-gray-700"
           placeholder="Search"
         />
-        <div className="flex items-center gap-2">
-          <p className="text-gray-500">Page</p>
-          <select
-            value={page}
-            onChange={handlePageChange}
-            className="w-[60px] rounded-md border-2 border-gray-500 px-2 font-bold text-black"
-          >
-            {optionArray.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-          <p className="text-gray-500">of</p>
-          <p className="text-lg font-bold text-black">{totalPages}</p>
-        </div>
+        {totalPages > 0 && (
+          <div className="flex items-center gap-2">
+            <p className="text-gray-500">Page</p>
+            <select
+              value={page}
+              onChange={handlePageChange}
+              className="w-[60px] rounded-md border-2 border-gray-500 px-2 font-bold text-black"
+            >
+              {optionArray.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+            <p className="text-gray-500">of</p>
+            <p className="text-lg font-bold text-black">{totalPages}</p>
+          </div>
+        )}
       </div>
       <ul className="mb-8 mt-4 flex flex-col gap-6">
+        {posts?.length === 0 && (
+          <p className="flex w-full items-center justify-center p-8 text-2xl text-gray-500">
+            <PiSmileySadBold className="mr-2 mt-1 h-7 w-7" />
+            There are no posts yet in this category.
+            <PiSmileySadBold className="ml-2 mt-1 h-7 w-7" />
+          </p>
+        )}
         {posts?.map((post) => <PostListItem key={post.id} post={post} />)}
       </ul>
+      {}
       <div className="flex justify-center gap-8 py-4">
         {page > 1 && (
           <button
