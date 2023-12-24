@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { BiLogoTypescript } from "react-icons/bi";
-import { SiReact } from "react-icons/si";
+import { SiMui, SiReact, SiReactquery, SiTailwindcss } from "react-icons/si";
 import { SiNextdotjs } from "react-icons/si";
 
 const AboutPage = () => {
@@ -32,6 +32,15 @@ const AboutPage = () => {
               </li>
               <li>
                 <SiNextdotjs className="h-10 w-10 duration-500 hover:scale-110 hover:text-[#000000]" />
+              </li>
+              <li>
+                <SiReactquery className="h-10 w-10 duration-500 hover:scale-110 hover:text-[#fd4153]" />
+              </li>
+              <li>
+                <SiMui className="h-8 w-8 duration-500 hover:scale-110 hover:text-[#007fff]" />
+              </li>
+              <li>
+                <SiTailwindcss className="h-10 w-10 duration-500 hover:scale-110 hover:text-[#38bdf8]" />
               </li>
             </ul>
           </div>
