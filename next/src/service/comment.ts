@@ -28,3 +28,32 @@ export const getComments = async (postId: string): Promise<Comment[]> => {
       });
     });
 };
+
+export const postComment = async ({
+  postId,
+  author,
+  password,
+  content,
+}: {
+  postId: string;
+  author: string;
+  password: string;
+  content: string;
+}) => {
+  return client
+    .create({
+      _type: "comment",
+      postRef: {
+        _type: "reference",
+        _ref: postId,
+      },
+      author,
+      password,
+      content,
+    })
+    .then((comment) => {
+      return {
+        id: comment._id,
+      };
+    });
+};

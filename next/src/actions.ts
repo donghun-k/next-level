@@ -2,6 +2,8 @@
 
 import { sendMail } from "@/service/mail";
 
+import { postComment } from "./service/comment";
+
 export const mailAction = async (formData: FormData) => {
   const author = formData.get("name");
   const from = formData.get("email");
@@ -21,4 +23,25 @@ export const mailAction = async (formData: FormData) => {
     throw new Error("Invalid form data");
 
   return await sendMail({ author, from, subject, text });
+};
+
+export const commentAction = async (formData: FormData) => {
+  const postId = formData.get("postId");
+  const author = formData.get("name");
+  const password = formData.get("password");
+  const content = formData.get("content");
+
+  if (
+    !postId ||
+    !author ||
+    !password ||
+    !content ||
+    typeof postId !== "string" ||
+    typeof author !== "string" ||
+    typeof password !== "string" ||
+    typeof content !== "string"
+  )
+    throw new Error("Invalid form data");
+
+  return await postComment({ postId, author, password, content });
 };
