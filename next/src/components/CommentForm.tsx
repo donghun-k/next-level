@@ -1,4 +1,4 @@
-import { FormEventHandler, use } from "react";
+import { FormEventHandler, use, useRef } from "react";
 import { useParams } from "next/navigation";
 
 import { commentAction } from "@/actions";
@@ -6,14 +6,36 @@ import { commentAction } from "@/actions";
 const CommentForm = () => {
   const { postId } = useParams();
 
+  const formRef = useRef<HTMLFormElement>(null);
+
   return (
     <form
+      ref={formRef}
       action={async (formdata) => {
+        const name = formdata.get("name") as string;
+        const password = formdata.get("password") as string;
+        const content = formdata.get("content") as string;
+
+        if (name.length < 2 || name.length > 10) {
+          alert("Name must be between 2 and 10 characters!");
+          return;
+        }
+
+        if (password.length < 8 || password.length > 20) {
+          alert("Password must be between 8 and 20 characters!");
+          return;
+        }
+
+        if (content.length < 10 || content.length > 100) {
+          alert("Content must be between 10 and 100 characters!");
+          return;
+        }
+
         try {
           if (!postId) throw new Error("Post id not found!");
           formdata.append("postId", Array.isArray(postId) ? postId[0] : postId);
-          console.log(formdata);
           await commentAction(formdata);
+          formRef.current?.reset();
           alert("Comment sent successfully!");
         } catch (error) {
           alert("Comment sent failed!");

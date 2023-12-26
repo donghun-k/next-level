@@ -40,6 +40,25 @@ export const postComment = async ({
   password: string;
   content: string;
 }) => {
+  if (!postId || !author || !password || !content) {
+    throw new Error("Invalid form data");
+  }
+
+  if (author.length < 2 || author.length > 10) {
+    alert("Name must be between 2 and 10 characters!");
+    return;
+  }
+
+  if (password.length < 8 || password.length > 20) {
+    alert("Password must be between 8 and 20 characters!");
+    return;
+  }
+
+  if (content.length < 10 || content.length > 100) {
+    alert("Content must be between 10 and 100 characters!");
+    return;
+  }
+
   return client
     .create({
       _type: "comment",
