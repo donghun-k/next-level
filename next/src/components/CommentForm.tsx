@@ -1,12 +1,15 @@
-import { FormEventHandler, use, useRef } from "react";
+import { useRef } from "react";
 import { useParams } from "next/navigation";
 
 import { commentAction } from "@/actions";
+import useComments from "@/hooks/useComments";
 
 const CommentForm = () => {
   const { postId } = useParams();
 
   const formRef = useRef<HTMLFormElement>(null);
+
+  const { mutate } = useComments(Array.isArray(postId) ? postId[0] : postId);
 
   return (
     <form
@@ -37,6 +40,7 @@ const CommentForm = () => {
           await commentAction(formdata);
           formRef.current?.reset();
           alert("Comment sent successfully!");
+          mutate();
         } catch (error) {
           alert("Comment sent failed!");
         }

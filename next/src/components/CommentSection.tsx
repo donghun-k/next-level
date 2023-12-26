@@ -2,14 +2,16 @@
 
 import { useParams, usePathname } from "next/navigation";
 
-import useComments from "@/hooks/useComment";
+import useComments from "@/hooks/useComments";
 
 import CommentForm from "./CommentForm";
 import CommentItem from "./CommentItem";
 
 const CommentSection = () => {
   const { postId } = useParams();
-  const { data: comments } = useComments((postId as string) ?? "");
+  const { data: comments } = useComments(
+    Array.isArray(postId) ? postId[0] : postId,
+  );
   return (
     <section className="flex w-full flex-col gap-2">
       <h3 className="w-full border-b-2 border-b-gray-100 pb-2 text-2xl font-bold text-gray-700">

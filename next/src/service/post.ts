@@ -35,11 +35,6 @@ export const getPosts = async ({
           'publishedAt': _createdAt,
         }[${(page - 1) * 5} ... ${page * 5}]
       }`,
-      {
-        fetch: {
-          cache: "reload",
-        },
-      },
     )
     .then((data) => {
       const { posts } = data;
@@ -66,11 +61,6 @@ export const getPost = async (postId: string): Promise<Post> => {
       'category': category->title,
       'publishedAt': _createdAt,
     }`,
-      {
-        fetch: {
-          cache: "reload",
-        },
-      },
     )
     .then((post) => ({
       ...post,
