@@ -7,7 +7,7 @@ const useCategories = () => {
     "/api/categories",
     (url: string) => fetch(url).then((res) => res.json()),
     {
-      dedupingInterval: 1000 * 60 * 5,
+      dedupingInterval: 1000 * 60 * 60 * 24,
     },
   );
 };

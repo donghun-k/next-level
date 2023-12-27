@@ -35,6 +35,10 @@ export const getPosts = async ({
           'publishedAt': _createdAt,
         }[${(page - 1) * 5} ... ${page * 5}]
       }`,
+      {},
+      {
+        cache: "no-store",
+      },
     )
     .then((data) => {
       const { posts } = data;
@@ -61,6 +65,12 @@ export const getPost = async (postId: string): Promise<Post> => {
       'category': category->title,
       'publishedAt': _createdAt,
     }`,
+      {},
+      {
+        next: {
+          revalidate: 60 * 60 * 4,
+        },
+      },
     )
     .then((post) => ({
       ...post,
@@ -78,6 +88,12 @@ export const getRecentPosts = async (): Promise<SimplePost[]> => {
       'categoryImage': category->defaultImage,
       'publishedAt': _createdAt,
     }[0...5]`,
+      {},
+      {
+        next: {
+          revalidate: 60 * 60 * 24,
+        },
+      },
     )
     .then((posts) => {
       return posts.map((post: SimplePost) => ({
@@ -99,6 +115,12 @@ export const getPopularPosts = async (): Promise<SimplePost[]> => {
       'categoryImage': category->defaultImage,
       'publishedAt': _createdAt,
     }[0...6]`,
+      {},
+      {
+        next: {
+          revalidate: 60 * 60 * 24,
+        },
+      },
     )
     .then((posts) => {
       return posts.map((post: SimplePost) => ({

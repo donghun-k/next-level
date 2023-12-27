@@ -1,5 +1,7 @@
 "use server";
 
+import { revalidateTag } from "next/cache";
+
 import { sendMail } from "@/service/mail";
 
 import { postComment } from "./service/comment";
@@ -43,5 +45,7 @@ export const commentAction = async (formData: FormData) => {
   )
     throw new Error("Invalid form data");
 
-  return await postComment({ postId, author, password, content });
+  const result = await postComment({ postId, author, password, content });
+  revalidateTag(postId);
+  return result;
 };

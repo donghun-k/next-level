@@ -11,6 +11,10 @@ export const getComments = async (postId: string): Promise<Comment[]> => {
       'id': _id,
       'createdAt': _createdAt,
     }`,
+      {},
+      {
+        next: { tags: ["comments", postId], revalidate: 60 * 60 * 4 },
+      },
     )
     .then((comments) => {
       return comments.map((comment: Comment) => {
