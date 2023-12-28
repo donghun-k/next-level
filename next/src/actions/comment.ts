@@ -2,7 +2,7 @@
 
 import { revalidateTag } from "next/cache";
 
-import { postComment } from "@/service/comment";
+import { deleteComment, postComment } from "@/service/comment";
 
 export const postCommentAction = async (formData: FormData) => {
   const postId = formData.get("postId");
@@ -25,4 +25,17 @@ export const postCommentAction = async (formData: FormData) => {
   const result = await postComment({ postId, author, password, content });
   revalidateTag(postId);
   return result;
+};
+
+export const deleteCommentAction = async ({
+  commentId,
+  postId,
+  password,
+}: {
+  commentId: string;
+  postId: string;
+  password: string;
+}) => {
+  await deleteComment({ commentId, password });
+  revalidateTag(postId);
 };

@@ -10,6 +10,7 @@ export const getComments = async (postId: string): Promise<Comment[]> => {
       ...,
       'id': _id,
       'createdAt': _createdAt,
+      'postId': postRef->_id,
     }`,
       {},
       {
@@ -20,6 +21,7 @@ export const getComments = async (postId: string): Promise<Comment[]> => {
       return comments.map((comment: Comment) => {
         return {
           id: comment.id,
+          postId: comment.postId,
           author: comment.author,
           content: comment.content,
           createdAt: converToLocaleString(comment.createdAt),
@@ -74,4 +76,29 @@ export const postComment = async ({
         id: comment._id,
       };
     });
+};
+
+export const deleteComment = async ({
+  commentId,
+  password,
+}: {
+  commentId: string;
+  password: string;
+}) => {
+  const comments = await client.fetch(
+    `*[_type == "comment" && _id == $commentId]`,
+    { commentId },
+  );
+
+  if (comments.length === 0) {
+    throw new Error("Comment not found");
+  }
+
+  const comment = comments[0];
+
+  if (comment.password === password) {
+    return client.delete(commentId);
+  } else {
+    throw new Error("Invalid password");
+  }
 };
