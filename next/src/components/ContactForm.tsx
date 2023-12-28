@@ -1,27 +1,28 @@
 "use client";
 import { IoIosMail } from "react-icons/io";
-import { useRef, useState } from "react";
-import { useFormStatus } from "react-dom";
+import { useRef } from "react";
 
-import { mailAction } from "@/actions";
+import { sendMailAction } from "@/actions/mail";
 
 import SendingMailBackdrop from "./SendingMailBackdrop";
 
 const ContactForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
 
+  const formAction = async (formdata: FormData) => {
+    try {
+      await sendMailAction(formdata);
+      alert("Mail sent successfully!");
+      formRef.current?.reset();
+    } catch (error) {
+      alert("Mail sent failed!");
+    }
+  };
+
   return (
     <form
       ref={formRef}
-      action={async (formdata) => {
-        try {
-          await mailAction(formdata);
-          alert("Mail sent successfully!");
-          formRef.current?.reset();
-        } catch (error) {
-          alert("Mail sent failed!");
-        }
-      }}
+      action={formAction}
       className="w-[600px] rounded-xl bg-gray-50 p-5 shadow-xl"
     >
       <h1 className="w-full p-2 pb-6 text-center text-3xl font-extrabold text-gray-700">

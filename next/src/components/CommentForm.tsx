@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import { useParams } from "next/navigation";
 
-import { commentAction } from "@/actions";
 import useComments from "@/hooks/useComments";
+import { postCommentAction } from "@/actions/comment";
 
 const CommentForm = () => {
   const { postId } = useParams();
@@ -11,42 +11,40 @@ const CommentForm = () => {
 
   const { mutate } = useComments(Array.isArray(postId) ? postId[0] : postId);
 
+  const formAction = async (formdata: FormData) => {
+    const name = formdata.get("name") as string;
+    const password = formdata.get("password") as string;
+    const content = formdata.get("content") as string;
+
+    if (name.length < 2 || name.length > 10) {
+      alert("Name must be between 2 and 10 characters!");
+      return;
+    }
+
+    if (password.length < 8 || password.length > 20) {
+      alert("Password must be between 8 and 20 characters!");
+      return;
+    }
+
+    if (content.length < 10 || content.length > 100) {
+      alert("Content must be between 10 and 100 characters!");
+      return;
+    }
+
+    try {
+      if (!postId) throw new Error("Post id not found!");
+      formdata.append("postId", Array.isArray(postId) ? postId[0] : postId);
+      await postCommentAction(formdata);
+      formRef.current?.reset();
+      alert("Comment sent successfully!");
+      mutate();
+    } catch (error) {
+      alert("Comment sent failed!");
+    }
+  };
+
   return (
-    <form
-      ref={formRef}
-      action={async (formdata) => {
-        const name = formdata.get("name") as string;
-        const password = formdata.get("password") as string;
-        const content = formdata.get("content") as string;
-
-        if (name.length < 2 || name.length > 10) {
-          alert("Name must be between 2 and 10 characters!");
-          return;
-        }
-
-        if (password.length < 8 || password.length > 20) {
-          alert("Password must be between 8 and 20 characters!");
-          return;
-        }
-
-        if (content.length < 10 || content.length > 100) {
-          alert("Content must be between 10 and 100 characters!");
-          return;
-        }
-
-        try {
-          if (!postId) throw new Error("Post id not found!");
-          formdata.append("postId", Array.isArray(postId) ? postId[0] : postId);
-          await commentAction(formdata);
-          formRef.current?.reset();
-          alert("Comment sent successfully!");
-          mutate();
-        } catch (error) {
-          alert("Comment sent failed!");
-        }
-      }}
-      className="py-8"
-    >
+    <form ref={formRef} action={formAction} className="py-8">
       <div className="flex justify-between">
         <div className="flex gap-4">
           <input
