@@ -1,10 +1,12 @@
 "use client";
 import Link from "next/link";
-import { MdKeyboardArrowRight } from "react-icons/md";
+import { usePathname } from "next/navigation";
 
 import useCategories from "@/hooks/useCategories";
 
 const CategorySidebar = ({ currentCategory }: { currentCategory?: string }) => {
+  const categoryFromPath = usePathname().replace("/category/", "");
+  currentCategory = currentCategory ?? categoryFromPath;
   const { data: categories } = useCategories();
   const categoryTitles = [
     "All",
@@ -18,15 +20,12 @@ const CategorySidebar = ({ currentCategory }: { currentCategory?: string }) => {
             <li key={category}>
               <Link
                 href={`/category/${category}`}
-                className={`text-md flex items-center ${
+                className={`text-md flex items-center duration-300 ${
                   category === currentCategory
                     ? "font-extrabold text-black [text-shadow:_0_2px_2px_rgb(0_0_0_/_20%)]"
                     : "font-bold text-gray-500"
                 }`}
               >
-                {category === currentCategory && (
-                  <MdKeyboardArrowRight className="mt-0.5 h-6 w-6" />
-                )}
                 {category}
               </Link>
             </li>
