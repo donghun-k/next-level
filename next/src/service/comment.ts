@@ -2,6 +2,7 @@ import { Comment } from "@/models/comment";
 import { converToLocaleString } from "@/utils/date";
 
 import { client } from "./sanity";
+import { sendCommentNotification } from "./mail";
 
 export const getComments = async (postId: string): Promise<Comment[]> => {
   return client
@@ -60,7 +61,7 @@ export const postComment = async ({
     return;
   }
 
-  return client
+  await client
     .create({
       _type: "comment",
       postRef: {
@@ -76,6 +77,9 @@ export const postComment = async ({
         id: comment._id,
       };
     });
+
+  await sendCommentNotification({ postId, author, content });
+  return;
 };
 
 export const deleteComment = async ({

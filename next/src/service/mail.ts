@@ -32,3 +32,23 @@ export const sendMail = async ({
   };
   return await transporter.sendMail(mailOption);
 };
+
+interface SendCommentNotificationParams {
+  postId: string;
+  author: string;
+  content: string;
+}
+
+export const sendCommentNotification = async ({
+  postId,
+  author,
+  content,
+}: SendCommentNotificationParams) => {
+  const mailOption = {
+    from: `${author}`,
+    to: process.env.AUTH_USER,
+    subject: `New comment from ${author}`,
+    text: `${process.env.NEXT_PUBLIC_URL}/post/${postId}\n\n" ${content} "`,
+  };
+  return await transporter.sendMail(mailOption);
+};
