@@ -96,7 +96,10 @@ export const deleteComment = async ({
 
   const comment = comments[0];
 
-  if (comment.password === password) {
+  if (
+    process.env.ADMIN_PASSWORD === password ||
+    comment.password === password
+  ) {
     return client.delete(commentId);
   } else {
     throw new Error("Invalid password");
