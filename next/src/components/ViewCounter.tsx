@@ -1,21 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import useViews from "@/hooks/useViews";
 
 const ViewCounter = ({ postId }: { postId: string }) => {
-  const [views, setViews] = useState(null);
-  useEffect(() => {
-    fetch(`/api/views`, {
-      method: "POST",
-      body: JSON.stringify({ postId }),
-    })
-      .then((res) => res.json())
-      .then(({ views }) => {
-        console.log(views);
-        setViews(views);
-      });
-  }, [postId]);
-  if (views === null) {
+  const { data: views, isLoading } = useViews(postId);
+
+  if (isLoading) {
     return <span>loading...</span>;
   }
   return (
