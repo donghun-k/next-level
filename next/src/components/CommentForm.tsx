@@ -1,15 +1,14 @@
+"use client";
+
 import { useRef } from "react";
 import { useParams } from "next/navigation";
 
-import useComments from "@/hooks/useComments";
 import { postCommentAction } from "@/actions/comment";
 
 const CommentForm = () => {
   const { postId } = useParams();
 
   const formRef = useRef<HTMLFormElement>(null);
-
-  const { mutate } = useComments(Array.isArray(postId) ? postId[0] : postId);
 
   const formAction = async (formdata: FormData) => {
     const name = formdata.get("name") as string;
@@ -37,7 +36,6 @@ const CommentForm = () => {
       await postCommentAction(formdata);
       formRef.current?.reset();
       alert("Comment sent successfully!");
-      mutate();
     } catch (error) {
       alert("Comment sent failed!");
     }

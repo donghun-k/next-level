@@ -1,13 +1,11 @@
+"use client";
 import { useState } from "react";
 
 import { deleteCommentAction } from "@/actions/comment";
-import useComments from "@/hooks/useComments";
 import { Comment } from "@/models/comment";
 
 const CommentItem = ({ comment }: { comment: Comment }) => {
   const { author, content, createdAt, id, postId } = comment;
-  const { mutate } = useComments(postId);
-
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
   const handleDeleteBtnClick = () => {
@@ -27,7 +25,6 @@ const CommentItem = ({ comment }: { comment: Comment }) => {
         password,
       });
       alert("Comment deleted");
-      mutate();
     } catch (error) {
       const message =
         error instanceof Error ? error.message : "Failed to delete comment";

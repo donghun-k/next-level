@@ -15,7 +15,7 @@ export const getComments = async (postId: string): Promise<Comment[]> => {
     }`,
       {},
       {
-        next: { tags: ["comments", postId], revalidate: 60 * 60 * 4 },
+        next: { tags: ["comments", postId], revalidate: 60 * 60 * 1 },
       },
     )
     .then((comments) => {
