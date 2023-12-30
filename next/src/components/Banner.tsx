@@ -1,7 +1,5 @@
 import React from "react";
 
-import { converToLocaleString } from "@/utils/date";
-
 interface Props {
   title: string;
   category: string;

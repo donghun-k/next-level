@@ -1,5 +1,3 @@
-"use client";
-
 import CommentSection from "./CommentSection";
 import MarkdownViewer from "./MarkdownViewer";
 

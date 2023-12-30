@@ -1,17 +1,16 @@
-"use client";
-
-import { useParams } from "next/navigation";
-
 import Banner from "@/components/Banner";
 import CategorySidebar from "@/components/CategorySidebar";
 import PostLeftSection from "@/components/PostLeftSection";
-import usePost from "@/hooks/usePost";
+import { getPost } from "@/service/post";
 
-const PostDetailPage = () => {
-  const { postId } = useParams();
-  const { data: post } = usePost(postId as string);
-
-  if (!post) return null;
+const PostDetailPage = async ({
+  params: { postId },
+}: {
+  params: {
+    postId: string;
+  };
+}) => {
+  const post = await getPost(postId);
 
   const { title, category, publishedAt, body, views } = post;
   return (
