@@ -1,13 +1,13 @@
-import React from "react";
+import ViewCounter from "./ViewCounter";
 
 interface Props {
   title: string;
   category: string;
   publishedAt: string;
-  views: number;
+  postId: string;
 }
 
-const Banner = ({ title, category, publishedAt, views }: Props) => {
+const Banner = ({ title, category, publishedAt, postId }: Props) => {
   return (
     <section className="relative flex h-[250px] w-[100vw] min-w-[1024px] justify-center bg-gray-500">
       <div className="flex h-full w-full max-w-screen-lg flex-col px-4 py-10">
@@ -17,7 +17,7 @@ const Banner = ({ title, category, publishedAt, views }: Props) => {
           <p>{publishedAt}</p>
           <p>·</p>
           <p>
-            {views} {views === 1 ? "view" : "views"}
+            <ViewCounter postId={postId} />
           </p>
         </div>
       </div>

@@ -12,14 +12,14 @@ const PostDetailPage = async ({
 }) => {
   const post = await getPost(postId);
 
-  const { title, category, publishedAt, body, views } = post;
+  const { title, category, publishedAt, body } = post;
   return (
     <section className="flex flex-col items-center">
       <Banner
         title={title}
         category={category}
         publishedAt={publishedAt}
-        views={views}
+        postId={postId}
       />
       <section className="flex">
         <PostLeftSection content={body} />

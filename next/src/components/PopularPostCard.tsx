@@ -1,11 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaEye } from "react-icons/fa";
 
 import { SimplePost } from "@/models/post";
 
 const PopularPostCard = ({
-  post: { publishedAt, body, title, category, categoryImage, id, views },
+  post: { publishedAt, body, title, category, categoryImage, id },
 }: {
   post: SimplePost;
 }) => {
@@ -36,9 +35,6 @@ const PopularPostCard = ({
           </Link>
           <p>·</p>
           <p className="text-xs">{publishedAt}</p>
-          <div className="ml-3 flex items-center gap-1 text-xs text-gray-500">
-            <FaEye className="pt-0.5" /> {views}
-          </div>
         </div>
       </div>
       <p className="line-clamp-4 h-[80px] w-full overflow-hidden text-ellipsis text-sm text-gray-500">

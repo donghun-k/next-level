@@ -56,9 +56,11 @@ export const getPosts = async ({
     });
 };
 
-export const getPost = async (postId: string): Promise<Post> => {
-  console.log(await client.patch(postId).inc({ views: 1 }).commit());
+export const increasePostViews = async (postId: string) => {
+  return (await client.patch(postId).inc({ views: 1 }).commit()).views;
+};
 
+export const getPost = async (postId: string): Promise<Post> => {
   return client
     .fetch(
       `*[_type == "post" && _id == "${postId}"][0]{

@@ -5,7 +5,6 @@ export interface SimplePost {
   categoryImage: string;
   body: string;
   publishedAt: string;
-  views: number;
 }
 
 export interface Post extends Omit<SimplePost, "categoryImage"> {}
