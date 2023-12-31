@@ -7,6 +7,7 @@ import { client, urlFor } from "./sanity";
 interface GetPostsParams {
   category?: string;
   page?: number;
+  query?: string;
 }
 
 export interface GetPostsResponse {
@@ -18,15 +19,18 @@ export interface GetPostsResponse {
 export const getPosts = async ({
   category = "All",
   page = 1,
+  query,
 }: GetPostsParams): Promise<GetPostsResponse> => {
   return client
     .fetch(
       `{
         "totalPosts": count(*[_type == "post"${
           category === "All" ? "" : `&& category->title == "${category}"`
-        }]),
+        }${query && query !== "" ? `&& title match "${query}*"` : ""}]),
         "posts": *[_type == "post"${
           category === "All" ? "" : `&& category->title == "${category}"`
+        }${
+          query && query !== "" ? `&& title match "${query}*"` : ""
         }] | order(_createdAt desc) {
           ...,
           'id': _id,
@@ -37,7 +41,9 @@ export const getPosts = async ({
       }`,
       {},
       {
-        cache: "no-store",
+        next: {
+          revalidate: 60 * 60 * 1,
+        },
       },
     )
     .then((data) => {

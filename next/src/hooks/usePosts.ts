@@ -11,11 +11,11 @@ interface Params {
 const usePosts = ({ category = "All", page, query }: Params) => {
   return useSWR<GetPostsResponse>(
     `/api/posts?category=${category}&page=${page}${
-      query ? `&query=${query}` : ""
+      query && query !== "" ? `&query=${query}` : ""
     }`,
     (url: string) => fetch(url).then((res) => res.json()),
     {
-      dedupingInterval: 1000 * 60 * 5,
+      dedupingInterval: 1000 * 60 * 60 * 1,
     },
   );
 };
