@@ -1,7 +1,13 @@
+import { Metadata } from "next";
 import Image from "next/image";
 import { BiLogoTypescript } from "react-icons/bi";
 import { SiMui, SiReact, SiReactquery, SiTailwindcss } from "react-icons/si";
 import { SiNextdotjs } from "react-icons/si";
+
+export const metadata: Metadata = {
+  title: "About Me ┃ NEXT LEVEL",
+  description: "DongHun, Kim의 소개 페이지입니다.",
+};
 
 const AboutPage = () => {
   return (
