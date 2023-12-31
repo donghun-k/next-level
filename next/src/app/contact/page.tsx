@@ -4,7 +4,11 @@ import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact Me ┃ NEXT LEVEL",
-  description: "이 페이지를 통해 저에게 연락할 수 있습니다.",
+  description: "저에게 연락을 하시려면 이곳을 통해 메일을 보내주세요.",
+  openGraph: {
+    title: "Contact Me ┃ NEXT LEVEL",
+    description: "저에게 연락을 하시려면 이곳을 통해 메일을 보내주세요.",
+  },
 };
 
 const ContactPage = async () => {

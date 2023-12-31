@@ -7,6 +7,10 @@ import { SiNextdotjs } from "react-icons/si";
 export const metadata: Metadata = {
   title: "About Me ┃ NEXT LEVEL",
   description: "DongHun, Kim의 소개 페이지입니다.",
+  openGraph: {
+    title: "About Me ┃ NEXT LEVEL",
+    description: "DongHun, Kim의 소개 페이지입니다.",
+  },
 };
 
 const AboutPage = () => {

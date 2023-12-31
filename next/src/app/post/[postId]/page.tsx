@@ -19,6 +19,10 @@ export const generateMetadata = async ({
   return {
     title: `${title} - ${category} ┃ NEXT LEVEL`,
     description: `'${category}' 카테고리의 '${title}' 포스트입니다.`,
+    openGraph: {
+      title: `${title} - ${category} ┃ NEXT LEVEL`,
+      description: `'${category}' 카테고리의 '${title}' 포스트입니다.`,
+    },
   };
 };
 
