@@ -1,5 +1,5 @@
 import { Comment } from "@/models/comment";
-import { converToLocaleString } from "@/utils/date";
+import { convertToLocaleString } from "@/utils/date";
 
 import { client } from "./sanity";
 import { sendCommentNotification } from "./mail";
@@ -25,7 +25,7 @@ export const getComments = async (postId: string): Promise<Comment[]> => {
           postId: comment.postId,
           author: comment.author,
           content: comment.content,
-          createdAt: converToLocaleString(comment.createdAt),
+          createdAt: convertToLocaleString(comment.createdAt),
         };
       });
     });

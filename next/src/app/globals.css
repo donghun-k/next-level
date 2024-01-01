@@ -1,3 +1,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.spinner {
+  width: 80px;
+  height: 80px;
+  margin-left: -40px;
+  margin-top: -40px;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+}
+
+.spinner::after,
+.spinner::before {
+  content: "";
+  position: absolute;
+  border: 5px solid #374151;
+}
+
+.spinner::after {
+  width: 76px;
+  height: 76px;
+  animation: spinner 2.5s linear infinite;
+}
+
+.spinner::before {
+  width: 96px;
+  height: 96px;
+  margin-left: -10px;
+  margin-top: -10px;
+  animation: spinner 2.5s linear infinite;
+  animation-direction: reverse;
+}
+
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
