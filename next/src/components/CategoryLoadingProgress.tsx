@@ -4,8 +4,8 @@ const PuffLoader = dynamic(() => import("react-spinners/PuffLoader"), {
   ssr: false,
 });
 
-const CategorySidebarLoader = () => {
+const CategoryLoadingProgress = () => {
   return <PuffLoader color="#374151" />;
 };
 
-export default CategorySidebarLoader;
+export default CategoryLoadingProgress;

@@ -4,7 +4,7 @@ const SyncLoader = dynamic(() => import("react-spinners/SyncLoader"), {
   ssr: false,
 });
 
-const TypingLoader = () => {
+const TypingProgress = () => {
   return (
     <div className="flex w-full items-center justify-center p-8">
       <SyncLoader color="#374151" size={15} margin={10} />
@@ -12,4 +12,4 @@ const TypingLoader = () => {
   );
 };
 
-export default TypingLoader;
+export default TypingProgress;

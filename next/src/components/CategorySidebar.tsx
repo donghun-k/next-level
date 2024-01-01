@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 
 import useCategories from "@/hooks/useCategories";
 
-import CategorySidebarLoader from "./ui/CategorySidebarLoader";
+import CategoryLoadingProgress from "./CategoryLoadingProgress";
 
 const CategorySidebar = ({ currentCategory }: { currentCategory?: string }) => {
   const categoryFromPath = usePathname().replace("/category/", "");
@@ -17,7 +17,7 @@ const CategorySidebar = ({ currentCategory }: { currentCategory?: string }) => {
   return (
     <aside className="sticky top-[140px] w-[180px] self-start px-4 py-6">
       {isLoading ? (
-        <CategorySidebarLoader />
+        <CategoryLoadingProgress />
       ) : (
         <ul className="flex flex-col gap-4">
           {categoryTitles &&

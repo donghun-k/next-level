@@ -6,8 +6,8 @@ import { PiSmileySadBold } from "react-icons/pi";
 import usePosts from "@/hooks/usePosts";
 import PostListItem from "@/components/PostListItem";
 import useDebounce from "@/hooks/useDebounce";
-import TypingLoader from "@/components/ui/TypingLoader";
-import PostsLoader from "@/components/ui/PostsLoader";
+import TypingProgress from "@/components/TypingProgress";
+import PostsLoadingProgress from "@/components/PostsLoadingProgress";
 
 const PostsPage = () => {
   const category = usePathname().replace("/category/", "");
@@ -91,8 +91,8 @@ const PostsPage = () => {
           )}
         </div>
       </div>
-      {isTyping && <TypingLoader />}
-      {isLoading && <PostsLoader />}
+      {isTyping && <TypingProgress />}
+      {isLoading && <PostsLoadingProgress />}
       {!isLoading && !isTyping && (
         <>
           <ul className="mb-8 mt-4 flex flex-col gap-6">
