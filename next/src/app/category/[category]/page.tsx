@@ -2,11 +2,12 @@
 import { usePathname } from "next/navigation";
 import { ChangeEventHandler, useEffect, useRef, useState } from "react";
 import { PiSmileySadBold } from "react-icons/pi";
-import { PulseLoader, SyncLoader } from "react-spinners";
 
 import usePosts from "@/hooks/usePosts";
 import PostListItem from "@/components/PostListItem";
 import useDebounce from "@/hooks/useDebounce";
+import TypingLoader from "@/components/ui/TypingLoader";
+import PostsLoader from "@/components/ui/PostsLoader";
 
 const PostsPage = () => {
   const category = usePathname().replace("/category/", "");
@@ -85,16 +86,8 @@ const PostsPage = () => {
           </div>
         )}
       </div>
-      {isTyping && (
-        <p className="flex w-full flex-col items-center justify-center gap-2 p-8 font-bold">
-          <SyncLoader color="gray" size={15} margin={10} />
-        </p>
-      )}
-      {isLoading && (
-        <p className="flex w-full flex-col items-center justify-center gap-2 p-8 font-bold">
-          <PulseLoader color="gray" size={15} margin={10} />
-        </p>
-      )}
+      {isTyping && <TypingLoader />}
+      {isLoading && <PostsLoader />}
       {!isLoading && !isTyping && (
         <>
           <ul className="mb-8 mt-4 flex flex-col gap-6">
