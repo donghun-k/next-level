@@ -1,6 +1,9 @@
 import { Post, SimplePost } from "@/models/post";
 import { convertMarkdownToPlainText } from "@/utils/markdown";
-import { converToLocaleString } from "@/utils/date";
+import {
+  convertToLocaleString,
+  convertToLocaleStringWithTime,
+} from "@/utils/date";
 
 import { client, urlFor } from "./sanity";
 
@@ -52,7 +55,7 @@ export const getPosts = async ({
         ...post,
         categoryImage: urlFor(post.categoryImage),
         body: convertMarkdownToPlainText(post.body),
-        publishedAt: converToLocaleString(post.publishedAt),
+        publishedAt: convertToLocaleString(post.publishedAt),
       }));
       return {
         ...data,
@@ -84,60 +87,83 @@ export const getPost = async (postId: string): Promise<Post> => {
     )
     .then((post) => ({
       ...post,
-      publishedAt: converToLocaleString(post.publishedAt),
+      publishedAt: convertToLocaleString(post.publishedAt),
     }));
 };
 
-export const getRecentPosts = async (): Promise<SimplePost[]> => {
-  return client
-    .fetch(
-      `*[_type == "post"] | order(_createdAt desc) {
-      ...,
-      'id': _id,
-      'category': category->title,
-      'categoryImage': category->defaultImage,
-      'publishedAt': _createdAt,
-    }[0...5]`,
-      {},
-      {
-        next: {
-          revalidate: 60 * 60 * 4,
-        },
-      },
-    )
-    .then((posts) => {
-      return posts.map((post: SimplePost) => ({
-        ...post,
-        categoryImage: urlFor(post.categoryImage),
-        body: convertMarkdownToPlainText(post.body),
-        publishedAt: converToLocaleString(post.publishedAt),
-      }));
-    });
-};
+interface GetRecentOrPopularPostsResponse {
+  posts: SimplePost[];
+  updatedAt: string;
+}
 
-export const getPopularPosts = async (): Promise<SimplePost[]> => {
-  return client
-    .fetch(
-      `*[_type == "post"] | order(views desc) {
-      ...,
-      'id': _id,
-      'category': category->title,
-      'categoryImage': category->defaultImage,
-      'publishedAt': _createdAt,
-    }[0...6]`,
-      {},
-      {
-        next: {
-          revalidate: 60 * 60 * 4,
+export const getRecentPosts =
+  async (): Promise<GetRecentOrPopularPostsResponse> => {
+    return client
+      .fetch(
+        `{
+          "posts": *[_type == "post"] | order(_createdAt desc) {
+            ...,
+            'id': _id,
+            'category': category->title,
+            'categoryImage': category->defaultImage,
+            'publishedAt': _createdAt,
+          }[0...5],
+          "updatedAt": now()
+        }`,
+        {},
+        {
+          next: {
+            revalidate: 60 * 60 * 4,
+          },
         },
-      },
-    )
-    .then((posts) => {
-      return posts.map((post: SimplePost) => ({
-        ...post,
-        categoryImage: urlFor(post.categoryImage),
-        body: convertMarkdownToPlainText(post.body),
-        publishedAt: converToLocaleString(post.publishedAt),
-      }));
-    });
-};
+      )
+      .then(({ posts, updatedAt }: GetRecentOrPopularPostsResponse) => {
+        return {
+          posts: posts.map(
+            (post: SimplePost): SimplePost => ({
+              ...post,
+              categoryImage: urlFor(post.categoryImage),
+              body: convertMarkdownToPlainText(post.body),
+              publishedAt: convertToLocaleString(post.publishedAt),
+            }),
+          ),
+          updatedAt: convertToLocaleStringWithTime(updatedAt),
+        };
+      });
+  };
+
+export const getPopularPosts =
+  async (): Promise<GetRecentOrPopularPostsResponse> => {
+    return client
+      .fetch(
+        `{
+          "posts": *[_type == "post"] | order(views desc) {
+            ...,
+            'id': _id,
+            'category': category->title,
+            'categoryImage': category->defaultImage,
+            'publishedAt': _createdAt,
+          }[0...6],
+          "updatedAt": now()
+        }`,
+        {},
+        {
+          next: {
+            revalidate: 60 * 60 * 4,
+          },
+        },
+      )
+      .then(({ posts, updatedAt }: GetRecentOrPopularPostsResponse) => {
+        return {
+          posts: posts.map(
+            (post: SimplePost): SimplePost => ({
+              ...post,
+              categoryImage: urlFor(post.categoryImage),
+              body: convertMarkdownToPlainText(post.body),
+              publishedAt: convertToLocaleString(post.publishedAt),
+            }),
+          ),
+          updatedAt: convertToLocaleStringWithTime(updatedAt),
+        };
+      });
+  };
