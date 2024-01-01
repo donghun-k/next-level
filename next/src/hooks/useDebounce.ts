@@ -2,18 +2,18 @@ import { useState, useEffect } from "react";
 
 const useDebounce = (value: string, delay: number = 500) => {
   const [debounced, setDebounced] = useState(value);
-  const [isWating, setIsWating] = useState(false);
+  const [isDebouncing, setIsDebouncing] = useState(false);
 
   useEffect(() => {
-    if (value !== "") setIsWating(true);
+    if (value !== "") setIsDebouncing(true);
     const handler = setTimeout(() => {
-      setIsWating(false);
+      setIsDebouncing(false);
       setDebounced(value);
     }, delay);
     return () => clearTimeout(handler);
   }, [value, delay]);
 
-  return { debounced, isWating };
+  return { debounced, isDebouncing };
 };
 
 export default useDebounce;

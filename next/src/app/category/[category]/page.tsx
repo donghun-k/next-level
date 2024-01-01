@@ -12,7 +12,7 @@ const PostsPage = () => {
   const category = usePathname().replace("/category/", "");
   const [page, setPage] = useState(1);
   const [input, setInput] = useState("");
-  const { debounced: query, isWating: isTyping } = useDebounce(input, 1000);
+  const { debounced: query, isDebouncing: isTyping } = useDebounce(input, 1000);
   const { data, isLoading } = usePosts({ category, page, query });
   const { posts, totalPosts, totalPages } = data || {
     posts: [],

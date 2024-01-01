@@ -101,7 +101,7 @@ export const getRecentPosts = async (): Promise<SimplePost[]> => {
       {},
       {
         next: {
-          revalidate: 60 * 60 * 24,
+          revalidate: 60 * 60 * 4,
         },
       },
     )
@@ -128,7 +128,7 @@ export const getPopularPosts = async (): Promise<SimplePost[]> => {
       {},
       {
         next: {
-          revalidate: 60 * 60 * 24,
+          revalidate: 60 * 60 * 4,
         },
       },
     )
