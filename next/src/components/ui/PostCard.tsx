@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { SimplePost } from "@/models/post";
 
-const PopularPostCard = ({
+const PostCard = ({
   post: { publishedAt, body, title, category, categoryImage, id },
 }: {
   post: SimplePost;
@@ -28,7 +28,7 @@ const PopularPostCard = ({
       <div className="flex items-center justify-between text-gray-500">
         <div className="flex items-center gap-2">
           <Link
-            href={`/category/${category}`}
+            href={`/posts/${category}`}
             className="text-sm underline underline-offset-1 hover:text-gray-400"
           >
             {category}
@@ -44,4 +44,4 @@ const PopularPostCard = ({
   );
 };
 
-export default PopularPostCard;
+export default PostCard;

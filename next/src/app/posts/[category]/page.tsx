@@ -1,20 +1,24 @@
 "use client";
-import { usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import { ChangeEventHandler, useEffect, useRef, useState } from "react";
 import { PiSmileySadBold } from "react-icons/pi";
 
 import usePosts from "@/hooks/usePosts";
-import PostListItem from "@/components/PostListItem";
+import PostListItem from "@/components/ui/PostListItem";
 import useDebounce from "@/hooks/useDebounce";
-import TypingProgress from "@/components/TypingProgress";
-import PostsLoadingProgress from "@/components/PostsLoadingProgress";
+import TypingProgress from "@/components/posts/TypingProgress";
+import PostsLoadingProgress from "@/components/posts/PostsLoadingProgress";
 
 const PostsPage = () => {
-  const category = usePathname().replace("/category/", "");
+  const { category } = useParams();
   const [page, setPage] = useState(1);
   const [input, setInput] = useState("");
   const { debounced: query, isDebouncing: isTyping } = useDebounce(input, 1000);
-  const { data, isLoading } = usePosts({ category, page, query });
+  const { data, isLoading } = usePosts({
+    category: Array.isArray(category) ? category[0] : category,
+    page,
+    query,
+  });
   const { posts, totalPosts, totalPages } = data || {
     posts: [],
     totalPosts: 1,

@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import React from "react";
 
 const Redirect = () => {
-  redirect("/category/All");
+  redirect("/posts/All");
   return <div>Redirect</div>;
 };
 

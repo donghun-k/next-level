@@ -29,7 +29,7 @@ const PostListItem = ({
 
         <div className="flex items-center gap-2 text-gray-500">
           <Link
-            href={`/category/${category}`}
+            href={`/posts/${category}`}
             className="text-md underline underline-offset-1 hover:text-gray-400"
           >
             {category}

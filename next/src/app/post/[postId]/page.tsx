@@ -1,9 +1,9 @@
 import { Metadata } from "next";
 
-import Banner from "@/components/Banner";
-import CategorySidebar from "@/components/CategorySidebar";
-import CommentSection from "@/components/CommentSection";
-import MarkdownViewer from "@/components/MarkdownViewer";
+import Banner from "@/components/post/Banner";
+import CategorySidebar from "@/components/ui/CategorySidebar";
+import CommentSection from "@/components/post/CommentSection";
+import MarkdownViewer from "@/components/post/MarkdownViewer";
 import { getPost } from "@/service/post";
 
 interface Props {

@@ -1,6 +1,6 @@
 import { getRecentPosts } from "@/service/post";
 
-import PostListItem from "./PostListItem";
+import PostListItem from "../ui/PostListItem";
 
 export const revalidate = 60 * 60 * 4;
 

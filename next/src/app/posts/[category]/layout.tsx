@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Metadata } from "next";
 
-import CategorySidebar from "@/components/CategorySidebar";
+import CategorySidebar from "@/components/ui/CategorySidebar";
 
 export const generateMetadata = async ({
   params: { category },

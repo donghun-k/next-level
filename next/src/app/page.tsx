@@ -1,5 +1,5 @@
-import PopularPostGrid from "@/components/PopularPostGrid";
-import RecentPostList from "@/components/RecentPostList";
+import PopularPostGrid from "@/components/home/PopularPostGrid";
+import RecentPostList from "@/components/home/RecentPostList";
 
 const HomePage = () => {
   return (

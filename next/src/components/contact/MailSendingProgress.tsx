@@ -3,7 +3,7 @@
 import { useFormStatus } from "react-dom";
 import { PulseLoader } from "react-spinners";
 
-import Backdrop from "./ui/Backdrop";
+import Backdrop from "../ui/Backdrop";
 
 const MailSendingProgress = () => {
   const { pending } = useFormStatus();

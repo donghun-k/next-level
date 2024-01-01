@@ -1,14 +1,15 @@
 "use client";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 
 import useCategories from "@/hooks/useCategories";
 
 import CategoryLoadingProgress from "./CategoryLoadingProgress";
 
 const CategorySidebar = ({ currentCategory }: { currentCategory?: string }) => {
-  const categoryFromPath = usePathname().replace("/category/", "");
-  currentCategory = currentCategory ?? categoryFromPath;
+  const { category } = useParams();
+  currentCategory =
+    currentCategory ?? (Array.isArray(category) ? category[0] : category);
   const { data: categories, isLoading } = useCategories();
   const categoryTitles = [
     "All",
@@ -24,7 +25,7 @@ const CategorySidebar = ({ currentCategory }: { currentCategory?: string }) => {
             categoryTitles.map((category) => (
               <li key={category}>
                 <Link
-                  href={`/category/${category}`}
+                  href={`/posts/${category}`}
                   className={`text-md flex items-center duration-300 ${
                     category === currentCategory
                       ? "font-extrabold text-black [text-shadow:_0_2px_2px_rgb(0_0_0_/_20%)]"
