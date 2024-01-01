@@ -1,26 +1,44 @@
 "use client";
 import { useState } from "react";
 
-import { deleteCommentAction } from "@/actions/comment";
 import { Comment } from "@/models/comment";
+import { deleteCommentAction } from "@/actions/comment";
+
+import Backdrop from "../ui/Backdrop";
+import CommentDeleteDialog from "./CommentDeleteDialog";
+import CommentDeletingProgress from "./CommentDeletingProgress";
 
 const CommentItem = ({ comment }: { comment: Comment }) => {
-  const { author, content, createdAt, id, postId } = comment;
+  const { author, content, createdAt, id: commentId, postId } = comment;
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const [showDeletingProgress, setShowDeletingProgress] = useState(false);
 
-  const handleDeleteBtnClick = () => {
+  const handleOpenDeleteDialog = () => {
     setShowDeleteDialog(true);
   };
 
-  const formAction = async (formData: FormData) => {
-    const password = formData.get("password") as string;
+  const handleCloseDeleteDialog = () => {
+    setShowDeleteDialog(false);
+  };
+
+  const handleShowDeletingProgress = () => {
+    setShowDeletingProgress(true);
+  };
+
+  const handleHideDeletingProgress = () => {
+    setShowDeletingProgress(false);
+  };
+
+  const deleteComment = async (password: string) => {
     if (!password) {
       alert("Password is required");
       return;
     }
+    handleCloseDeleteDialog();
+    handleShowDeletingProgress();
     try {
       await deleteCommentAction({
-        commentId: id,
+        commentId,
         postId,
         password,
       });
@@ -30,9 +48,10 @@ const CommentItem = ({ comment }: { comment: Comment }) => {
         error instanceof Error ? error.message : "Failed to delete comment";
       alert(message);
     } finally {
-      setShowDeleteDialog(false);
+      handleHideDeletingProgress();
     }
   };
+
   return (
     <li className="flex w-full flex-col">
       <div className="flex w-full items-center justify-between py-4">
@@ -41,7 +60,7 @@ const CommentItem = ({ comment }: { comment: Comment }) => {
           <span className="mt-1 text-xs text-gray-500">{createdAt}</span>
         </div>
         <button
-          onClick={handleDeleteBtnClick}
+          onClick={handleOpenDeleteDialog}
           className="text-sm text-gray-500 hover:text-gray-700"
         >
           Delete
@@ -49,39 +68,17 @@ const CommentItem = ({ comment }: { comment: Comment }) => {
       </div>
       <p className="text-gray-700 ">{content}</p>
       {showDeleteDialog && (
-        <div className="fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center bg-gray-700/20">
-          <form
-            action={formAction}
-            className="flex h-[140px] w-[200px] flex-col items-center justify-evenly rounded-md bg-gray-100 p-2 shadow-md"
-          >
-            <label
-              htmlFor="password"
-              className="text-xl font-bold text-gray-700"
-            >
-              Password
-            </label>
-            <input
-              type="password"
-              name="password"
-              className="h-6 w-[160px] rounded-sm "
-            />
-            <div className="mt-2 flex gap-2">
-              <button
-                type="submit"
-                className="rounded-sm bg-gray-500 px-4 py-1 text-sm text-white duration-300 hover:bg-gray-400"
-              >
-                Delete
-              </button>
-              <button
-                type="button"
-                onClick={() => setShowDeleteDialog(false)}
-                className="rounded-sm bg-gray-500 px-4 py-1 text-sm text-white duration-300 hover:bg-gray-400"
-              >
-                Cancel
-              </button>
-            </div>
-          </form>
-        </div>
+        <Backdrop>
+          <CommentDeleteDialog
+            closeDialog={handleCloseDeleteDialog}
+            deleteComment={deleteComment}
+          />
+        </Backdrop>
+      )}
+      {showDeletingProgress && (
+        <Backdrop>
+          <CommentDeletingProgress />
+        </Backdrop>
       )}
     </li>
   );

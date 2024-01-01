@@ -5,6 +5,8 @@ import { useParams } from "next/navigation";
 
 import { postCommentAction } from "@/actions/comment";
 
+import CommentPostingProgress from "./CommentPostingProgress";
+
 const CommentForm = () => {
   const { postId } = useParams();
 
@@ -73,6 +75,7 @@ const CommentForm = () => {
         placeholder="Enter your comment here"
         className="mt-4 h-32 w-full resize-none rounded-sm border-2 border-gray-300 p-1 text-gray-500"
       />
+      <CommentPostingProgress />
     </form>
   );
 };
