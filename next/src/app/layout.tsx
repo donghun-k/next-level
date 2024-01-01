@@ -41,6 +41,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Header />
         <main className="w-full max-w-screen-lg grow">{children}</main>
         <Footer />
+        <div id="backdrop-portal"></div>
       </body>
     </html>
   );

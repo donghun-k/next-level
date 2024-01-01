@@ -4,7 +4,7 @@ import { useRef } from "react";
 
 import { sendMailAction } from "@/actions/mail";
 
-import SendingMailBackdrop from "./SendingMailBackdrop";
+import MailSendingProgress from "./MailSendingProgress";
 
 const ContactForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -85,7 +85,7 @@ const ContactForm = () => {
           <IoIosMail className="mt-1 h-6 w-6 text-white" />
         </button>
       </div>
-      <SendingMailBackdrop />
+      <MailSendingProgress />
     </form>
   );
 };

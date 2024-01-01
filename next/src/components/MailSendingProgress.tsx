@@ -1,21 +1,25 @@
+"use client";
+
 import { useFormStatus } from "react-dom";
 import { PulseLoader } from "react-spinners";
 
-const SendingMailBackdrop = () => {
+import Backdrop from "./ui/Backdrop";
+
+const MailSendingProgress = () => {
   const { pending } = useFormStatus();
   if (!pending) return null;
   return (
-    <div className="fixed left-0 top-0 flex h-screen w-screen items-center justify-center bg-gray-900/20">
+    <Backdrop>
       <PulseLoader
-        color="#555"
+        color="#374151"
         size={25}
         speedMultiplier={0.5}
         cssOverride={{
           gap: "30px",
         }}
       />
-    </div>
+    </Backdrop>
   );
 };
 
-export default SendingMailBackdrop;
+export default MailSendingProgress;
