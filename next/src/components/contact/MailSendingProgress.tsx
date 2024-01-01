@@ -1,7 +1,7 @@
 "use client";
 
 import { useFormStatus } from "react-dom";
-import { PulseLoader } from "react-spinners";
+import { IoIosMail } from "react-icons/io";
 
 import Backdrop from "../ui/Backdrop";
 
@@ -10,14 +10,7 @@ const MailSendingProgress = () => {
   if (!pending) return null;
   return (
     <Backdrop>
-      <PulseLoader
-        color="#374151"
-        size={25}
-        speedMultiplier={0.5}
-        cssOverride={{
-          gap: "30px",
-        }}
-      />
+      <IoIosMail className="progress text-white" size={100} />
     </Backdrop>
   );
 };

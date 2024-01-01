@@ -1,20 +1,12 @@
 "use client";
-
-import { PulseLoader } from "react-spinners";
+import { LuEraser } from "react-icons/lu";
 
 import Backdrop from "../ui/Backdrop";
 
 const CommentDeletingProgress = () => {
   return (
     <Backdrop>
-      <PulseLoader
-        color="#374151"
-        size={25}
-        speedMultiplier={0.5}
-        cssOverride={{
-          gap: "30px",
-        }}
-      />
+      <LuEraser className="progress z-50 text-white" size={100} />
     </Backdrop>
   );
 };

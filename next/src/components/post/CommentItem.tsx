@@ -67,17 +67,15 @@ const CommentItem = ({ comment }: { comment: Comment }) => {
         </button>
       </div>
       <p className="text-gray-700 ">{content}</p>
-      {showDeleteDialog && (
+      {(showDeleteDialog || showDeletingProgress) && (
         <Backdrop>
-          <CommentDeleteDialog
-            closeDialog={handleCloseDeleteDialog}
-            deleteComment={deleteComment}
-          />
-        </Backdrop>
-      )}
-      {showDeletingProgress && (
-        <Backdrop>
-          <CommentDeletingProgress />
+          {showDeleteDialog && (
+            <CommentDeleteDialog
+              closeDialog={handleCloseDeleteDialog}
+              deleteComment={deleteComment}
+            />
+          )}
+          {showDeletingProgress && <CommentDeletingProgress />}
         </Backdrop>
       )}
     </li>

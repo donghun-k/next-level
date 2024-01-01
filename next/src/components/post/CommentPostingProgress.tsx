@@ -1,7 +1,7 @@
 "use client";
 
 import { useFormStatus } from "react-dom";
-import { PulseLoader } from "react-spinners";
+import { BsPencilSquare } from "react-icons/bs";
 
 import Backdrop from "../ui/Backdrop";
 
@@ -10,14 +10,7 @@ const CommentPostingProgress = () => {
   if (!pending) return null;
   return (
     <Backdrop>
-      <PulseLoader
-        color="#374151"
-        size={25}
-        speedMultiplier={0.5}
-        cssOverride={{
-          gap: "30px",
-        }}
-      />
+      <BsPencilSquare className="progress text-white" size={100} />
     </Backdrop>
   );
 };

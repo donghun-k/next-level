@@ -1,11 +1,11 @@
 import dynamic from "next/dynamic";
 
-const PuffLoader = dynamic(() => import("react-spinners/PuffLoader"), {
+const ScaleLoader = dynamic(() => import("react-spinners/ScaleLoader"), {
   ssr: false,
 });
 
 const CategoryLoadingProgress = () => {
-  return <PuffLoader color="#374151" />;
+  return <ScaleLoader color="#374151" width={6} height={15} margin={5} />;
 };
 
 export default CategoryLoadingProgress;
