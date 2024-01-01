@@ -67,24 +67,29 @@ const PostsPage = () => {
           value={input}
           onChange={handleInputChange}
         />
-        {!isTyping && !isLoading && totalPages > 0 && (
-          <div className="flex items-center gap-2">
-            <p className="text-gray-500">Page</p>
-            <select
-              value={page}
-              onChange={handlePageChange}
-              className="w-[60px] rounded-md border-2 border-gray-500 px-2 font-bold text-black"
-            >
-              {optionArray.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-            <p className="text-gray-500">of</p>
-            <p className="text-lg font-bold text-black">{totalPages}</p>
-          </div>
-        )}
+
+        <div className="flex h-8 items-center gap-2 text-gray-500">
+          {isTyping && "Typing..."}
+          {isLoading && "Loading..."}
+          {!isTyping && !isLoading && totalPages > 0 && (
+            <>
+              Page
+              <select
+                value={page}
+                onChange={handlePageChange}
+                className="w-[60px] rounded-md border-2 border-gray-500 px-2 font-bold text-black"
+              >
+                {optionArray.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+              of
+              <span className="text-lg font-bold text-black">{totalPages}</span>
+            </>
+          )}
+        </div>
       </div>
       {isTyping && <TypingLoader />}
       {isLoading && <PostsLoader />}
