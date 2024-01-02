@@ -2,8 +2,6 @@ import { getPopularPosts } from "@/service/post";
 
 import PostCard from "../ui/PostCard";
 
-export const revalidate = 60 * 60 * 4;
-
 const PopularPostGrid = async () => {
   const { posts, updatedAt } = await getPopularPosts();
   return (

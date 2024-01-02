@@ -2,8 +2,6 @@ import { getRecentPosts } from "@/service/post";
 
 import PostListItem from "../ui/PostListItem";
 
-export const revalidate = 60 * 60 * 4;
-
 const RecentPostList = async () => {
   const { posts, updatedAt } = await getRecentPosts();
   return (
