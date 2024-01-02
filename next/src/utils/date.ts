@@ -13,5 +13,6 @@ export const convertToLocaleStringWithTime = (date: string) => {
     day: "numeric",
     hour: "numeric",
     minute: "numeric",
+    second: "numeric",
   });
 };

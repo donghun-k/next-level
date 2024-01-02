@@ -113,7 +113,7 @@ export const getRecentPosts =
         {},
         {
           next: {
-            revalidate: 60 * 60 * 4,
+            revalidate: 60 * 60 * 1,
           },
         },
       )
