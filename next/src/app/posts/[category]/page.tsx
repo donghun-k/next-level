@@ -1,6 +1,6 @@
 "use client";
-import { useParams, usePathname } from "next/navigation";
-import { ChangeEventHandler, useEffect, useRef, useState } from "react";
+import { useParams } from "next/navigation";
+import { ChangeEventHandler, useEffect, useState } from "react";
 import { PiSmileySadBold } from "react-icons/pi";
 
 import usePosts from "@/hooks/usePosts";
