@@ -1,21 +1,24 @@
 "use client";
 import { IoIosMail } from "react-icons/io";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 import { sendMailAction } from "@/actions/mail";
 
 import MailSendingProgress from "./MailSendingProgress";
+import Toast from "../ui/Toast";
 
 const ContactForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
+  const [showSuccessToast, setShowSuccessToast] = useState(false);
+  const [showErrorToast, setShowErrorToast] = useState(false);
 
   const formAction = async (formdata: FormData) => {
     try {
       await sendMailAction(formdata);
-      alert("Mail sent successfully!");
+      setShowSuccessToast(true);
       formRef.current?.reset();
     } catch (error) {
-      alert("Mail sent failed!");
+      setShowErrorToast(true);
     }
   };
 
@@ -86,6 +89,20 @@ const ContactForm = () => {
         </button>
       </div>
       <MailSendingProgress />
+      {showSuccessToast && (
+        <Toast
+          message="Mail sent successfully!"
+          type="success"
+          closeToast={() => setShowSuccessToast(false)}
+        />
+      )}
+      {showErrorToast && (
+        <Toast
+          message="Mail sent failed!"
+          type="error"
+          closeToast={() => setShowErrorToast(false)}
+        />
+      )}
     </form>
   );
 };
