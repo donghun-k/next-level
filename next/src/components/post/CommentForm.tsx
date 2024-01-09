@@ -1,14 +1,33 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useParams } from "next/navigation";
 
 import { postCommentAction } from "@/actions/comment";
 
 import CommentPostingProgress from "./CommentPostingProgress";
+import Toast from "../ui/Toast";
 
 const CommentForm = () => {
   const { postId } = useParams();
+
+  const [toastInfo, setToastInfo] = useState<{
+    show: boolean;
+    message: string;
+    type: "success" | "error";
+  }>({
+    show: false,
+    message: "",
+    type: "success",
+  });
+
+  const closeToast = () => {
+    setToastInfo({
+      show: false,
+      message: "",
+      type: "success",
+    });
+  };
 
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -18,28 +37,49 @@ const CommentForm = () => {
     const content = formdata.get("content") as string;
 
     if (name.length < 2 || name.length > 10) {
-      alert("Name must be between 2 and 10 characters!");
+      setToastInfo({
+        show: true,
+        message: "Name must be between 2 and 10 characters!",
+        type: "error",
+      });
       return;
     }
 
     if (password.length < 8 || password.length > 20) {
-      alert("Password must be between 8 and 20 characters!");
+      setToastInfo({
+        show: true,
+        message: "Password must be between 8 and 20 characters!",
+        type: "error",
+      });
       return;
     }
 
     if (content.length < 10 || content.length > 100) {
-      alert("Content must be between 10 and 100 characters!");
+      setToastInfo({
+        show: true,
+        message: "Content must be between 10 and 100 characters!",
+        type: "error",
+      });
       return;
     }
 
     try {
-      if (!postId) throw new Error("Post id not found!");
       formdata.append("postId", Array.isArray(postId) ? postId[0] : postId);
       await postCommentAction(formdata);
       formRef.current?.reset();
-      alert("Comment sent successfully!");
+      setToastInfo({
+        show: true,
+        message: "Comment successfully added.",
+        type: "success",
+      });
     } catch (error) {
-      alert("Comment sent failed!");
+      const message =
+        error instanceof Error ? error.message : "Failed to post comment";
+      setToastInfo({
+        show: true,
+        message,
+        type: "error",
+      });
     }
   };
 
@@ -76,6 +116,13 @@ const CommentForm = () => {
         className="mt-4 h-32 w-full resize-none rounded-sm border-2 border-gray-300 p-1 text-gray-500"
       />
       <CommentPostingProgress />
+      {toastInfo.show && (
+        <Toast
+          message={toastInfo.message}
+          type={toastInfo.type}
+          closeToast={closeToast}
+        />
+      )}
     </form>
   );
 };

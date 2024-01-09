@@ -33,7 +33,7 @@ const Toast = ({ message, type, closeToast, duration = 5000 }: Props) => {
           ) : (
             <MdError className="h-7 w-7 text-gray-700" />
           )}
-          <p className="pointer-events-none flex w-[300px] items-center justify-center font-extrabold text-gray-700">
+          <p className="pointer-events-none flex w-[250px] items-center justify-center  break-words text-center font-extrabold text-gray-700">
             {message}
           </p>
           <button

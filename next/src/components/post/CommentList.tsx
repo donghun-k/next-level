@@ -8,6 +8,7 @@ import { deleteCommentAction } from "@/actions/comment";
 import CommentItem from "./CommentItem";
 import CommentDeleteDialog from "./CommentDeleteDialog";
 import CommentDeletingProgress from "./CommentDeletingProgress";
+import Toast from "../ui/Toast";
 
 interface Props {
   comments: Comment[];
@@ -18,6 +19,24 @@ const CommentList = ({ comments }: Props) => {
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [postId, setPostId] = useState<string | null>(null);
   const [commentId, setCommentId] = useState<string | null>(null);
+
+  const [toastInfo, setToastInfo] = useState<{
+    show: boolean;
+    message: string;
+    type: "success" | "error";
+  }>({
+    show: false,
+    message: "",
+    type: "success",
+  });
+
+  const closeToast = () => {
+    setToastInfo({
+      show: false,
+      message: "",
+      type: "success",
+    });
+  };
 
   const openDeleteDialog = ({
     commentId,
@@ -39,11 +58,19 @@ const CommentList = ({ comments }: Props) => {
 
   const deleteComment = async (password: string) => {
     if (password.length < 8 || password.length > 20) {
-      alert("Password must be between 8 and 20 characters!");
+      setToastInfo({
+        show: true,
+        message: "Password must be between 8 and 20 characters!",
+        type: "error",
+      });
       return;
     }
     if (!postId || !commentId) {
-      alert("Something went wrong");
+      setToastInfo({
+        show: true,
+        message: "Something went wrong.",
+        type: "error",
+      });
       return;
     }
     closeDeleteDialog();
@@ -54,11 +81,19 @@ const CommentList = ({ comments }: Props) => {
         postId,
         password,
       });
-      alert("Comment deleted");
+      setToastInfo({
+        show: true,
+        message: "Comment successfully deleted.",
+        type: "success",
+      });
     } catch (error) {
       const message =
-        error instanceof Error ? error.message : "Failed to delete comment";
-      alert(message);
+        error instanceof Error ? error.message : "Failed to delete comment.";
+      setToastInfo({
+        show: true,
+        message,
+        type: "error",
+      });
     } finally {
       setShowDeletingProgress(false);
     }
@@ -86,6 +121,13 @@ const CommentList = ({ comments }: Props) => {
         />
       )}
       {showDeletingProgress && <CommentDeletingProgress />}
+      {toastInfo.show && (
+        <Toast
+          type={toastInfo.type}
+          message={toastInfo.message}
+          closeToast={closeToast}
+        />
+      )}
     </>
   );
 };
