@@ -26,8 +26,8 @@ export const sendMail = async ({
   const mailOption = {
     from: `${author} <${from}>`,
     to: process.env.AUTH_USER,
-    subject: `from NEXT LEVEL - ${author} sent you a message`,
-    text: `<Subject>\n${subject}\n\n<Message\>\n${text}`,
+    subject: `from NEXT LEVEL - "${author}" sent you a message`,
+    text: `『FROM』\n"${author}", ${from}\n\n『SUBJECT』\n${subject}\n\n『MESSAGE』\n${text}`,
   };
   return await transporter.sendMail(mailOption);
 };
@@ -44,10 +44,10 @@ export const sendCommentNotification = async ({
   content,
 }: SendCommentNotificationParams) => {
   const mailOption = {
-    from: `${author}<${process.env.AUTH_USER}>`,
+    from: `${author} <${process.env.AUTH_USER}>`,
     to: process.env.AUTH_USER,
-    subject: `from NEXT LEVEL - ${author} commented on your post`,
-    text: `<Post>\n${process.env.NEXT_PUBLIC_URL}/post/${postId}\n\n<Comment>\n${content}`,
+    subject: `from NEXT LEVEL - "${author}" commented on your post`,
+    text: `『POST』\n${process.env.NEXT_PUBLIC_URL}/post/${postId}\n\n『COMMENT』\n${content}`,
   };
   return await transporter.sendMail(mailOption);
 };
