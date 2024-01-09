@@ -1,9 +1,10 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useParams } from "next/navigation";
 
 import { postCommentAction } from "@/actions/comment";
+import useToast from "@/hooks/useToast";
 
 import CommentPostingProgress from "./CommentPostingProgress";
 import Toast from "../ui/Toast";
@@ -11,23 +12,7 @@ import Toast from "../ui/Toast";
 const CommentForm = () => {
   const { postId } = useParams();
 
-  const [toastInfo, setToastInfo] = useState<{
-    show: boolean;
-    message: string;
-    type: "success" | "error";
-  }>({
-    show: false,
-    message: "",
-    type: "success",
-  });
-
-  const closeToast = () => {
-    setToastInfo({
-      show: false,
-      message: "",
-      type: "success",
-    });
-  };
+  const { toastInfo, setToastInfo, closeToast } = useToast();
 
   const formRef = useRef<HTMLFormElement>(null);
 

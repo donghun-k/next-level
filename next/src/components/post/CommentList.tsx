@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { Comment } from "@/models/comment";
 import { deleteCommentAction } from "@/actions/comment";
+import useToast from "@/hooks/useToast";
 
 import CommentItem from "./CommentItem";
 import CommentDeleteDialog from "./CommentDeleteDialog";
@@ -20,23 +21,7 @@ const CommentList = ({ comments }: Props) => {
   const [postId, setPostId] = useState<string | null>(null);
   const [commentId, setCommentId] = useState<string | null>(null);
 
-  const [toastInfo, setToastInfo] = useState<{
-    show: boolean;
-    message: string;
-    type: "success" | "error";
-  }>({
-    show: false,
-    message: "",
-    type: "success",
-  });
-
-  const closeToast = () => {
-    setToastInfo({
-      show: false,
-      message: "",
-      type: "success",
-    });
-  };
+  const { toastInfo, setToastInfo, closeToast } = useToast();
 
   const openDeleteDialog = ({
     commentId,

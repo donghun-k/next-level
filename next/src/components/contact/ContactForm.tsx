@@ -1,24 +1,35 @@
 "use client";
 import { IoIosMail } from "react-icons/io";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 import { sendMailAction } from "@/actions/mail";
+import useToast from "@/hooks/useToast";
 
 import MailSendingProgress from "./MailSendingProgress";
 import Toast from "../ui/Toast";
 
 const ContactForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
-  const [showSuccessToast, setShowSuccessToast] = useState(false);
-  const [showErrorToast, setShowErrorToast] = useState(false);
+
+  const { toastInfo, setToastInfo, closeToast } = useToast();
 
   const formAction = async (formdata: FormData) => {
     try {
       await sendMailAction(formdata);
-      setShowSuccessToast(true);
+      setToastInfo({
+        show: true,
+        message: "Mail successfully sent.",
+        type: "success",
+      });
       formRef.current?.reset();
     } catch (error) {
-      setShowErrorToast(true);
+      const message =
+        error instanceof Error ? error.message : "Failed to send mail.";
+      setToastInfo({
+        show: true,
+        message,
+        type: "error",
+      });
     }
   };
 
@@ -89,18 +100,11 @@ const ContactForm = () => {
         </button>
       </div>
       <MailSendingProgress />
-      {showSuccessToast && (
+      {toastInfo.show && (
         <Toast
-          message="Mail sent successfully!"
-          type="success"
-          closeToast={() => setShowSuccessToast(false)}
-        />
-      )}
-      {showErrorToast && (
-        <Toast
-          message="Mail sent failed!"
-          type="error"
-          closeToast={() => setShowErrorToast(false)}
+          message={toastInfo.message}
+          type={toastInfo.type}
+          closeToast={closeToast}
         />
       )}
     </form>
