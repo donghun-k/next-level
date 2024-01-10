@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 import Banner from "@/components/post/Banner";
 import CategorySidebar from "@/components/ui/CategorySidebar";
@@ -15,7 +16,20 @@ interface Props {
 export const generateMetadata = async ({
   params: { postId },
 }: Props): Promise<Metadata> => {
-  const { title, category } = await getPost(postId);
+  const post = await getPost(postId);
+
+  if (!post) {
+    return {
+      title: "포스트를 찾을 수 없습니다. ┃ NEXT LEVEL",
+      description: "포스트를 찾을 수 없습니다.",
+      openGraph: {
+        title: "포스트를 찾을 수 없습니다. ┃ NEXT LEVEL",
+        description: "포스트를 찾을 수 없습니다.",
+      },
+    };
+  }
+
+  const { title, category } = post;
   return {
     title: `${title} - ${category} ┃ NEXT LEVEL`,
     description: `'${category}' 카테고리의 '${title}' 포스트입니다.`,
@@ -28,6 +42,10 @@ export const generateMetadata = async ({
 
 const PostDetailPage = async ({ params: { postId } }: Props) => {
   const post = await getPost(postId);
+
+  if (!post) {
+    notFound();
+  }
 
   const { title, category, publishedAt, body } = post;
   return (

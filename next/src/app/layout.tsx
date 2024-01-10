@@ -39,7 +39,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body className="flex min-h-[100vh] min-w-[1024px] flex-col items-center overflow-x-auto">
         <Header />
-        <main className="w-full max-w-screen-lg grow">{children}</main>
+        <main className="flex w-full max-w-screen-lg grow items-center justify-center">
+          {children}
+        </main>
         <Footer />
         <div id="backdrop-portal"></div>
         <div id="toast-portal"></div>

@@ -85,10 +85,13 @@ export const getPost = async (postId: string): Promise<Post> => {
         },
       },
     )
-    .then((post) => ({
-      ...post,
-      publishedAt: convertToLocaleString(post.publishedAt),
-    }));
+    .then((post) => {
+      if (!post) return null;
+      return {
+        ...post,
+        publishedAt: convertToLocaleString(post.publishedAt),
+      };
+    });
 };
 
 interface GetRecentOrPopularPostsResponse {
