@@ -6,10 +6,14 @@ import useCategories from "@/hooks/useCategories";
 
 import CategoryLoadingProgress from "./CategoryLoadingProgress";
 
-const CategorySidebar = ({ currentCategory }: { currentCategory?: string }) => {
-  const { category } = useParams();
-  currentCategory =
-    currentCategory ?? (Array.isArray(category) ? category[0] : category);
+const CategorySidebar = ({
+  currentCategory: currentCategoryProp,
+}: {
+  currentCategory?: string;
+}) => {
+  const { category: currentCategoryParam } = useParams();
+  const currentCategory =
+    currentCategoryProp ?? (Array.isArray(currentCategoryParam) ? currentCategoryParam[0] : currentCategoryParam);
   const { data: categories, isLoading } = useCategories();
   const categoryTitles = [
     "All",
