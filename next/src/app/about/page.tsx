@@ -15,10 +15,10 @@ export const metadata: Metadata = {
 
 const AboutPage = () => {
   return (
-    <section className="flex items-center justify-center pb-[80px] pt-[150px]">
-      <div className="relative flex h-[400px] w-[600px] flex-col items-center justify-center rounded-xl bg-gray-50 pt-[100px] shadow-xl">
+    <section className="flex items-center justify-center pb-[50px] pt-[100px] sm:pb-[80px] sm:pt-[150px]">
+      <div className="relative flex h-[400px] w-[300px] flex-col items-center justify-center rounded-xl bg-gray-50 pt-[60px] shadow-xl sm:h-[400px] sm:w-[600px] sm:pt-[100px]">
         <Image
-          className="absolute top-[-100px] rounded-[50%]  shadow-xl"
+          className="absolute top-[-80px] h-[150px] w-[150px] rounded-[50%] shadow-xl sm:top-[-100px] sm:h-[230px] sm:w-[230px]"
           src="/images/profile-image.png"
           alt="Profile image"
           width={230}
@@ -26,14 +26,14 @@ const AboutPage = () => {
         />
         <div className="flex flex-col items-center gap-[40px]">
           <div className="flex flex-col items-center gap-3">
-            <p className="text-4xl font-extrabold">DongHun, Kim</p>
-            <p className="text-lg font-bold text-gray-500">
+            <p className="text-2xl font-extrabold sm:text-4xl">DongHun, Kim</p>
+            <p className="text-md font-bold text-gray-500 sm:text-lg">
               Front-end Web Developer
             </p>
           </div>
           <div className="flex flex-col items-center gap-4 text-gray-700">
-            <p className="text-2xl font-extrabold">SKILLS</p>
-            <ul className="flex items-center gap-8">
+            <p className="text-lg font-extrabold sm:text-2xl">SKILLS</p>
+            <ul className="flex flex-wrap items-center justify-center gap-8 px-8">
               <li>
                 <BiLogoTypescript className="h-12 w-12 duration-500 hover:scale-110 hover:text-[#3178c6]" />
               </li>

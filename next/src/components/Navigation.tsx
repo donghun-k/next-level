@@ -13,7 +13,7 @@ const Navigation = () => {
   const currentPath = "/" + usePathname().split("/")[1];
 
   return (
-    <ul className="flex gap-12">
+    <ul className="hidden gap-12 sm:flex">
       {MENU.map(({ name, path }) => (
         <li key={name}>
           <Link

@@ -37,7 +37,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className="flex min-h-[100vh] min-w-[1024px] flex-col items-center overflow-x-auto">
+      <body className="flex min-h-[100vh] min-w-[360px] flex-col items-center overflow-x-auto sm:min-w-[1024px]">
         <Header />
         <main className="flex w-full max-w-screen-lg grow items-center justify-center">
           {children}
