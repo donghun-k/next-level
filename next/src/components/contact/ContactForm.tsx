@@ -37,13 +37,16 @@ const ContactForm = () => {
     <form
       ref={formRef}
       action={formAction}
-      className="w-[600px] rounded-xl bg-gray-50 p-5 shadow-xl"
+      className="w-[300px] rounded-xl bg-gray-50 p-2 shadow-xl sm:w-[600px] sm:p-5"
     >
-      <h1 className="w-full p-2 pb-6 text-center text-3xl font-extrabold text-gray-700">
+      <h1 className="w-full p-2 pb-4 text-center text-xl font-extrabold text-gray-700 sm:pb-6 sm:text-3xl">
         Contact Me
       </h1>
       <div className="flex w-full flex-col items-start gap-2 p-2">
-        <label htmlFor="name" className="text-xl font-bold text-gray-500">
+        <label
+          htmlFor="name"
+          className="text-lg font-bold text-gray-500 sm:text-xl"
+        >
           Name
         </label>
         <input
@@ -55,7 +58,10 @@ const ContactForm = () => {
         />
       </div>
       <div className="flex w-full flex-col items-start gap-2 p-2">
-        <label htmlFor="email" className="text-xl font-bold text-gray-500">
+        <label
+          htmlFor="email"
+          className="text-lg font-bold text-gray-500 sm:text-xl"
+        >
           E-mail
         </label>
         <input
@@ -67,7 +73,10 @@ const ContactForm = () => {
         />
       </div>
       <div className="flex w-full flex-col items-start gap-2 p-2">
-        <label htmlFor="subject" className="text-xl font-bold text-gray-500">
+        <label
+          htmlFor="subject"
+          className="text-lg font-bold text-gray-500 sm:text-xl"
+        >
           Subject
         </label>
         <input
@@ -79,7 +88,10 @@ const ContactForm = () => {
         />
       </div>
       <div className="flex w-full flex-col items-start gap-2 p-2">
-        <label htmlFor="message" className="text-xl font-bold text-gray-500">
+        <label
+          htmlFor="message"
+          className="text-lg font-bold text-gray-500 sm:text-xl"
+        >
           Message
         </label>
         <textarea
@@ -95,8 +107,10 @@ const ContactForm = () => {
           className="flex items-center gap-2 rounded-md bg-gray-500 px-6 py-2 shadow-md duration-500 hover:bg-gray-400 active:bg-gray-700"
           type="submit"
         >
-          <span className=" text-lg font-bold text-white">Send</span>
-          <IoIosMail className="mt-1 h-6 w-6 text-white" />
+          <span className=" text-base font-bold text-white sm:text-lg">
+            Send
+          </span>
+          <IoIosMail className="mt-1 h-5 w-5 text-white sm:h-6 sm:w-6" />
         </button>
       </div>
       <MailSendingProgress />

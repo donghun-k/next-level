@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 const ContactPage = async () => {
   return (
-    <section className="flex flex-col items-center justify-center gap-6 pb-[100px] pt-[50px]">
+    <section className="flex flex-col items-center justify-center gap-6 pb-[60px] pt-[30px] sm:pb-[100px] sm:pt-[50px]">
       <ContactForm />
     </section>
   );
