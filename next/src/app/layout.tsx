@@ -3,8 +3,8 @@ import "./globals.css";
 import { ReactNode } from "react";
 import { Metadata } from "next";
 
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Header from "@/components/ui/Header";
+import Footer from "@/components/ui/Footer";
 
 const inter = Noto_Sans_KR({
   subsets: ["latin"],

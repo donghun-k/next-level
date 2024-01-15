@@ -107,7 +107,7 @@ const ContactForm = () => {
           className="flex items-center gap-2 rounded-md bg-gray-500 px-6 py-2 shadow-md duration-500 hover:bg-gray-400 active:bg-gray-700"
           type="submit"
         >
-          <span className=" text-base font-bold text-white sm:text-lg">
+          <span className="text-base font-bold text-white sm:text-lg">
             Send
           </span>
           <IoIosMail className="mt-1 h-5 w-5 text-white sm:h-6 sm:w-6" />

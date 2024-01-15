@@ -5,7 +5,7 @@ import { FaCheckCircle } from "react-icons/fa";
 import { MdError } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
 
-import Portal from "../Portal";
+import Portal from "./Portal";
 
 interface Props {
   message: string;
