@@ -9,7 +9,7 @@ const PostCard = ({
   post: SimplePost;
 }) => {
   return (
-    <div className="flex h-[300px] w-[300px] flex-col justify-between">
+    <li className="flex h-[300px] w-[300px] flex-col justify-between">
       <Link href={`/post/${id}`} className="relative h-[150px] w-full">
         <Image
           className="object-cover"
@@ -40,7 +40,7 @@ const PostCard = ({
       <p className="line-clamp-4 h-[80px] w-full overflow-hidden text-ellipsis text-sm text-gray-500">
         {body}
       </p>
-    </div>
+    </li>
   );
 };
 
