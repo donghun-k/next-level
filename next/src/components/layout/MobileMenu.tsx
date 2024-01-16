@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { IoIosClose } from "react-icons/io";
 
-import Backdrop from "./Backdrop";
+import Backdrop from "../ui/Backdrop";
 
 const MENU = [
   { name: "HOME", path: "/" },
