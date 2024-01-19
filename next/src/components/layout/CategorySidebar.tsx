@@ -13,14 +13,17 @@ const CategorySidebar = ({
 }) => {
   const { category: currentCategoryParam } = useParams();
   const currentCategory =
-    currentCategoryProp ?? (Array.isArray(currentCategoryParam) ? currentCategoryParam[0] : currentCategoryParam);
+    currentCategoryProp ??
+    (Array.isArray(currentCategoryParam)
+      ? currentCategoryParam[0]
+      : currentCategoryParam);
   const { data: categories, isLoading } = useCategories();
   const categoryTitles = [
     "All",
     ...(categories?.map((category) => category.title) ?? []),
   ];
   return (
-    <aside className="sticky top-[140px] w-[180px] self-start px-4 py-6">
+    <aside className="sticky top-[140px] hidden w-[180px] self-start px-4 py-6 sm:block">
       {isLoading ? (
         <CategoryLoadingProgress />
       ) : (

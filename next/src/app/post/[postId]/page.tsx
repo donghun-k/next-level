@@ -57,7 +57,7 @@ const PostDetailPage = async ({ params: { postId } }: Props) => {
         postId={postId}
       />
       <section className="flex">
-        <section className="flex min-h-[calc(100vh_-_530px)] w-[844px] flex-col gap-16 border-r-2 border-r-gray-100 px-4 py-6">
+        <section className="flex min-h-[calc(100vh_-_530px)] w-screen min-w-[360px] flex-col gap-16 border-r-2 border-r-gray-100 px-4 py-6 sm:w-[844px]">
           <MarkdownViewer content={body} />
           <CommentSection postId={postId} />
         </section>

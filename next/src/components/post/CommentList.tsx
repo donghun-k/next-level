@@ -87,7 +87,7 @@ const CommentList = ({ comments }: Props) => {
     <>
       <ul className="flex flex-col gap-3">
         {comments?.length === 0 && (
-          <p className="flex w-full items-center justify-center p-8 text-lg text-gray-500">
+          <p className="text-md flex w-full items-center justify-center p-8 text-center text-gray-500 sm:text-lg">
             There are no comments yet on this post.
           </p>
         )}

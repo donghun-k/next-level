@@ -70,36 +70,36 @@ const CommentForm = () => {
 
   return (
     <form ref={formRef} action={formAction} className="py-8">
-      <div className="flex justify-between">
-        <div className="flex gap-4">
-          <input
-            required
-            type="text"
-            name="name"
-            placeholder="Name"
-            className="w-32 rounded-sm border-2 border-gray-300 px-1"
-          />
-          <input
-            required
-            type="password"
-            name="password"
-            placeholder="Password"
-            className="w-40 rounded-sm border-2 border-gray-300 px-1"
-          />
-        </div>
-        <button
-          type="submit"
-          className="rounded-sm bg-gray-500 px-12 text-sm text-white duration-300 hover:bg-gray-400"
-        >
-          Post
-        </button>
+      <div className="flex justify-between gap-4 sm:justify-start">
+        <input
+          required
+          type="text"
+          name="name"
+          placeholder="Name"
+          className="w-[40%] rounded-sm border-2 border-gray-300 px-1 sm:w-40"
+        />
+        <input
+          required
+          type="password"
+          name="password"
+          placeholder="Password"
+          className="w-[60%] rounded-sm border-2 border-gray-300 px-1 sm:w-56"
+        />
       </div>
       <textarea
         required
         name="content"
         placeholder="Enter your comment here"
-        className="mt-4 h-32 w-full resize-none rounded-sm border-2 border-gray-300 p-1 text-gray-500"
+        className="my-2 h-32 w-full resize-none rounded-sm border-2 border-gray-300 p-1 text-gray-500"
       />
+      <div className="flex justify-center sm:justify-end">
+        <button
+          type="submit"
+          className="w-full rounded-sm bg-gray-500 px-12 py-1.5 text-sm text-white duration-300 hover:bg-gray-400 sm:w-fit"
+        >
+          Post
+        </button>
+      </div>
       <CommentPostingProgress />
       {toastInfo.show && (
         <Toast

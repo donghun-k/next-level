@@ -8,7 +8,7 @@ import Image from "next/image";
 const MarkdownViewer = ({ content }: { content: string }) => {
   return (
     <ReactMarkdown
-      className="prose max-w-none"
+      className="prose w-full max-w-none text-sm sm:text-base"
       remarkPlugins={[remarkGfm]}
       rehypePlugins={[rehypeRaw]}
       components={{
