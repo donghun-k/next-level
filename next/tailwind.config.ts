@@ -7,7 +7,11 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      dropShadow: {
+        custom: "2px 2px 2px rgb(0 0 0 / 0.3)",
+      },
+    },
   },
   plugins: [require("@tailwindcss/typography")],
 };

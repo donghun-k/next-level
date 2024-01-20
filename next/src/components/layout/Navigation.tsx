@@ -20,7 +20,7 @@ const Navigation = () => {
             href={path}
             className={`${
               currentPath === "/" + path.split("/")[1]
-                ? "font-extrabold text-black [text-shadow:_0_2px_2px_rgb(0_0_0_/_20%)]"
+                ? "drop-shadow-custom font-extrabold text-black"
                 : "font-bold text-gray-500"
             } duration-300`}
           >
