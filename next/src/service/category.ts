@@ -1,6 +1,6 @@
 import { client } from "./sanity";
 
-export const getCategories = async () => {
+export const getCategoryList = async () => {
   return client
     .fetch(
       `*[_type == "category"] | order(title asc)`,
@@ -11,4 +11,5 @@ export const getCategories = async () => {
         },
       },
     )
+    .then((data: { title: string }[]) => data.map((item) => item.title));
 };
