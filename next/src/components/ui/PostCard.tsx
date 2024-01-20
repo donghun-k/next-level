@@ -9,8 +9,11 @@ const PostCard = ({
   post: SimplePost;
 }) => {
   return (
-    <li className="flex h-[300px] w-[300px] flex-col justify-between">
-      <Link href={`/post/${id}`} className="relative h-[150px] w-full">
+    <li className="flex h-fit w-full max-w-[400px] flex-col justify-between gap-1 sm:h-[300px] sm:w-[300px] sm:gap-0">
+      <Link
+        href={`/post/${id}`}
+        className="relative aspect-[5/3] w-full sm:aspect-[2/1]"
+      >
         <Image
           className="object-cover"
           src={mainImage}
