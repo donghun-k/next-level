@@ -19,8 +19,15 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'body',
-      title: 'Body',
+      name: 'mainImage',
+      title: 'Main Image',
+      type: 'reference',
+      to: [{type: 'mainImage'}],
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'content',
+      title: 'Content',
       type: 'markdown',
       validation: (Rule) => Rule.required(),
     }),

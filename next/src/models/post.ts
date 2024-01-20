@@ -1,10 +1,11 @@
-export interface SimplePost {
+export interface Post {
   id: string;
   title: string;
   category: string;
-  categoryImage: string;
-  body: string;
+  mainImage: string;
+  content: string;
   publishedAt: string;
 }
-
-export interface Post extends Omit<SimplePost, "categoryImage"> {}
+export interface SimplePost extends Omit<Post, "content"> {
+  contentPreview: string;
+}

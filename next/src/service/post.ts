@@ -1,11 +1,42 @@
 import { Post, SimplePost } from "@/models/post";
-import { convertMarkdownToPlainText } from "@/utils/markdown";
 import {
   convertToLocaleString,
   convertToLocaleStringWithTime,
 } from "@/utils/date";
+import { mapPosts, urlFor } from "@/utils/post";
 
-import { client, urlFor } from "./sanity";
+import { client } from "./sanity";
+
+export const increasePostViews = async (postId: string) => {
+  return (await client.patch(postId).inc({ views: 1 }).commit()).views;
+};
+
+export const getPost = async (postId: string): Promise<Post | null> => {
+  return client
+    .fetch(
+      `*[_type == "post" && _id == "${postId}"]{
+      ...,
+      'id': _id,
+      'category': category->title,
+      'mainImage': mainImage->image,
+      'publishedAt': _createdAt,
+    }[0]`,
+      {},
+      {
+        next: {
+          revalidate: 60 * 60 * 4,
+        },
+      },
+    )
+    .then((post: Post) => {
+      if (!post) return null;
+      return {
+        ...post,
+        mainImage: urlFor(post.mainImage),
+        publishedAt: convertToLocaleString(post.publishedAt),
+      };
+    });
+};
 
 interface GetPostsParams {
   category?: string;
@@ -38,7 +69,7 @@ export const getPosts = async ({
           ...,
           'id': _id,
           'category': category->title,
-          'categoryImage': category->defaultImage,
+          'mainImage': mainImage->image,
           'publishedAt': _createdAt,
         }[${(page - 1) * 5} ... ${page * 5}]
       }`,
@@ -51,12 +82,7 @@ export const getPosts = async ({
     )
     .then((data) => {
       const { posts } = data;
-      const newPosts = posts.map((post: SimplePost) => ({
-        ...post,
-        categoryImage: urlFor(post.categoryImage),
-        body: convertMarkdownToPlainText(post.body),
-        publishedAt: convertToLocaleString(post.publishedAt),
-      }));
+      const newPosts = posts.map(mapPosts);
       return {
         ...data,
         posts: newPosts,
@@ -65,36 +91,7 @@ export const getPosts = async ({
     });
 };
 
-export const increasePostViews = async (postId: string) => {
-  return (await client.patch(postId).inc({ views: 1 }).commit()).views;
-};
-
-export const getPost = async (postId: string): Promise<Post> => {
-  return client
-    .fetch(
-      `*[_type == "post" && _id == "${postId}"][0]{
-      ...,
-      'id': _id,
-      'category': category->title,
-      'publishedAt': _createdAt,
-    }`,
-      {},
-      {
-        next: {
-          revalidate: 60 * 60 * 4,
-        },
-      },
-    )
-    .then((post) => {
-      if (!post) return null;
-      return {
-        ...post,
-        publishedAt: convertToLocaleString(post.publishedAt),
-      };
-    });
-};
-
-interface GetRecentOrPopularPostsResponse {
+export interface GetRecentOrPopularPostsResponse {
   posts: SimplePost[];
   updatedAt: string;
 }
@@ -108,7 +105,7 @@ export const getRecentPosts =
             ...,
             'id': _id,
             'category': category->title,
-            'categoryImage': category->defaultImage,
+            'mainImage': mainImage->image,
             'publishedAt': _createdAt,
           }[0...5],
           "updatedAt": now()
@@ -120,19 +117,20 @@ export const getRecentPosts =
           },
         },
       )
-      .then(({ posts, updatedAt }: GetRecentOrPopularPostsResponse) => {
-        return {
-          posts: posts.map(
-            (post: SimplePost): SimplePost => ({
-              ...post,
-              categoryImage: urlFor(post.categoryImage),
-              body: convertMarkdownToPlainText(post.body),
-              publishedAt: convertToLocaleString(post.publishedAt),
-            }),
-          ),
-          updatedAt: convertToLocaleStringWithTime(updatedAt),
-        };
-      });
+      .then(
+        ({
+          posts,
+          updatedAt,
+        }: {
+          posts: Post[];
+          updatedAt: string;
+        }): GetRecentOrPopularPostsResponse => {
+          return {
+            posts: posts.map(mapPosts),
+            updatedAt: convertToLocaleStringWithTime(updatedAt),
+          };
+        },
+      );
   };
 
 export const getPopularPosts =
@@ -144,7 +142,7 @@ export const getPopularPosts =
             ...,
             'id': _id,
             'category': category->title,
-            'categoryImage': category->defaultImage,
+            'mainImage': mainImage->image,
             'publishedAt': _createdAt,
           }[0...6],
           "updatedAt": now()
@@ -156,17 +154,18 @@ export const getPopularPosts =
           },
         },
       )
-      .then(({ posts, updatedAt }: GetRecentOrPopularPostsResponse) => {
-        return {
-          posts: posts.map(
-            (post: SimplePost): SimplePost => ({
-              ...post,
-              categoryImage: urlFor(post.categoryImage),
-              body: convertMarkdownToPlainText(post.body),
-              publishedAt: convertToLocaleString(post.publishedAt),
-            }),
-          ),
-          updatedAt: convertToLocaleStringWithTime(updatedAt),
-        };
-      });
+      .then(
+        ({
+          posts,
+          updatedAt,
+        }: {
+          posts: Post[];
+          updatedAt: string;
+        }): GetRecentOrPopularPostsResponse => {
+          return {
+            posts: posts.map(mapPosts),
+            updatedAt: convertToLocaleStringWithTime(updatedAt),
+          };
+        },
+      );
   };

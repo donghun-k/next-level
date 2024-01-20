@@ -4,7 +4,7 @@ import Link from "next/link";
 import { SimplePost } from "@/models/post";
 
 const PostListItem = ({
-  post: { publishedAt, body, title, category, categoryImage, id },
+  post: { publishedAt, contentPreview, title, category, mainImage, id },
 }: {
   post: SimplePost;
 }) => {
@@ -13,7 +13,7 @@ const PostListItem = ({
       <Link href={`/post/${id}`} className="relative h-[200px] min-w-[250px]">
         <Image
           className="object-cover"
-          src={categoryImage}
+          src={mainImage}
           alt="Post thumbnail"
           sizes="300px 200px"
           fill
@@ -38,7 +38,7 @@ const PostListItem = ({
           <p className="text-sm">{publishedAt}</p>
         </div>
         <p className="text-md line-clamp-5 h-[120px] w-full overflow-hidden text-ellipsis text-gray-500">
-          {body}
+          {contentPreview}
         </p>
       </div>
     </li>

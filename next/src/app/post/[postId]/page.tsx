@@ -47,7 +47,7 @@ const PostDetailPage = async ({ params: { postId } }: Props) => {
     notFound();
   }
 
-  const { title, category, publishedAt, body } = post;
+  const { title, category, publishedAt, content } = post;
   return (
     <section className="flex flex-col items-center">
       <Banner
@@ -58,7 +58,7 @@ const PostDetailPage = async ({ params: { postId } }: Props) => {
       />
       <section className="flex">
         <section className="flex min-h-[calc(100vh_-_530px)] w-screen min-w-[360px] flex-col gap-16 border-r-2 border-r-gray-100 px-4 py-6 sm:w-[844px]">
-          <MarkdownViewer content={body} />
+          <MarkdownViewer content={content} />
           <CommentSection postId={postId} />
         </section>
         <CategorySidebar currentCategory={category} />

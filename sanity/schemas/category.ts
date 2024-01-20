@@ -11,11 +11,5 @@ export default defineType({
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
-    defineField({
-      name: 'defaultImage',
-      title: 'Default Image',
-      type: 'image',
-      validation: (Rule) => Rule.required(),
-    }),
   ],
 })

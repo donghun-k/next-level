@@ -1,6 +1,4 @@
-import { SanityImageSource } from "@sanity/image-url/lib/types/types";
-
-import { client, urlFor } from "./sanity";
+import { client } from "./sanity";
 
 export const getCategories = async () => {
   return client
@@ -13,12 +11,4 @@ export const getCategories = async () => {
         },
       },
     )
-    .then((categories) =>
-      categories.map(
-        (category: { title: string; defaultImage: SanityImageSource }) => ({
-          ...category,
-          defaultImage: urlFor(category.defaultImage),
-        }),
-      ),
-    );
 };
