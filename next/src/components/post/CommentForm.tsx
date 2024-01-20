@@ -69,8 +69,8 @@ const CommentForm = () => {
   };
 
   return (
-    <form ref={formRef} action={formAction} className="py-8">
-      <div className="flex justify-between gap-4 sm:justify-start">
+    <form ref={formRef} action={formAction} className="py-4 sm:py-8">
+      <div className="flex justify-between gap-4 text-sm sm:justify-start sm:text-base">
         <input
           required
           type="text"
@@ -90,12 +90,12 @@ const CommentForm = () => {
         required
         name="content"
         placeholder="Enter your comment here"
-        className="my-2 h-32 w-full resize-none rounded-sm border-2 border-gray-300 p-1 text-gray-500"
+        className="my-2 h-32 w-full resize-none rounded-sm border-2 border-gray-300 p-1 text-sm text-gray-500 sm:text-base"
       />
       <div className="flex justify-center sm:justify-end">
         <button
           type="submit"
-          className="w-full rounded-sm bg-gray-500 px-12 py-1.5 text-sm text-white duration-300 hover:bg-gray-400 sm:w-fit"
+          className="w-full rounded-sm bg-gray-500 px-12 py-1 text-sm text-white duration-300 hover:bg-gray-400 sm:w-fit sm:text-base"
         >
           Post
         </button>

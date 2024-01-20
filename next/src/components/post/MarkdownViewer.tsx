@@ -40,6 +40,15 @@ const MarkdownViewer = ({ content }: { content: string }) => {
             height={350}
           />
         ),
+        h1: ({ node, ...props }) => (
+          <h1 className="text-2xl sm:text-4xl" {...props} />
+        ),
+        h2: ({ node, ...props }) => (
+          <h2 className="text-xl sm:text-3xl" {...props} />
+        ),
+        h3: ({ node, ...props }) => (
+          <h3 className="text-lg sm:text-2xl" {...props} />
+        ),
       }}
     >
       {content}
