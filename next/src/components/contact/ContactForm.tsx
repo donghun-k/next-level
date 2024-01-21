@@ -37,9 +37,9 @@ const ContactForm = () => {
     <form
       ref={formRef}
       action={formAction}
-      className="w-[300px] rounded-xl bg-gray-50 p-2 shadow-xl sm:w-[600px] sm:p-5"
+      className="w-full rounded-xl bg-gray-50 p-2 shadow-xl sm:w-[600px] sm:p-5"
     >
-      <h1 className="w-full p-2 pb-4 text-center text-xl font-extrabold text-gray-700 sm:pb-6 sm:text-3xl">
+      <h1 className="w-full p-2 pb-4 text-center text-2xl font-extrabold text-gray-700 sm:pb-6 sm:text-3xl">
         Contact Me
       </h1>
       <div className="flex w-full flex-col items-start gap-2 p-2">
