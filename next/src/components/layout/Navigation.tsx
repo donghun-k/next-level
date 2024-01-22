@@ -2,29 +2,24 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const MENU = [
-  { name: "HOME", path: "/" },
-  { name: "ABOUT", path: "/about" },
-  { name: "POSTS", path: "/posts/All" },
-  { name: "CONTACT", path: "/contact" },
-];
+import { MenuItem } from "@/models/menu";
 
-const Navigation = () => {
+const Navigation = ({ menuList }: { menuList: MenuItem[] }) => {
   const currentPath = "/" + usePathname().split("/")[1];
 
   return (
     <ul className="hidden gap-12 sm:flex">
-      {MENU.map(({ name, path }) => (
-        <li key={name}>
+      {menuList.map(({ text, path }) => (
+        <li key={text}>
           <Link
             href={path}
             className={`${
               currentPath === "/" + path.split("/")[1]
-                ? "drop-shadow-custom font-extrabold text-black"
+                ? "font-extrabold text-black drop-shadow-custom"
                 : "font-bold text-gray-500"
             } duration-300`}
           >
-            <span className="">{name}</span>
+            <span className="">{text}</span>
           </Link>
         </li>
       ))}

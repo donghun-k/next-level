@@ -1,7 +1,16 @@
 import Link from "next/link";
 
+import { MenuItem } from "@/models/menu";
+
 import Navigation from "./Navigation";
 import MenuButton from "./MenuButton";
+
+const MENULIST: MenuItem[] = [
+  { text: "HOME", path: "/" },
+  { text: "ABOUT", path: "/about" },
+  { text: "POSTS", path: "/posts/All" },
+  { text: "CONTACT", path: "/contact" },
+];
 
 const Header = () => {
   return (
@@ -11,8 +20,8 @@ const Header = () => {
           NEXT LEVEL
         </h1>
       </Link>
-      <MenuButton />
-      <Navigation />
+      <MenuButton menuList={MENULIST} />
+      <Navigation menuList={MENULIST} />
     </header>
   );
 };
