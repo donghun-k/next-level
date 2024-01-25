@@ -1,11 +1,11 @@
 import Link from "next/link";
 
-import { MenuItem } from "@/models/menu";
+import { LinkItem } from "@/models/dialog";
 
 import Navigation from "./Navigation";
 import MenuButton from "./MenuButton";
 
-const MENULIST: MenuItem[] = [
+const LINKLIST: LinkItem[] = [
   { text: "HOME", path: "/" },
   { text: "ABOUT", path: "/about" },
   { text: "POSTS", path: "/posts/All" },
@@ -20,8 +20,8 @@ const Header = () => {
           NEXT LEVEL
         </h1>
       </Link>
-      <MenuButton menuList={MENULIST} />
-      <Navigation menuList={MENULIST} />
+      <MenuButton linkList={LINKLIST} />
+      <Navigation linkList={LINKLIST} />
     </header>
   );
 };
