@@ -10,8 +10,9 @@ import PostsLoadingProgress from "@/components/posts/PostsLoadingProgress";
 import PostList from "./PostList";
 import PageButton from "./PageButton";
 import Pagination from "./Pagination";
+import CategoryButton from "./CategoryButton";
 
-const PostsSection = () => {
+const PostsSection = ({ categoryList }: { categoryList: string[] }) => {
   const { category } = useParams();
   const [page, setPage] = useState(1);
   const [input, setInput] = useState("");
@@ -54,19 +55,26 @@ const PostsSection = () => {
   };
 
   return (
-    <section className="min-h-[calc(100vh_-_280px)] w-[844px] border-r-2 border-r-gray-100 px-4 pb-6">
-      <div className="sticky top-[140px] z-50 flex flex-col gap-3 self-start border-b-2 border-gray-50 bg-white bg-opacity-95 py-4">
-        <div className="flex items-end gap-4">
-          <h3 className="text-2xl font-extrabold text-gray-700">{category}</h3>
-          <h5 className="text-lg font-bold text-gray-500">
-            {!isTyping &&
-              !isLoading &&
-              posts &&
-              (totalPosts === 1 ? `${totalPosts} post` : `${totalPosts} posts`)}
-          </h5>
+    <section className="min-h-[calc(100vh-180px)] border-r-gray-100 px-4 pb-6 sm:min-h-[calc(100vh-280px)] sm:w-[844px] sm:border-r-2">
+      <div className="sticky top-[80px] z-50 flex w-screen min-w-[360px] max-w-[432px] flex-col gap-3 self-start border-b-2 border-gray-50 bg-white bg-opacity-95 px-4 py-4 sm:top-[140px] sm:max-w-full">
+        <div className="flex justify-between">
+          <div className="flex items-end gap-4">
+            <h3 className="text-xl font-extrabold text-gray-700 sm:text-2xl">
+              {category}
+            </h3>
+            <h5 className="text-base font-bold text-gray-500 sm:text-lg">
+              {!isTyping &&
+                !isLoading &&
+                posts &&
+                (totalPosts === 1
+                  ? `${totalPosts} post`
+                  : `${totalPosts} posts`)}
+            </h5>
+          </div>
+          <CategoryButton categoryList={categoryList} />
         </div>
         <input
-          className="h-10 w-[400px] rounded-md border-2 border-gray-500 px-2 text-gray-700"
+          className="h-10 w-full rounded-md border-2 border-gray-500 px-2 text-sm text-gray-700 sm:w-[400px] sm:text-base"
           placeholder="Search"
           value={input}
           onChange={handleInputChange}
