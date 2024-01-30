@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { increasePostViews } from "@/service/post";
+import { increasePostViews } from "@/services/post";
 
 export const dynamic = "force-dynamic";
 

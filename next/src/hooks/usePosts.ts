@@ -1,6 +1,6 @@
 import useSWR from "swr";
 
-import { GetPostsResponse } from "@/service/post";
+import { GetPostsResponse } from "@/services/post";
 
 interface Params {
   category: string;

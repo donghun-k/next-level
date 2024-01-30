@@ -1,4 +1,4 @@
-import { getRecentPosts } from "@/service/post";
+import { getRecentPosts } from "@/services/post";
 
 import PostListItem from "../ui/PostListItem";
 import PostCard from "../ui/PostCard";

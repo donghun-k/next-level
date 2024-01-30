@@ -2,7 +2,7 @@
 
 import { revalidateTag } from "next/cache";
 
-import { deleteComment, postComment } from "@/service/comment";
+import { deleteComment, postComment } from "@/services/comment";
 
 export const postCommentAction = async (formData: FormData) => {
   const postId = formData.get("postId");

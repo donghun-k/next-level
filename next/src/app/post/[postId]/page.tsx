@@ -5,7 +5,7 @@ import Banner from "@/components/post/Banner";
 import CategorySidebar from "@/components/layout/CategorySidebar";
 import CommentSection from "@/components/post/CommentSection";
 import MarkdownViewer from "@/components/post/MarkdownViewer";
-import { getPost } from "@/service/post";
+import { getPost } from "@/services/post";
 
 interface Props {
   params: {

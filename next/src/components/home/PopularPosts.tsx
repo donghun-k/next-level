@@ -1,4 +1,4 @@
-import { getPopularPosts } from "@/service/post";
+import { getPopularPosts } from "@/services/post";
 
 import PostCard from "../ui/PostCard";
 

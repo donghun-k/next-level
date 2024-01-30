@@ -1,4 +1,4 @@
-import { getComments } from "@/service/comment";
+import { getComments } from "@/services/comment";
 
 import CommentForm from "./CommentForm";
 import CommentList from "./CommentList";

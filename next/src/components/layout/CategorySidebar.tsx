@@ -1,4 +1,4 @@
-import { getCategoryList } from "@/service/category";
+import { getCategoryList } from "@/services/category";
 
 import CategoryList from "./CategoryList";
 

@@ -2,7 +2,7 @@ import ImageUrlBuilder from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
 import { Post, SimplePost } from "@/models/post";
-import { client } from "@/service/sanity";
+import { client } from "@/services/sanity";
 
 import { convertMarkdownToPlainText } from "./markdown";
 import { convertToLocaleString } from "./date";

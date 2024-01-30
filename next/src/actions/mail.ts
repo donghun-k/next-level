@@ -1,6 +1,6 @@
 "use server";
 
-import { sendMail } from "@/service/mail";
+import { sendMail } from "@/services/mail";
 
 export const sendMailAction = async (formData: FormData) => {
   const author = formData.get("name");
