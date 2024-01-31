@@ -5,11 +5,11 @@ import { useState } from "react";
 import { Comment } from "@/models/comment";
 import { deleteCommentAction } from "@/actions/comment";
 import useToast from "@/hooks/useToast";
+import Toast from "@/app/_ui/Toast";
 
 import CommentItem from "./CommentItem";
 import CommentDeleteDialog from "./CommentDeleteDialog";
 import CommentDeletingProgress from "./CommentDeletingProgress";
-import Toast from "../ui/Toast";
 
 interface Props {
   comments: Comment[];

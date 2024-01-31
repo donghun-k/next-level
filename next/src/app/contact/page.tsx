@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import ContactForm from "@/components/contact/ContactForm";
+import ContactForm from "@/app/contact/_components/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact Me ┃ NEXT LEVEL",

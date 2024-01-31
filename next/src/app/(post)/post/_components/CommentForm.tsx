@@ -5,9 +5,9 @@ import { useParams } from "next/navigation";
 
 import { postCommentAction } from "@/actions/comment";
 import useToast from "@/hooks/useToast";
+import Toast from "@/app/_ui/Toast";
 
 import CommentPostingProgress from "./CommentPostingProgress";
-import Toast from "../ui/Toast";
 
 const CommentForm = () => {
   const { postId } = useParams();

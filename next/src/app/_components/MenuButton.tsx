@@ -5,7 +5,7 @@ import { IoMenu } from "react-icons/io5";
 
 import { LinkItem } from "@/models/dialog";
 
-import NavigationDialog from "../ui/NavigationDialog";
+import NavigationDialog from "../_ui/NavigationDialog";
 
 const MenuButton = ({ linkList }: { linkList: LinkItem[] }) => {
   const [openDialog, setOpenDialog] = useState(false);

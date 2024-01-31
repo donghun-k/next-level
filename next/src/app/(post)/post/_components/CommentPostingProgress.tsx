@@ -3,7 +3,7 @@
 import { useFormStatus } from "react-dom";
 import { BsPencilSquare } from "react-icons/bs";
 
-import Backdrop from "../ui/Backdrop";
+import Backdrop from "@/app/_ui/Backdrop";
 
 const CommentPostingProgress = () => {
   const { pending } = useFormStatus();

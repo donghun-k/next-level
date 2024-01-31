@@ -1,18 +1,18 @@
 import { Metadata } from "next";
 import Image from "next/image";
 
-import TypeScriptIcon from "@/components/about/TypeScriptIcon";
-import ReactIcon from "@/components/about/ReactIcon";
-import NextIcon from "@/components/about/NextIcon";
-import ReactQueryIcon from "@/components/about/ReactQueryIcon";
-import MUIIcon from "@/components/about/MUIIcon";
-import TailwindCSSIcon from "@/components/about/TailwindCSSIcon";
-import HTMLIcon from "@/components/about/HTMLIcon";
-import CSSIcon from "@/components/about/CSSIcon";
-import JavaScriptIcon from "@/components/about/JavaScriptIcon";
-import ReduxIcon from "@/components/about/ReduxIcon";
-import SWRIcon from "@/components/about/SWRIcon";
-import StyledComponentsIcon from "@/components/about/StyledComponentsIcon";
+import TypeScriptIcon from "@/app/about/_components/TypeScriptIcon";
+import ReactIcon from "@/app/about/_components/ReactIcon";
+import NextIcon from "@/app/about/_components/NextIcon";
+import ReactQueryIcon from "@/app/about/_components/ReactQueryIcon";
+import MUIIcon from "@/app/about/_components/MUIIcon";
+import TailwindCSSIcon from "@/app/about/_components/TailwindCSSIcon";
+import HTMLIcon from "@/app/about/_components/HTMLIcon";
+import CSSIcon from "@/app/about/_components/CSSIcon";
+import JavaScriptIcon from "@/app/about/_components/JavaScriptIcon";
+import ReduxIcon from "@/app/about/_components/ReduxIcon";
+import SWRIcon from "@/app/about/_components/SWRIcon";
+import StyledComponentsIcon from "@/app/about/_components/StyledComponentsIcon";
 
 export const metadata: Metadata = {
   title: "About Me ┃ NEXT LEVEL",
@@ -36,7 +36,7 @@ const AboutPage = () => {
         />
         <div className="flex flex-col items-center gap-6 sm:gap-10">
           <div className="flex flex-col items-center gap-3">
-            <p className="drop-shadow-custom text-2xl font-extrabold sm:text-4xl">
+            <p className="text-2xl font-extrabold drop-shadow-custom sm:text-4xl">
               DongHun, Kim
             </p>
             <p className="text-md sm:text-md font-bold text-gray-500">

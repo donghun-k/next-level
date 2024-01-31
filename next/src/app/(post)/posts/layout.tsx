@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import CategorySidebar from "@/components/layout/CategorySidebar";
+import CategorySidebar from "@/app/(post)/_components/CategorySidebar";
 
 const CategoryLayout = ({ children }: { children: ReactNode }) => {
   return (

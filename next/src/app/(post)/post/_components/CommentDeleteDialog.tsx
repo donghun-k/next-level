@@ -1,7 +1,6 @@
 import { FormEventHandler } from "react";
 
-import CommentDeletingProgress from "./CommentDeletingProgress";
-import Backdrop from "../ui/Backdrop";
+import Backdrop from "@/app/_ui/Backdrop";
 
 interface Props {
   closeDialog: () => void;

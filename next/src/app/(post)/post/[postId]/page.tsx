@@ -1,11 +1,12 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import Banner from "@/components/post/Banner";
-import CategorySidebar from "@/components/layout/CategorySidebar";
-import CommentSection from "@/components/post/CommentSection";
-import MarkdownViewer from "@/components/post/MarkdownViewer";
+import CategorySidebar from "@/app/(post)/_components/CategorySidebar";
 import { getPost } from "@/services/post";
+
+import Banner from "../_components/Banner";
+import MarkdownViewer from "../_components/MarkdownViewer";
+import CommentSection from "../_components/CommentSection";
 
 interface Props {
   params: {

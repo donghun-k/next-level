@@ -4,13 +4,13 @@ import { ChangeEventHandler, useEffect, useState } from "react";
 
 import usePosts from "@/hooks/usePosts";
 import useDebounce from "@/hooks/useDebounce";
-import TypingProgress from "@/components/posts/TypingProgress";
-import PostsLoadingProgress from "@/components/posts/PostsLoadingProgress";
 
 import PostList from "./PostList";
 import PageButton from "./PageButton";
 import Pagination from "./Pagination";
 import CategoryButton from "./CategoryButton";
+import TypingProgress from "./TypingProgress";
+import PostsLoadingProgress from "./PostsLoadingProgress";
 
 const PostsSection = ({ categoryList }: { categoryList: string[] }) => {
   const { category } = useParams();

@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 
-import PostsSection from "@/components/posts/PostsSection";
 import { getCategoryList } from "@/services/category";
+
+import PostsSection from "../_components/PostsSection";
 
 export const generateMetadata = async ({
   params: { category },

@@ -1,7 +1,7 @@
 import { getRecentPosts } from "@/services/post";
 
-import PostListItem from "../ui/PostListItem";
-import PostCard from "../ui/PostCard";
+import PostListItem from "../_ui/PostListItem";
+import PostCard from "../_ui/PostCard";
 
 const RecentPosts = async () => {
   const { posts, updatedAt } = await getRecentPosts();

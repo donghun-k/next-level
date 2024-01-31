@@ -1,5 +1,5 @@
-import PopularPosts from "@/components/home/PopularPosts";
-import RecentPosts from "@/components/home/RecentPosts";
+import PopularPosts from "@/app/_components/PopularPosts";
+import RecentPosts from "@/app/_components/RecentPosts";
 
 const HomePage = () => {
   return (

@@ -1,7 +1,7 @@
 "use client";
 import { LuEraser } from "react-icons/lu";
 
-import Backdrop from "../ui/Backdrop";
+import Backdrop from "@/app/_ui/Backdrop";
 
 const CommentDeletingProgress = () => {
   return (

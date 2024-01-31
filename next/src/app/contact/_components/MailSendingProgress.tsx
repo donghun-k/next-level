@@ -3,7 +3,7 @@
 import { useFormStatus } from "react-dom";
 import { IoIosMail } from "react-icons/io";
 
-import Backdrop from "../ui/Backdrop";
+import Backdrop from "../../_ui/Backdrop";
 
 const MailSendingProgress = () => {
   const { pending } = useFormStatus();
