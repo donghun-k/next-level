@@ -76,7 +76,7 @@ export const getPosts = async ({
       {},
       {
         next: {
-          revalidate: 60 * 60 * 1,
+          revalidate: 0,
         },
       },
     )
