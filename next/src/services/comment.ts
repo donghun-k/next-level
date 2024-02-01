@@ -1,5 +1,6 @@
 import { Comment } from "@/models/comment";
 import { convertToLocaleString } from "@/utils/date";
+import { validateLength } from "@/utils/validations";
 
 import { client } from "./sanity";
 import { sendCommentNotification } from "./mail";
@@ -46,19 +47,16 @@ export const postComment = async ({
     throw new Error("Invalid form data");
   }
 
-  if (author.length < 2 || author.length > 10) {
-    alert("Name must be between 2 and 10 characters!");
-    return;
+  if (!validateLength(author, 2, 10)) {
+    throw new Error("Name must be between 2 and 10 characters!");
   }
 
-  if (password.length < 8 || password.length > 20) {
-    alert("Password must be between 8 and 20 characters!");
-    return;
+  if (!validateLength(password, 8, 20)) {
+    throw new Error("Password must be between 8 and 20 characters!");
   }
 
-  if (content.length < 10 || content.length > 100) {
-    alert("Content must be between 10 and 100 characters!");
-    return;
+  if (!validateLength(content, 10, 100)) {
+    throw new Error("Content must be between 10 and 100 characters!");
   }
 
   await client
