@@ -33,11 +33,11 @@ const MarkdownViewer = ({ content }: { content: string }) => {
         },
         img: (image) => (
           <Image
-            className="max-h-60 w-full object-cover"
+            className="w-full max-w-[600px] object-cover"
             src={image.src || ""}
             alt={image.alt || ""}
-            width={500}
-            height={350}
+            width={600}
+            height={600}
           />
         ),
         h1: ({ node, ...props }) => (
