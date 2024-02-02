@@ -27,13 +27,13 @@ const Toast = ({ message, type, closeToast, duration = 5000 }: Props) => {
   return (
     <Portal portalId="toast-portal">
       <div className="toast-pop fixed bottom-8 left-0 z-50 flex h-[60px] w-full items-center justify-center">
-        <div className="flex h-[60px] w-[400px] items-center justify-between rounded-md bg-gray-50 px-4 shadow-md">
+        <div className="flex h-[60px] w-[320px] items-center justify-between rounded-md bg-gray-50 px-4 shadow-md sm:w-[400px]">
           {type === "success" ? (
             <FaCheckCircle className="h-7 w-7 text-gray-700" />
           ) : (
             <MdError className="h-7 w-7 text-gray-700" />
           )}
-          <p className="pointer-events-none flex w-[250px] items-center justify-center  break-words text-center font-extrabold text-gray-700">
+          <p className="pointer-events-none flex w-[200px] items-center justify-center break-keep text-center text-sm font-extrabold text-gray-700 sm:w-[250px] sm:text-base">
             {message}
           </p>
           <button
