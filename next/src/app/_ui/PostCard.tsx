@@ -24,7 +24,7 @@ const PostCard = ({
       </Link>
       <Link
         href={`/post/${id}`}
-        className="w-full overflow-hidden text-ellipsis whitespace-nowrap text-xl font-bold underline-offset-2 hover:underline"
+        className="overflow-hidden text-ellipsis whitespace-nowrap text-xl font-bold underline-offset-2 hover:underline"
       >
         {title}
       </Link>

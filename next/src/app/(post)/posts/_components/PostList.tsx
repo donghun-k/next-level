@@ -17,7 +17,7 @@ const PostList = ({ posts }: { posts: SimplePost[] }) => {
         )}
         {posts?.map((post) => <PostListItem key={post.id} post={post} />)}
       </ul>
-      <ul className="mb-8 mt-4 flex flex-col gap-6 px-4 sm:hidden">
+      <ul className="mb-8 mt-4 flex flex-col items-center gap-6 sm:hidden">
         {posts?.length === 0 && (
           <p className="flex w-full items-center justify-center gap-2 p-8 text-center text-base text-gray-500">
             <PiSmileySadBold className="mr-2 mt-1 h-5 w-5" />

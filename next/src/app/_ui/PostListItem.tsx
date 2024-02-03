@@ -19,14 +19,13 @@ const PostListItem = ({
           fill
         />
       </Link>
-      <div className="flex w-full flex-col justify-between overflow-hidden pl-4">
+      <div className="flex w-full flex-col justify-between overflow-hidden">
         <Link
           href={`/post/${id}`}
           className="w-3/4 overflow-hidden text-ellipsis whitespace-nowrap text-2xl font-bold underline-offset-2 hover:underline"
         >
           {title}
         </Link>
-
         <div className="flex items-center gap-2 text-gray-500">
           <Link
             href={`/posts/${category}`}
