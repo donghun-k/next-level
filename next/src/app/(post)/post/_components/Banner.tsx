@@ -15,7 +15,7 @@ const Banner = ({ post }: { post: Post }) => {
       className="relative flex h-[160px] w-[100vw] min-w-[360px] justify-center bg-gray-500 bg-cover bg-center sm:h-[250px] sm:min-w-[1024px]"
     >
       <div className="flex h-full w-full max-w-screen-lg flex-col justify-center px-4">
-        <Link href={`/posts/${category}`}>
+        <Link className="w-fit" href={`/posts/${category}`}>
           <h3 className="mb-2 text-sm font-semibold text-gray-300 sm:text-base">
             {category}
           </h3>
