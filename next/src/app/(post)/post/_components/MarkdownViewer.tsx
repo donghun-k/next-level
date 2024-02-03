@@ -8,7 +8,7 @@ import Image from "next/image";
 const MarkdownViewer = ({ content }: { content: string }) => {
   return (
     <ReactMarkdown
-      className="prose w-full max-w-none text-sm sm:text-base"
+      className="prose w-full max-w-none break-keep text-sm sm:text-base"
       remarkPlugins={[remarkGfm]}
       rehypePlugins={[rehypeRaw]}
       components={{
@@ -33,7 +33,7 @@ const MarkdownViewer = ({ content }: { content: string }) => {
         },
         img: (image) => (
           <Image
-            className="w-full max-w-[600px] object-cover"
+            className="my-4 w-full max-w-[600px] object-cover"
             src={image.src || ""}
             alt={image.alt || ""}
             width={600}
@@ -41,13 +41,13 @@ const MarkdownViewer = ({ content }: { content: string }) => {
           />
         ),
         h1: ({ node, ...props }) => (
-          <h1 className="text-2xl sm:text-4xl" {...props} />
+          <h1 className="mb-6 mt-12 text-2xl sm:text-4xl" {...props} />
         ),
         h2: ({ node, ...props }) => (
-          <h2 className="text-xl sm:text-3xl" {...props} />
+          <h2 className="mb-6 mt-8 text-xl sm:text-3xl" {...props} />
         ),
         h3: ({ node, ...props }) => (
-          <h3 className="text-lg sm:text-2xl" {...props} />
+          <h3 className="mb-4 mt-6 text-lg sm:text-2xl" {...props} />
         ),
       }}
     >
