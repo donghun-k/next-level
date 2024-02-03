@@ -30,6 +30,9 @@ export default defineType({
       title: 'Content',
       type: 'markdown',
       validation: (Rule) => Rule.required(),
+      options: {
+        imageUrl: (imageAsset) => `${imageAsset.url}?w=600`,
+      },
     }),
     defineField({
       name: 'views',
