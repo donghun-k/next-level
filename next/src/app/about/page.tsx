@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
 const AboutPage = () => {
   return (
-    <section className="flex w-screen min-w-[360px] items-center justify-center px-8 pb-[50px] pt-[100px] sm:pb-[80px] sm:pt-[150px]">
+    <section className="flex min-w-[360px] items-center justify-center px-8 pb-[50px] pt-[100px] sm:pb-[80px] sm:pt-[150px]">
       <div className="relative flex h-[450px] w-full flex-col items-center justify-center rounded-xl bg-gray-50 pt-[60px] shadow-xl sm:h-[600px] sm:w-[600px] sm:pt-[100px]">
         <Image
           className="absolute top-[-80px] h-[150px] w-[150px] rounded-[50%] shadow-xl sm:top-[-100px] sm:h-[230px] sm:w-[230px]"

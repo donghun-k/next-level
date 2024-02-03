@@ -50,10 +50,10 @@ const PostDetailPage = async ({ params: { postId } }: Props) => {
 
   const { category, content } = post;
   return (
-    <section className="flex flex-col items-center">
+    <section className="flex w-full flex-col items-center">
       <Banner post={post} />
-      <section className="flex">
-        <section className="flex min-h-[calc(100vh_-_530px)] w-screen min-w-[360px] flex-col gap-16 border-r-2 border-r-gray-100 px-4 py-4 sm:w-[844px] sm:py-6">
+      <section className="flex max-w-screen-lg">
+        <section className="flex min-h-[calc(100vh_-_530px)] w-full min-w-[360px] flex-col gap-16 border-r-2 border-r-gray-100 px-4 py-4 sm:w-[844px] sm:py-6">
           <MarkdownViewer content={content} />
           <CommentSection postId={postId} />
         </section>

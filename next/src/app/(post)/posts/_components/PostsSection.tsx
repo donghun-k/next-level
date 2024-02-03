@@ -55,7 +55,7 @@ const PostsSection = ({ categoryList }: { categoryList: string[] }) => {
   };
 
   return (
-    <section className="min-h-[calc(100vh-180px)] w-screen min-w-[360px] border-r-gray-100 px-4 pb-6 sm:min-h-[calc(100vh-280px)] sm:w-[844px] sm:border-r-2">
+    <section className="min-h-[calc(100vh-180px)] w-full min-w-[360px] border-r-gray-100 px-4 pb-6 sm:min-h-[calc(100vh-280px)] sm:w-[844px] sm:border-r-2">
       <div className="sticky top-[80px] z-50 mx-auto flex w-full max-w-[432px] flex-col gap-3 self-start border-b-2 border-gray-50 bg-white bg-opacity-95 py-4 sm:top-[140px] sm:max-w-full">
         <div className="flex justify-between">
           <div className="flex items-end gap-4">

@@ -3,7 +3,7 @@ import RecentPosts from "@/app/_components/RecentPosts";
 
 const HomePage = () => {
   return (
-    <section className="flex flex-col gap-16 px-4 pb-16 pt-6">
+    <section className="flex max-w-screen-lg flex-col gap-16 px-4 pb-16 pt-6">
       <PopularPosts />
       <RecentPosts />
     </section>
