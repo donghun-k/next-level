@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Comment } from "@/models/comment";
 import { deleteCommentAction } from "@/actions/comment";
 import useToast from "@/hooks/useToast";
-import Toast from "@/app/_ui/Toast";
+import Toast from "@/app/_components/Toast";
 
 import CommentItem from "./CommentItem";
 import CommentDeleteDialog from "./CommentDeleteDialog";

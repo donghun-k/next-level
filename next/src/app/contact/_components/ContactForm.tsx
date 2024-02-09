@@ -6,7 +6,7 @@ import { sendMailAction } from "@/actions/mail";
 import useToast from "@/hooks/useToast";
 
 import MailSendingProgress from "./MailSendingProgress";
-import Toast from "../../_ui/Toast";
+import Toast from "../../_components/Toast";
 
 const ContactForm = () => {
   const formRef = useRef<HTMLFormElement>(null);

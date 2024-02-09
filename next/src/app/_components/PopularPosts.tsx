@@ -1,6 +1,6 @@
 import { getPopularPosts } from "@/services/post";
 
-import PostCard from "../_ui/PostCard";
+import PostCard from "./PostCard";
 
 const PopularPosts = async () => {
   const { posts, updatedAt } = await getPopularPosts();

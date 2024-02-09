@@ -5,7 +5,7 @@ import { useParams } from "next/navigation";
 
 import { postCommentAction } from "@/actions/comment";
 import useToast from "@/hooks/useToast";
-import Toast from "@/app/_ui/Toast";
+import Toast from "@/app/_components/Toast";
 
 import CommentPostingProgress from "./CommentPostingProgress";
 

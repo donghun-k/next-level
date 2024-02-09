@@ -1,6 +1,6 @@
 import { FormEventHandler } from "react";
 
-import Backdrop from "@/app/_ui/Backdrop";
+import Backdrop from "@/app/_components/Backdrop";
 
 interface Props {
   closeDialog: () => void;

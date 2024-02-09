@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-import NavigationDialog from "@/app/_ui/NavigationDialog";
+import NavigationDialog from "@/app/_components/NavigationDialog";
 
 const CategoryButton = ({ categoryList }: { categoryList: string[] }) => {
   const [openDialog, setOpenDialog] = useState(false);

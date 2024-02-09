@@ -1,8 +1,8 @@
 import { PiSmileySadBold } from "react-icons/pi";
 
 import { SimplePost } from "@/models/post";
-import PostListItem from "@/app/_ui/PostListItem";
-import PostCard from "@/app/_ui/PostCard";
+import PostListItem from "@/app/_components/PostListItem";
+import PostCard from "@/app/_components/PostCard";
 
 const PostList = ({ posts }: { posts: SimplePost[] }) => {
   return (
