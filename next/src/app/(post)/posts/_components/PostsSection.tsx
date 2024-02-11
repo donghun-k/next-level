@@ -4,8 +4,9 @@ import { ChangeEventHandler, useEffect, useState } from "react";
 
 import usePosts from "@/hooks/usePosts";
 import useDebounce from "@/hooks/useDebounce";
+import PostGrid from "@/app/_components/PostGrid";
 
-import PostList from "./PostList";
+import PostList from "../../../_components/PostList";
 import PageButton from "./PageButton";
 import Pagination from "./Pagination";
 import CategoryButton from "./CategoryButton";
@@ -56,44 +57,55 @@ const PostsSection = ({ categoryList }: { categoryList: string[] }) => {
 
   return (
     <section className="min-h-[calc(100vh-180px)] w-full min-w-[360px] border-r-gray-100 px-4 pb-6 sm:min-h-[calc(100vh-280px)] sm:w-[844px] sm:border-r-2">
-      <div className="sticky top-[80px] z-50 mx-auto flex w-full max-w-[432px] flex-col gap-3 self-start border-b-2 border-gray-50 bg-white bg-opacity-95 py-4 sm:top-[140px] sm:max-w-full">
-        <div className="flex justify-between">
-          <div className="flex items-end gap-4">
-            <h3 className="text-xl font-extrabold text-gray-700 sm:text-2xl">
-              {category}
-            </h3>
-            <h5 className="text-base font-bold text-gray-500 sm:text-lg">
-              {!isTyping &&
-                !isLoading &&
-                posts &&
-                (totalPosts === 1
-                  ? `${totalPosts} post`
-                  : `${totalPosts} posts`)}
-            </h5>
+      <div className="sticky top-[80px] z-50 w-full border-b-2 border-gray-50 bg-white bg-opacity-95 py-4 sm:top-[140px] sm:max-w-full">
+        <div className="mx-auto flex w-full max-w-[400px] flex-col gap-3 self-start sm:max-w-none">
+          <div className="flex justify-between">
+            <div className="flex items-end gap-4">
+              <h3 className="text-xl font-extrabold text-gray-700 sm:text-2xl">
+                {category}
+              </h3>
+              <h5 className="text-base font-bold text-gray-500 sm:text-lg">
+                {!isTyping &&
+                  !isLoading &&
+                  posts &&
+                  (totalPosts === 1
+                    ? `${totalPosts} post`
+                    : `${totalPosts} posts`)}
+              </h5>
+            </div>
+            <CategoryButton categoryList={categoryList} />
           </div>
-          <CategoryButton categoryList={categoryList} />
-        </div>
-        <input
-          className="h-10 w-full rounded-md border-2 border-gray-500 px-2 text-sm text-gray-700 sm:w-[400px] sm:text-base"
-          placeholder="Search"
-          value={input}
-          onChange={handleInputChange}
-        />
-        <div className="flex h-8 items-center gap-2 text-gray-500">
-          {isTyping && "Typing..."}
-          {isLoading && "Loading..."}
-          {!isTyping && !isLoading && totalPages > 0 && (
-            <Pagination
-              page={page}
-              totalPages={totalPages}
-              handlePageChange={handlePageChange}
-            />
-          )}
+          <input
+            className="h-10 w-full rounded-md border-2 border-gray-500 px-2 text-sm text-gray-700 sm:w-[400px] sm:text-base"
+            placeholder="Search"
+            value={input}
+            onChange={handleInputChange}
+          />
+          <div className="flex h-8 items-center gap-2 text-gray-500">
+            {isTyping && "Typing..."}
+            {isLoading && "Loading..."}
+            {!isTyping && !isLoading && totalPages > 0 && (
+              <Pagination
+                page={page}
+                totalPages={totalPages}
+                handlePageChange={handlePageChange}
+              />
+            )}
+          </div>
         </div>
       </div>
       {isTyping && <TypingProgress />}
       {isLoading && <PostsLoadingProgress />}
-      {!isLoading && !isTyping && <PostList posts={posts} />}
+      {!isLoading && !isTyping && (
+        <section className="mb-8 mt-4">
+          <div className="block sm:hidden">
+            <PostGrid posts={posts} />
+          </div>
+          <div className="hidden sm:block">
+            <PostList posts={posts} />
+          </div>
+        </section>
+      )}
       {!isLoading && !isTyping && (
         <div className="flex justify-center gap-8 py-4">
           {page > 1 && <PageButton text="PREV" onClick={handlePrev} />}

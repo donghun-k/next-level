@@ -1,7 +1,7 @@
 import { getRecentPosts } from "@/services/post";
 
-import PostListItem from "./PostListItem";
-import PostCard from "./PostCard";
+import PostGrid from "./PostGrid";
+import PostList from "./PostList";
 
 const RecentPosts = async () => {
   const { posts, updatedAt } = await getRecentPosts();
@@ -9,13 +9,12 @@ const RecentPosts = async () => {
     <section>
       <h2 className="mb-1 text-2xl font-extrabold text-gray-700">Recent</h2>
       <p className="mb-4 text-xs text-gray-500">마지막 업데이트: {updatedAt}</p>
-      <ul className="hidden w-full flex-col gap-8 sm:flex">
-        {posts &&
-          posts.map((post) => <PostListItem key={post.id} post={post} />)}
-      </ul>
-      <ul className="grid grid-cols-1 gap-x-16 gap-y-8 sm:hidden">
-        {posts?.map((post) => <PostCard key={post.id} post={post} />)}
-      </ul>
+      <div className="block sm:hidden">
+        <PostGrid posts={posts} />
+      </div>
+      <div className="hidden sm:block">
+        <PostList posts={posts} />
+      </div>
     </section>
   );
 };
