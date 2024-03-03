@@ -1,18 +1,10 @@
+import { format } from "date-fns";
+import { ko } from "date-fns/locale";
+
 export const convertToLocaleString = (date: string) => {
-  return new Date(date).toLocaleDateString("ko-KR", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  return format(new Date(date), "yyyy년 MMMM d일", { locale: ko });
 };
 
 export const convertToLocaleStringWithTime = (date: string) => {
-  return new Date(date).toLocaleDateString("ko-KR", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    second: "numeric",
-  });
+  return format(new Date(date), "yyyy년 MMMM d일 a h:mm", { locale: ko });
 };
