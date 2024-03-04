@@ -1,10 +1,17 @@
-import { format } from "date-fns";
-import { ko } from "date-fns/locale";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+import "dayjs/locale/ko";
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+dayjs.locale("ko");
 
 export const convertToLocaleString = (date: string) => {
-  return format(new Date(date), "yyyy년 MMMM d일", { locale: ko });
+  return dayjs(date).tz("Asia/Seoul").format("YYYY년 MMMM D일");
 };
 
 export const convertToLocaleStringWithTime = (date: string) => {
-  return format(new Date(date), "yyyy년 MMMM d일 a h:mm", { locale: ko });
+  return dayjs(date).tz("Asia/Seoul").format("YYYY년 MMMM D일 A h:mm");
 };
