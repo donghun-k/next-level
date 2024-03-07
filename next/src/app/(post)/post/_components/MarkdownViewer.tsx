@@ -21,6 +21,7 @@ const MarkdownViewer = ({ content }: { content: string }) => {
               language={match[1]}
               {...rest}
               ref={null}
+              className="w-full"
               style={materialDark}
             >
               {String(children).replace(/\n$/, "")}
