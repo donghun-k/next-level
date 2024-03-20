@@ -4,7 +4,7 @@ import Link from "next/link";
 import { SimplePost } from "@/models/post";
 
 const PostListItem = ({
-  post: { publishedAt, contentPreview, title, category, mainImage, id },
+  post: { publishedAt, contentPreview, title, category, image, id },
 }: {
   post: SimplePost;
 }) => {
@@ -13,7 +13,7 @@ const PostListItem = ({
       <Link href={`/post/${id}`} className="relative h-[200px] min-w-[250px]">
         <Image
           className="object-cover"
-          src={mainImage}
+          src={image}
           alt="Post thumbnail"
           sizes="300px 200px"
           fill

@@ -19,11 +19,15 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'mainImage',
-      title: 'Main Image',
+      name: 'series',
+      title: 'Series',
       type: 'reference',
-      to: [{type: 'mainImage'}],
-      validation: (Rule) => Rule.required(),
+      to: [{type: 'series'}],
+    }),
+    defineField({
+      name: 'image',
+      title: 'Image',
+      type: 'image',
     }),
     defineField({
       name: 'content',

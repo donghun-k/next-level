@@ -1,6 +1,6 @@
 import category from './category'
 import comment from './comment'
 import post from './post'
-import mainImage from './mainImage'
+import series from './series'
 
-export const schemaTypes = [post, category, comment, mainImage]
+export const schemaTypes = [post, category, comment, series]

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { SimplePost } from "@/models/post";
 
 const PostCard = ({
-  post: { publishedAt, contentPreview, title, category, mainImage, id },
+  post: { publishedAt, contentPreview, title, category, image, id },
 }: {
   post: SimplePost;
 }) => {
@@ -16,7 +16,7 @@ const PostCard = ({
       >
         <Image
           className="object-cover"
-          src={mainImage}
+          src={image}
           alt="Card image"
           sizes="300px 150px"
           fill

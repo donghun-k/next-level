@@ -5,12 +5,12 @@ import { Post } from "@/models/post";
 import ViewCounter from "./ViewCounter";
 
 const Banner = ({ post }: { post: Post }) => {
-  const { title, category, publishedAt, id, mainImage } = post;
+  const { title, category, publishedAt, id, image } = post;
 
   return (
     <section
       style={{
-        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${mainImage})`,
+        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${image})`,
       }}
       className="relative flex h-[160px] w-full min-w-[360px] justify-center bg-gray-500 bg-cover bg-center sm:h-[250px]"
     >

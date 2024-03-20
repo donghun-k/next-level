@@ -7,18 +7,32 @@ import { mapPosts, urlFor } from "@/utils/post";
 
 import { client } from "./sanity";
 
+export const PROFILE_IMAGE_URL = "/images/profile-image.png";
+
 export const increasePostViews = async (postId: string) => {
   return (await client.patch(postId).inc({ views: 1 }).commit()).views;
 };
+
+export interface FetchedPost {
+  id: string;
+  title: string;
+  category: string;
+  seriesImage?: string;
+  mainImage?: string;
+  content: string;
+  publishedAt: string;
+}
 
 export const getPost = async (postId: string): Promise<Post | null> => {
   return client
     .fetch(
       `*[_type == "post" && _id == "${postId}"]{
-      ...,
       'id': _id,
+      'title': title,
       'category': category->title,
-      'mainImage': mainImage->image,
+      'seriesImage': series->image,
+      'mainImage': image,
+      'content': content,
       'publishedAt': _createdAt,
     }[0]`,
       {},
@@ -28,11 +42,15 @@ export const getPost = async (postId: string): Promise<Post | null> => {
         },
       },
     )
-    .then((post: Post) => {
+    .then((post: FetchedPost) => {
       if (!post) return null;
       return {
         ...post,
-        mainImage: urlFor(post.mainImage),
+        image: post.seriesImage
+          ? urlFor(post.seriesImage)
+          : post.mainImage
+            ? urlFor(post.mainImage)
+            : PROFILE_IMAGE_URL,
         publishedAt: convertToLocaleString(post.publishedAt),
       };
     });
@@ -66,10 +84,12 @@ export const getPosts = async ({
         }${
           query && query !== "" ? `&& title match "${query}*"` : ""
         }] | order(_createdAt desc) {
-          ...,
           'id': _id,
+          'title': title,
           'category': category->title,
-          'mainImage': mainImage->image,
+          'seriesImage': series->image,
+          'mainImage': image,
+          'content': content,
           'publishedAt': _createdAt,
         }[${(page - 1) * 5} ... ${page * 5}]
       }`,
@@ -80,7 +100,7 @@ export const getPosts = async ({
         },
       },
     )
-    .then((data) => {
+    .then((data: { posts: FetchedPost[]; totalPosts: number }) => {
       const { posts } = data;
       const newPosts = posts.map(mapPosts);
       return {
@@ -102,10 +122,12 @@ export const getRecentPosts =
       .fetch(
         `{
           "posts": *[_type == "post"] | order(_createdAt desc) {
-            ...,
             'id': _id,
+            'title': title,
             'category': category->title,
-            'mainImage': mainImage->image,
+            'seriesImage': series->image,
+            'mainImage': image,
+            'content': content,
             'publishedAt': _createdAt,
           }[0...5],
           "updatedAt": now()
@@ -122,7 +144,7 @@ export const getRecentPosts =
           posts,
           updatedAt,
         }: {
-          posts: Post[];
+          posts: FetchedPost[];
           updatedAt: string;
         }): GetRecentOrPopularPostsResponse => {
           return {
@@ -139,10 +161,12 @@ export const getPopularPosts =
       .fetch(
         `{
           "posts": *[_type == "post"] | order(views desc) {
-            ...,
             'id': _id,
+            'title': title,
             'category': category->title,
-            'mainImage': mainImage->image,
+            'seriesImage': series->image,
+            'mainImage': image,
+            'content': content,
             'publishedAt': _createdAt,
           }[0...6],
           "updatedAt": now()
@@ -159,7 +183,7 @@ export const getPopularPosts =
           posts,
           updatedAt,
         }: {
-          posts: Post[];
+          posts: FetchedPost[];
           updatedAt: string;
         }): GetRecentOrPopularPostsResponse => {
           return {

@@ -2,7 +2,7 @@ export interface Post {
   id: string;
   title: string;
   category: string;
-  mainImage: string;
+  image: string;
   content: string;
   publishedAt: string;
 }
