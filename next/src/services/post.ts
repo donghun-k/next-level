@@ -9,6 +9,16 @@ import { client } from "./sanity";
 
 export const PROFILE_IMAGE_URL = "/images/profile-image.png";
 
+export const POST_PROJECTION = `{
+  'id': _id,
+  'title': title,
+  'category': category->title,
+  'seriesImage': series->image,
+  'mainImage': image,
+  'content': content,
+  'publishedAt': _createdAt,
+}`;
+
 export const increasePostViews = async (postId: string) => {
   return (await client.patch(postId).inc({ views: 1 }).commit()).views;
 };
@@ -26,15 +36,7 @@ export interface FetchedPost {
 export const getPost = async (postId: string): Promise<Post | null> => {
   return client
     .fetch(
-      `*[_type == "post" && _id == "${postId}"]{
-      'id': _id,
-      'title': title,
-      'category': category->title,
-      'seriesImage': series->image,
-      'mainImage': image,
-      'content': content,
-      'publishedAt': _createdAt,
-    }[0]`,
+      `*[_type == "post" && _id == "${postId}"]${POST_PROJECTION}[0]`,
       {},
       {
         next: {
@@ -83,15 +85,9 @@ export const getPosts = async ({
           category === "All" ? "" : `&& category->title == "${category}"`
         }${
           query && query !== "" ? `&& title match "${query}*"` : ""
-        }] | order(_createdAt desc) {
-          'id': _id,
-          'title': title,
-          'category': category->title,
-          'seriesImage': series->image,
-          'mainImage': image,
-          'content': content,
-          'publishedAt': _createdAt,
-        }[${(page - 1) * 5} ... ${page * 5}]
+        }] | order(_createdAt desc)${POST_PROJECTION}[${(page - 1) * 5} ... ${
+          page * 5
+        }]
       }`,
       {},
       {
@@ -121,15 +117,7 @@ export const getRecentPosts =
     return client
       .fetch(
         `{
-          "posts": *[_type == "post"] | order(_createdAt desc) {
-            'id': _id,
-            'title': title,
-            'category': category->title,
-            'seriesImage': series->image,
-            'mainImage': image,
-            'content': content,
-            'publishedAt': _createdAt,
-          }[0...5],
+          "posts": *[_type == "post"] | order(_createdAt desc)${POST_PROJECTION}[0...5],
           "updatedAt": now()
         }`,
         {},
@@ -160,15 +148,7 @@ export const getPopularPosts =
     return client
       .fetch(
         `{
-          "posts": *[_type == "post"] | order(views desc) {
-            'id': _id,
-            'title': title,
-            'category': category->title,
-            'seriesImage': series->image,
-            'mainImage': image,
-            'content': content,
-            'publishedAt': _createdAt,
-          }[0...6],
+          "posts": *[_type == "post"] | order(views desc)${POST_PROJECTION}[0...6],
           "updatedAt": now()
         }`,
         {},
