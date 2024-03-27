@@ -12,6 +12,7 @@ export const PROFILE_IMAGE_URL = "/images/profile-image.png";
 export const POST_PROJECTION = `{
   'id': _id,
   'title': title,
+  'series': series->title,
   'category': category->title,
   'seriesImage': series->image,
   'mainImage': image,
@@ -26,6 +27,7 @@ export const increasePostViews = async (postId: string) => {
 export interface FetchedPost {
   id: string;
   title: string;
+  series: string | null;
   category: string;
   seriesImage?: string;
   mainImage?: string;

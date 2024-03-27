@@ -4,7 +4,7 @@ import Link from "next/link";
 import { SimplePost } from "@/models/post";
 
 const PostListItem = ({
-  post: { publishedAt, contentPreview, title, category, image, id },
+  post: { publishedAt, contentPreview, title, series, category, image, id },
 }: {
   post: SimplePost;
 }) => {
@@ -22,8 +22,9 @@ const PostListItem = ({
       <div className="flex w-full flex-col justify-between overflow-hidden">
         <Link
           href={`/post/${id}`}
-          className="w-3/4 overflow-hidden text-ellipsis whitespace-nowrap text-2xl font-bold underline-offset-2 hover:underline"
+          className="w-3/4 overflow-hidden text-ellipsis whitespace-nowrap text-xl font-bold underline-offset-2 hover:underline"
         >
+          {series && <span className="text-lg text-gray-500">[{series}] </span>}
           {title}
         </Link>
         <div className="flex items-center gap-2 text-gray-500">

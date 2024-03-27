@@ -4,7 +4,7 @@ import Link from "next/link";
 import { SimplePost } from "@/models/post";
 
 const PostCard = ({
-  post: { publishedAt, contentPreview, title, category, image, id },
+  post: { publishedAt, contentPreview, title, series, category, image, id },
 }: {
   post: SimplePost;
 }) => {
@@ -24,8 +24,9 @@ const PostCard = ({
       </Link>
       <Link
         href={`/post/${id}`}
-        className="overflow-hidden text-ellipsis whitespace-nowrap text-xl font-bold underline-offset-2 hover:underline"
+        className="overflow-hidden text-ellipsis whitespace-nowrap text-lg font-bold underline-offset-2 hover:underline"
       >
+        {series && <span className="text-base text-gray-500">[{series}] </span>}
         {title}
       </Link>
       <div className="flex items-center justify-between text-gray-500">
