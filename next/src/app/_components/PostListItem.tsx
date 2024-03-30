@@ -13,7 +13,7 @@ const PostListItem = ({
       <Link href={`/post/${id}`} className="relative h-[200px] min-w-[250px]">
         <Image
           className="object-cover"
-          src={image}
+          src={image ?? "/images/profile-image.png"}
           alt="Post thumbnail"
           sizes="300px 200px"
           fill

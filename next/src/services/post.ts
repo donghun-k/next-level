@@ -7,8 +7,6 @@ import { mapPosts, urlFor } from "@/utils/post";
 
 import { client } from "./sanity";
 
-export const PROFILE_IMAGE_URL = "/images/profile-image.png";
-
 export const POST_PROJECTION = `{
   'id': _id,
   'title': title,
@@ -54,7 +52,7 @@ export const getPost = async (postId: string): Promise<Post | null> => {
           ? urlFor(post.seriesImage)
           : post.mainImage
             ? urlFor(post.mainImage)
-            : PROFILE_IMAGE_URL,
+            : null,
         publishedAt: convertToLocaleString(post.publishedAt),
       };
     });

@@ -3,7 +3,7 @@ export interface Post {
   title: string;
   series: string | null;
   category: string;
-  image: string;
+  image: string | null;
   content: string;
   publishedAt: string;
 }

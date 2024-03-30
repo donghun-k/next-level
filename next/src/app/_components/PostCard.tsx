@@ -16,7 +16,7 @@ const PostCard = ({
       >
         <Image
           className="object-cover"
-          src={image}
+          src={image ?? "/images/profile-image.png"}
           alt="Card image"
           sizes="300px 150px"
           fill
