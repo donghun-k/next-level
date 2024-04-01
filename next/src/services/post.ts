@@ -1,13 +1,27 @@
+import ImageUrlBuilder from "@sanity/image-url";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+
 import { Post, SimplePost } from "@/models/post";
 import {
   convertToLocaleString,
   convertToLocaleStringWithTime,
 } from "@/utils/date";
-import { mapPosts, urlFor } from "@/utils/post";
+import { convertMarkdownToPlainText } from "@/utils/markdown";
 
 import { client } from "./sanity";
 
-export const POST_PROJECTION = `{
+interface FetchedPost {
+  id: string;
+  title: string;
+  series: string | null;
+  category: string;
+  seriesImage?: string;
+  mainImage?: string;
+  content: string;
+  publishedAt: string;
+}
+
+const POST_PROJECTION = `{
   'id': _id,
   'title': title,
   'series': series->title,
@@ -18,20 +32,28 @@ export const POST_PROJECTION = `{
   'publishedAt': _createdAt,
 }`;
 
+const builder = ImageUrlBuilder(client);
+
+const urlFor = (source: SanityImageSource) => {
+  return builder.image(source).url();
+};
+
+const mapPosts = (post: FetchedPost): SimplePost => {
+  return {
+    ...post,
+    image: post.seriesImage
+      ? urlFor(post.seriesImage)
+      : post.mainImage
+        ? urlFor(post.mainImage)
+        : null,
+    contentPreview: convertMarkdownToPlainText(post.content),
+    publishedAt: convertToLocaleString(post.publishedAt),
+  };
+};
+
 export const increasePostViews = async (postId: string) => {
   return (await client.patch(postId).inc({ views: 1 }).commit()).views;
 };
-
-export interface FetchedPost {
-  id: string;
-  title: string;
-  series: string | null;
-  category: string;
-  seriesImage?: string;
-  mainImage?: string;
-  content: string;
-  publishedAt: string;
-}
 
 export const getPost = async (postId: string): Promise<Post | null> => {
   return client
@@ -100,8 +122,8 @@ export const getPosts = async ({
       const { posts } = data;
       const newPosts = posts.map(mapPosts);
       return {
-        ...data,
         posts: newPosts,
+        totalPosts: data.totalPosts,
         totalPages: Math.ceil(data.totalPosts / 5),
       };
     });
