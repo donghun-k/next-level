@@ -34,18 +34,15 @@ const POST_PROJECTION = `{
 
 const builder = ImageUrlBuilder(client);
 
-const urlFor = (source: SanityImageSource) => {
-  return builder.image(source).url();
+const getImageUrl = (source: SanityImageSource | undefined): string | null => {
+  if (!source) return null;
+  return ImageUrlBuilder(client).image(source).url();
 };
 
 const mapPosts = (post: FetchedPost): SimplePost => {
   return {
     ...post,
-    image: post.seriesImage
-      ? urlFor(post.seriesImage)
-      : post.mainImage
-        ? urlFor(post.mainImage)
-        : null,
+    image: getImageUrl(post.seriesImage || post.mainImage),
     contentPreview: convertMarkdownToPlainText(post.content),
     publishedAt: convertToLocaleString(post.publishedAt),
   };
@@ -66,16 +63,12 @@ export const getPost = async (postId: string): Promise<Post | null> => {
         },
       },
     )
-    .then((post: FetchedPost) => {
-      if (!post) return null;
+    .then((fetchedPost: FetchedPost) => {
+      if (!fetchedPost) return null;
       return {
-        ...post,
-        image: post.seriesImage
-          ? urlFor(post.seriesImage)
-          : post.mainImage
-            ? urlFor(post.mainImage)
-            : null,
-        publishedAt: convertToLocaleString(post.publishedAt),
+        ...fetchedPost,
+        image: getImageUrl(fetchedPost.seriesImage || fetchedPost.mainImage),
+        publishedAt: convertToLocaleString(fetchedPost.publishedAt),
       };
     });
 };
@@ -118,11 +111,9 @@ export const getPosts = async ({
         },
       },
     )
-    .then((data: { posts: FetchedPost[]; totalPosts: number }) => {
-      const { posts } = data;
-      const newPosts = posts.map(mapPosts);
+    .then((data: { fetchedPosts: FetchedPost[]; totalPosts: number }) => {
       return {
-        posts: newPosts,
+        posts: data.fetchedPosts.map(mapPosts),
         totalPosts: data.totalPosts,
         totalPages: Math.ceil(data.totalPosts / 5),
       };
@@ -151,14 +142,14 @@ export const getRecentPosts =
       )
       .then(
         ({
-          posts,
+          fetchedPosts,
           updatedAt,
         }: {
-          posts: FetchedPost[];
+          fetchedPosts: FetchedPost[];
           updatedAt: string;
         }): GetRecentOrPopularPostsResponse => {
           return {
-            posts: posts.map(mapPosts),
+            posts: fetchedPosts.map(mapPosts),
             updatedAt: convertToLocaleStringWithTime(updatedAt),
           };
         },
@@ -182,14 +173,14 @@ export const getPopularPosts =
       )
       .then(
         ({
-          posts,
+          fetchedPosts,
           updatedAt,
         }: {
-          posts: FetchedPost[];
+          fetchedPosts: FetchedPost[];
           updatedAt: string;
         }): GetRecentOrPopularPostsResponse => {
           return {
-            posts: posts.map(mapPosts),
+            posts: fetchedPosts.map(mapPosts),
             updatedAt: convertToLocaleStringWithTime(updatedAt),
           };
         },
