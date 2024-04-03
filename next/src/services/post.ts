@@ -96,7 +96,7 @@ export const getPosts = async ({
         "totalPosts": count(*[_type == "post"${
           category === "All" ? "" : `&& category->title == "${category}"`
         }${query && query !== "" ? `&& title match "${query}*"` : ""}]),
-        "posts": *[_type == "post"${
+        "fetchedPosts": *[_type == "post"${
           category === "All" ? "" : `&& category->title == "${category}"`
         }${
           query && query !== "" ? `&& title match "${query}*"` : ""
@@ -130,7 +130,7 @@ export const getRecentPosts =
     return client
       .fetch(
         `{
-          "posts": *[_type == "post"] | order(_createdAt desc)${POST_PROJECTION}[0...5],
+          "fetchedPosts": *[_type == "post"] | order(_createdAt desc)${POST_PROJECTION}[0...5],
           "updatedAt": now()
         }`,
         {},
@@ -161,7 +161,7 @@ export const getPopularPosts =
     return client
       .fetch(
         `{
-          "posts": *[_type == "post"] | order(views desc)${POST_PROJECTION}[0...6],
+          "fetchedPosts": *[_type == "post"] | order(views desc)${POST_PROJECTION}[0...6],
           "updatedAt": now()
         }`,
         {},
