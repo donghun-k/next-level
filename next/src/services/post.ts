@@ -32,8 +32,6 @@ const POST_PROJECTION = `{
   'publishedAt': _createdAt,
 }`;
 
-const builder = ImageUrlBuilder(client);
-
 const getImageUrl = (source: SanityImageSource | undefined): string | null => {
   if (!source) return null;
   return ImageUrlBuilder(client).image(source).url();
