@@ -1,21 +1,21 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const useToast = () => {
   const [toastInfo, setToastInfo] = useState<{
     show: boolean;
     message: string;
-    type: "success" | "error";
+    type: 'success' | 'error';
   }>({
     show: false,
-    message: "",
-    type: "success",
+    message: '',
+    type: 'success',
   });
 
   const closeToast = () => {
     setToastInfo({
       show: false,
-      message: "",
-      type: "success",
+      message: '',
+      type: 'success',
     });
   };
 

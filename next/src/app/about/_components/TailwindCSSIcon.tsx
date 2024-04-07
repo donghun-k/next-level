@@ -1,11 +1,11 @@
-import { SiTailwindcss } from "react-icons/si";
+import { SiTailwindcss } from 'react-icons/si';
 
-import IconWrapper from "./IconWrapper";
+import IconWrapper from './IconWrapper';
 
 const TailwindCSSIcon = () => {
   return (
     <IconWrapper>
-      <SiTailwindcss className="drop-shadow-custom h-10 w-10 duration-500 hover:text-[#38bdf8]" />
+      <SiTailwindcss className="h-10 w-10 drop-shadow-custom duration-500 hover:text-[#38bdf8]" />
     </IconWrapper>
   );
 };

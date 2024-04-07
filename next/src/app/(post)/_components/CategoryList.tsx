@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { useParams } from "next/navigation";
-import React from "react";
+import Link from 'next/link';
+import { useParams } from 'next/navigation';
+import React from 'react';
 
 interface Props {
   categoryList: string[];
@@ -26,8 +26,8 @@ const CategoryList = ({ categoryList, currentCategoryProp }: Props) => {
               href={`/posts/${category}`}
               className={`text-md flex items-center duration-300 ${
                 category === currentCategory
-                  ? "drop-shadow-custom font-extrabold text-black"
-                  : "font-bold text-gray-500"
+                  ? 'font-extrabold text-black drop-shadow-custom'
+                  : 'font-bold text-gray-500'
               }`}
             >
               {category}

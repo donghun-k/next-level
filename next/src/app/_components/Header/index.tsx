@@ -1,15 +1,15 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import { LinkItem } from "@/models/dialog";
+import { LinkItem } from '@/models/dialog';
 
-import Navigation from "./Navigation";
-import MenuButton from "./MenuButton";
+import Navigation from './Navigation';
+import MenuButton from './MenuButton';
 
 const LINKLIST: LinkItem[] = [
-  { text: "HOME", path: "/" },
-  { text: "ABOUT", path: "/about" },
-  { text: "POSTS", path: "/posts/All" },
-  { text: "CONTACT", path: "/contact" },
+  { text: 'HOME', path: '/' },
+  { text: 'ABOUT', path: '/about' },
+  { text: 'POSTS', path: '/posts/All' },
+  { text: 'CONTACT', path: '/contact' },
 ];
 
 const Header = () => {

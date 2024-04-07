@@ -1,6 +1,6 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode } from 'react';
 
-import Portal from "./Portal";
+import Portal from './Portal';
 
 const Backdrop = ({ children }: { children: ReactNode }) => {
   return (

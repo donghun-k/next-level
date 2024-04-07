@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { IoMenu } from "react-icons/io5";
+import { useState } from 'react';
+import { IoMenu } from 'react-icons/io5';
 
-import { LinkItem } from "@/models/dialog";
+import { LinkItem } from '@/models/dialog';
 
-import NavigationDialog from "../NavigationDialog";
+import NavigationDialog from '../NavigationDialog';
 
 const MenuButton = ({ linkList }: { linkList: LinkItem[] }) => {
   const [openDialog, setOpenDialog] = useState(false);

@@ -1,9 +1,9 @@
-import { Comment } from "@/models/comment";
-import { convertToLocaleString } from "@/utils/date";
-import { validateLength } from "@/utils/validations";
+import { Comment } from '@/models/comment';
+import { convertToLocaleString } from '@/utils/date';
+import { validateLength } from '@/utils/validations';
 
-import { client } from "./sanity";
-import { sendCommentNotification } from "./mail";
+import { client } from './sanity';
+import { sendCommentNotification } from './mail';
 
 export const getComments = async (postId: string): Promise<Comment[]> => {
   return client
@@ -16,7 +16,7 @@ export const getComments = async (postId: string): Promise<Comment[]> => {
     }`,
       {},
       {
-        next: { tags: ["comments", postId], revalidate: 60 * 60 * 1 },
+        next: { tags: ['comments', postId], revalidate: 60 * 60 * 1 },
       },
     )
     .then((comments) => {
@@ -44,26 +44,26 @@ export const postComment = async ({
   content: string;
 }) => {
   if (!postId || !author || !password || !content) {
-    throw new Error("Invalid form data");
+    throw new Error('Invalid form data');
   }
 
   if (!validateLength(author, 2, 10)) {
-    throw new Error("Name must be between 2 and 10 characters!");
+    throw new Error('Name must be between 2 and 10 characters!');
   }
 
   if (!validateLength(password, 8, 20)) {
-    throw new Error("Password must be between 8 and 20 characters!");
+    throw new Error('Password must be between 8 and 20 characters!');
   }
 
   if (!validateLength(content, 10, 100)) {
-    throw new Error("Content must be between 10 and 100 characters!");
+    throw new Error('Content must be between 10 and 100 characters!');
   }
 
   await client
     .create({
-      _type: "comment",
+      _type: 'comment',
       postRef: {
-        _type: "reference",
+        _type: 'reference',
         _ref: postId,
       },
       author,
@@ -93,7 +93,7 @@ export const deleteComment = async ({
   );
 
   if (comments.length === 0) {
-    throw new Error("Comment not found");
+    throw new Error('Comment not found');
   }
 
   const comment = comments[0];
@@ -104,6 +104,6 @@ export const deleteComment = async ({
   ) {
     return client.delete(commentId);
   } else {
-    throw new Error("Invalid password");
+    throw new Error('Invalid password');
   }
 };

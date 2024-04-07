@@ -1,6 +1,6 @@
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic';
 
-const ScaleLoader = dynamic(() => import("react-spinners/ScaleLoader"), {
+const ScaleLoader = dynamic(() => import('react-spinners/ScaleLoader'), {
   ssr: false,
 });
 

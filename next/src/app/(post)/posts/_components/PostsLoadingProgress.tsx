@@ -1,6 +1,6 @@
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic';
 
-const PulseLoader = dynamic(() => import("react-spinners/PulseLoader"), {
+const PulseLoader = dynamic(() => import('react-spinners/PulseLoader'), {
   ssr: false,
 });
 

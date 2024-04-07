@@ -1,10 +1,10 @@
-import { createTransport } from "nodemailer";
+import { createTransport } from 'nodemailer';
 
 const transporter = createTransport({
-  host: "smtp.forwardemail.net",
+  host: 'smtp.forwardemail.net',
   port: 465,
   secure: true,
-  service: "gmail",
+  service: 'gmail',
   auth: {
     user: process.env.AUTH_USER,
     pass: process.env.AUTH_PASS,

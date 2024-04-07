@@ -1,7 +1,7 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
-import { SimplePost } from "@/models/post";
+import { SimplePost } from '@/models/post';
 
 const PostCard = ({
   post: { publishedAt, contentPreview, title, series, category, image, id },
@@ -16,7 +16,7 @@ const PostCard = ({
       >
         <Image
           className="object-cover"
-          src={image ?? "/images/profile-image.png"}
+          src={image ?? '/images/profile-image.png'}
           alt="Card image"
           sizes="300px 150px"
           fill

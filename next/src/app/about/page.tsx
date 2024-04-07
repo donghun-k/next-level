@@ -1,25 +1,25 @@
-import { Metadata } from "next";
-import Image from "next/image";
+import { Metadata } from 'next';
+import Image from 'next/image';
 
-import TypeScriptIcon from "@/app/about/_components/TypeScriptIcon";
-import ReactIcon from "@/app/about/_components/ReactIcon";
-import NextIcon from "@/app/about/_components/NextIcon";
-import ReactQueryIcon from "@/app/about/_components/ReactQueryIcon";
-import MUIIcon from "@/app/about/_components/MUIIcon";
-import TailwindCSSIcon from "@/app/about/_components/TailwindCSSIcon";
-import HTMLIcon from "@/app/about/_components/HTMLIcon";
-import CSSIcon from "@/app/about/_components/CSSIcon";
-import JavaScriptIcon from "@/app/about/_components/JavaScriptIcon";
-import ReduxIcon from "@/app/about/_components/ReduxIcon";
-import SWRIcon from "@/app/about/_components/SWRIcon";
-import StyledComponentsIcon from "@/app/about/_components/StyledComponentsIcon";
+import TypeScriptIcon from '@/app/about/_components/TypeScriptIcon';
+import ReactIcon from '@/app/about/_components/ReactIcon';
+import NextIcon from '@/app/about/_components/NextIcon';
+import ReactQueryIcon from '@/app/about/_components/ReactQueryIcon';
+import MUIIcon from '@/app/about/_components/MUIIcon';
+import TailwindCSSIcon from '@/app/about/_components/TailwindCSSIcon';
+import HTMLIcon from '@/app/about/_components/HTMLIcon';
+import CSSIcon from '@/app/about/_components/CSSIcon';
+import JavaScriptIcon from '@/app/about/_components/JavaScriptIcon';
+import ReduxIcon from '@/app/about/_components/ReduxIcon';
+import SWRIcon from '@/app/about/_components/SWRIcon';
+import StyledComponentsIcon from '@/app/about/_components/StyledComponentsIcon';
 
 export const metadata: Metadata = {
-  title: "About Me ┃ NEXT LEVEL",
-  description: "DongHun, Kim의 소개 페이지입니다.",
+  title: 'About Me ┃ NEXT LEVEL',
+  description: 'DongHun, Kim의 소개 페이지입니다.',
   openGraph: {
-    title: "About Me ┃ NEXT LEVEL",
-    description: "DongHun, Kim의 소개 페이지입니다.",
+    title: 'About Me ┃ NEXT LEVEL',
+    description: 'DongHun, Kim의 소개 페이지입니다.',
   },
 };
 

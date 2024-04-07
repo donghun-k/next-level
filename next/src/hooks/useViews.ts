@@ -1,4 +1,4 @@
-import useSWR from "swr";
+import useSWR from 'swr';
 
 const useViews = (postId: string) => {
   return useSWR<number>(

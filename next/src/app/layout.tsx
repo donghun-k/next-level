@@ -1,34 +1,34 @@
-import { Noto_Sans_KR } from "next/font/google";
-import "./globals.css";
-import { ReactNode } from "react";
-import { Metadata } from "next";
+import { Noto_Sans_KR } from 'next/font/google';
+import './globals.css';
+import { ReactNode } from 'react';
+import { Metadata } from 'next';
 
-import Header from "@/app/_components/Header";
-import Footer from "@/app/_components/Footer";
+import Header from '@/app/_components/Header';
+import Footer from '@/app/_components/Footer';
 
 const inter = Noto_Sans_KR({
-  subsets: ["latin"],
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
-  title: "NEXT LEVEL",
+  title: 'NEXT LEVEL',
   description:
-    "DongHun, Kim의 개인 블로그입니다. 주로 웹 프론트엔드 개발에 관련된 글을 작성합니다.",
-  icons: "/favicon.ico",
+    'DongHun, Kim의 개인 블로그입니다. 주로 웹 프론트엔드 개발에 관련된 글을 작성합니다.',
+  icons: '/favicon.ico',
   openGraph: {
-    title: "NEXT LEVEL",
+    title: 'NEXT LEVEL',
     description:
-      "DongHun, Kim의 개인 블로그입니다. 주로 웹 프론트엔드 개발에 관련된 글을 작성합니다.",
+      'DongHun, Kim의 개인 블로그입니다. 주로 웹 프론트엔드 개발에 관련된 글을 작성합니다.',
     images: [
       {
-        url: "/images/profile-image.png",
+        url: '/images/profile-image.png',
         width: 230,
         height: 230,
-        alt: "Profile image",
+        alt: 'Profile image',
       },
     ],
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_URL || ""),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_URL || ''),
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

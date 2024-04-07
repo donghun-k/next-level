@@ -1,6 +1,6 @@
-import { getPopularPosts } from "@/services/post";
+import { getPopularPosts } from '@/services/post';
 
-import PostGrid from "./PostGrid";
+import PostGrid from './PostGrid';
 
 const PopularPosts = async () => {
   const { posts, updatedAt } = await getPopularPosts();

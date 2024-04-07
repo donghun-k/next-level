@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { Comment } from "@/models/comment";
+import { Comment } from '@/models/comment';
 
 interface Props {
   comment: Comment;

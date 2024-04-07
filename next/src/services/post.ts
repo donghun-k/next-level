@@ -1,14 +1,14 @@
-import ImageUrlBuilder from "@sanity/image-url";
-import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import ImageUrlBuilder from '@sanity/image-url';
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
-import { Post, SimplePost } from "@/models/post";
+import { Post, SimplePost } from '@/models/post';
 import {
   convertToLocaleString,
   convertToLocaleStringWithTime,
-} from "@/utils/date";
-import { convertMarkdownToPlainText } from "@/utils/markdown";
+} from '@/utils/date';
+import { convertMarkdownToPlainText } from '@/utils/markdown';
 
-import { client } from "./sanity";
+import { client } from './sanity';
 
 interface FetchedPost {
   id: string;
@@ -84,7 +84,7 @@ export interface GetPostsResponse {
 }
 
 export const getPosts = async ({
-  category = "All",
+  category = 'All',
   page = 1,
   query,
 }: GetPostsParams): Promise<GetPostsResponse> => {
@@ -92,12 +92,12 @@ export const getPosts = async ({
     .fetch(
       `{
         "totalPosts": count(*[_type == "post"${
-          category === "All" ? "" : `&& category->title == "${category}"`
-        }${query && query !== "" ? `&& title match "${query}*"` : ""}]),
+          category === 'All' ? '' : `&& category->title == "${category}"`
+        }${query && query !== '' ? `&& title match "${query}*"` : ''}]),
         "fetchedPosts": *[_type == "post"${
-          category === "All" ? "" : `&& category->title == "${category}"`
+          category === 'All' ? '' : `&& category->title == "${category}"`
         }${
-          query && query !== "" ? `&& title match "${query}*"` : ""
+          query && query !== '' ? `&& title match "${query}*"` : ''
         }] | order(_createdAt desc)${POST_PROJECTION}[${(page - 1) * 5} ... ${
           page * 5
         }]

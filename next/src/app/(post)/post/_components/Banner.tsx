@@ -1,8 +1,8 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import { Post } from "@/models/post";
+import { Post } from '@/models/post';
 
-import ViewCounter from "./ViewCounter";
+import ViewCounter from './ViewCounter';
 
 const Banner = ({ post }: { post: Post }) => {
   const { title, series, category, publishedAt, id, image } = post;

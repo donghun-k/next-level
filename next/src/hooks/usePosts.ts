@@ -1,6 +1,6 @@
-import useSWR from "swr";
+import useSWR from 'swr';
 
-import { GetPostsResponse } from "@/services/post";
+import { GetPostsResponse } from '@/services/post';
 
 interface Params {
   category: string;
@@ -8,10 +8,10 @@ interface Params {
   query?: string;
 }
 
-const usePosts = ({ category = "All", page, query }: Params) => {
+const usePosts = ({ category = 'All', page, query }: Params) => {
   return useSWR<GetPostsResponse>(
     `/api/posts?category=${category}&page=${page}${
-      query && query !== "" ? `&query=${query}` : ""
+      query && query !== '' ? `&query=${query}` : ''
     }`,
     (url: string) => fetch(url).then((res) => res.json()),
     {

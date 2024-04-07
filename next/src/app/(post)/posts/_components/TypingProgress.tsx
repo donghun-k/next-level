@@ -1,6 +1,6 @@
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic';
 
-const SyncLoader = dynamic(() => import("react-spinners/SyncLoader"), {
+const SyncLoader = dynamic(() => import('react-spinners/SyncLoader'), {
   ssr: false,
 });
 

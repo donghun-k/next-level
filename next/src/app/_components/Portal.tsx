@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
-import { createPortal } from "react-dom";
+import { ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 
 interface Props {
   portalId: string;
@@ -7,7 +7,7 @@ interface Props {
 }
 
 const Portal = ({ portalId, children }: Props) => {
-  if (typeof window === "undefined") return null;
+  if (typeof window === 'undefined') return null;
 
   const portal = document.getElementById(portalId);
 

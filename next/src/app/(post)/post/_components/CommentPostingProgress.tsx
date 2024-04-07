@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useFormStatus } from "react-dom";
-import { BsPencilSquare } from "react-icons/bs";
+import { useFormStatus } from 'react-dom';
+import { BsPencilSquare } from 'react-icons/bs';
 
-import Backdrop from "@/app/_components/Backdrop";
+import Backdrop from '@/app/_components/Backdrop';
 
 const CommentPostingProgress = () => {
   const { pending } = useFormStatus();

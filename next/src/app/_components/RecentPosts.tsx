@@ -1,7 +1,7 @@
-import { getRecentPosts } from "@/services/post";
+import { getRecentPosts } from '@/services/post';
 
-import PostGrid from "./PostGrid";
-import PostList from "./PostList";
+import PostGrid from './PostGrid';
+import PostList from './PostList';
 
 const RecentPosts = async () => {
   const { posts, updatedAt } = await getRecentPosts();

@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { PiSmileySadBold } from "react-icons/pi";
-import { FaHome } from "react-icons/fa";
+import Link from 'next/link';
+import { PiSmileySadBold } from 'react-icons/pi';
+import { FaHome } from 'react-icons/fa';
 
 const NotFound = () => {
   return (

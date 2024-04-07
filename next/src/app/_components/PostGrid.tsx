@@ -1,7 +1,7 @@
-import { SimplePost } from "@/models/post";
+import { SimplePost } from '@/models/post';
 
-import PostCard from "./PostCard";
-import NoPostsMessage from "./NoPostsMessage";
+import PostCard from './PostCard';
+import NoPostsMessage from './NoPostsMessage';
 
 const PostGrid = ({ posts }: { posts: SimplePost[] }) => {
   return (

@@ -1,7 +1,7 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
-import { SimplePost } from "@/models/post";
+import { SimplePost } from '@/models/post';
 
 const PostListItem = ({
   post: { publishedAt, contentPreview, title, series, category, image, id },
@@ -13,7 +13,7 @@ const PostListItem = ({
       <Link href={`/post/${id}`} className="relative h-[200px] min-w-[250px]">
         <Image
           className="object-cover"
-          src={image ?? "/images/profile-image.png"}
+          src={image ?? '/images/profile-image.png'}
           alt="Post thumbnail"
           sizes="300px 200px"
           fill

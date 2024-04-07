@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import useViews from "@/hooks/useViews";
+import useViews from '@/hooks/useViews';
 
 const ViewCounter = ({ postId }: { postId: string }) => {
   const { data: views, isLoading } = useViews(postId);
@@ -10,7 +10,7 @@ const ViewCounter = ({ postId }: { postId: string }) => {
   }
   return (
     <span>
-      {views} {views === 1 ? "view" : "views"}
+      {views} {views === 1 ? 'view' : 'views'}
     </span>
   );
 };

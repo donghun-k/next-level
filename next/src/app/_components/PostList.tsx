@@ -1,7 +1,7 @@
-import { SimplePost } from "@/models/post";
+import { SimplePost } from '@/models/post';
 
-import PostListItem from "./PostListItem";
-import NoPostsMessage from "./NoPostsMessage";
+import PostListItem from './PostListItem';
+import NoPostsMessage from './NoPostsMessage';
 
 const PostList = ({ posts }: { posts: SimplePost[] }) => {
   return (

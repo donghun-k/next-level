@@ -1,11 +1,11 @@
-"use client";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+'use client';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-import { LinkItem } from "@/models/dialog";
+import { LinkItem } from '@/models/dialog';
 
 const Navigation = ({ linkList }: { linkList: LinkItem[] }) => {
-  const currentPath = "/" + usePathname().split("/")[1];
+  const currentPath = '/' + usePathname().split('/')[1];
 
   return (
     <ul className="hidden gap-12 sm:flex">
@@ -14,9 +14,9 @@ const Navigation = ({ linkList }: { linkList: LinkItem[] }) => {
           <Link
             href={path}
             className={`${
-              currentPath === "/" + path.split("/")[1]
-                ? "font-extrabold text-black drop-shadow-custom"
-                : "font-bold text-gray-500"
+              currentPath === '/' + path.split('/')[1]
+                ? 'font-extrabold text-black drop-shadow-custom'
+                : 'font-bold text-gray-500'
             } duration-300`}
           >
             <span className="">{text}</span>

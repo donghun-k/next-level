@@ -1,4 +1,4 @@
-import { RxGithubLogo } from "react-icons/rx";
+import { RxGithubLogo } from 'react-icons/rx';
 
 const Footer = () => {
   return (

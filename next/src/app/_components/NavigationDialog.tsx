@@ -1,9 +1,9 @@
-import Link from "next/link";
-import { IoIosClose } from "react-icons/io";
+import Link from 'next/link';
+import { IoIosClose } from 'react-icons/io';
 
-import { LinkItem } from "@/models/dialog";
+import { LinkItem } from '@/models/dialog';
 
-import Backdrop from "./Backdrop";
+import Backdrop from './Backdrop';
 
 interface Props {
   title?: string;
@@ -12,7 +12,7 @@ interface Props {
 }
 
 const NavigationDialog = ({
-  title = "NEXT LEVEL",
+  title = 'NEXT LEVEL',
   handleClose,
   linkList,
 }: Props) => {

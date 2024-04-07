@@ -1,13 +1,13 @@
-import { Metadata } from "next";
+import { Metadata } from 'next';
 
-import ContactForm from "@/app/contact/_components/ContactForm";
+import ContactForm from '@/app/contact/_components/ContactForm';
 
 export const metadata: Metadata = {
-  title: "Contact Me ┃ NEXT LEVEL",
-  description: "저에게 연락을 하시려면 이곳을 통해 메일을 보내주세요.",
+  title: 'Contact Me ┃ NEXT LEVEL',
+  description: '저에게 연락을 하시려면 이곳을 통해 메일을 보내주세요.',
   openGraph: {
-    title: "Contact Me ┃ NEXT LEVEL",
-    description: "저에게 연락을 하시려면 이곳을 통해 메일을 보내주세요.",
+    title: 'Contact Me ┃ NEXT LEVEL',
+    description: '저에게 연락을 하시려면 이곳을 통해 메일을 보내주세요.',
   },
 };
 

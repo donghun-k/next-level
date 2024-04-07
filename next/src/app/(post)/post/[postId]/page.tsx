@@ -1,12 +1,12 @@
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
-import CategorySidebar from "@/app/(post)/_components/CategorySidebar";
-import { getPost } from "@/services/post";
+import CategorySidebar from '@/app/(post)/_components/CategorySidebar';
+import { getPost } from '@/services/post';
 
-import Banner from "../_components/Banner";
-import MarkdownViewer from "../_components/MarkdownViewer";
-import CommentSection from "../_components/CommentSection";
+import Banner from '../_components/Banner';
+import MarkdownViewer from '../_components/MarkdownViewer';
+import CommentSection from '../_components/CommentSection';
 
 interface Props {
   params: {
@@ -21,11 +21,11 @@ export const generateMetadata = async ({
 
   if (!post) {
     return {
-      title: "포스트를 찾을 수 없습니다. ┃ NEXT LEVEL",
-      description: "포스트를 찾을 수 없습니다.",
+      title: '포스트를 찾을 수 없습니다. ┃ NEXT LEVEL',
+      description: '포스트를 찾을 수 없습니다.',
       openGraph: {
-        title: "포스트를 찾을 수 없습니다. ┃ NEXT LEVEL",
-        description: "포스트를 찾을 수 없습니다.",
+        title: '포스트를 찾을 수 없습니다. ┃ NEXT LEVEL',
+        description: '포스트를 찾을 수 없습니다.',
       },
     };
   }

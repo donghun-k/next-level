@@ -1,22 +1,22 @@
-"use client";
-import { useParams } from "next/navigation";
-import { ChangeEventHandler, useEffect, useState } from "react";
+'use client';
+import { useParams } from 'next/navigation';
+import { ChangeEventHandler, useEffect, useState } from 'react';
 
-import usePosts from "@/hooks/usePosts";
-import useDebounce from "@/hooks/useDebounce";
-import PostGrid from "@/app/_components/PostGrid";
+import usePosts from '@/hooks/usePosts';
+import useDebounce from '@/hooks/useDebounce';
+import PostGrid from '@/app/_components/PostGrid';
 
-import PostList from "../../../_components/PostList";
-import PageButton from "./PageButton";
-import Pagination from "./Pagination";
-import CategoryButton from "./CategoryButton";
-import TypingProgress from "./TypingProgress";
-import PostsLoadingProgress from "./PostsLoadingProgress";
+import PostList from '../../../_components/PostList';
+import PageButton from './PageButton';
+import Pagination from './Pagination';
+import CategoryButton from './CategoryButton';
+import TypingProgress from './TypingProgress';
+import PostsLoadingProgress from './PostsLoadingProgress';
 
 const PostsSection = ({ categoryList }: { categoryList: string[] }) => {
   const { category } = useParams();
   const [page, setPage] = useState(1);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState('');
   const { debounced: query, isDebouncing: isTyping } = useDebounce(input, 1000);
   const { data, isLoading } = usePosts({
     category: Array.isArray(category) ? category[0] : category,
@@ -32,7 +32,7 @@ const PostsSection = ({ categoryList }: { categoryList: string[] }) => {
   useEffect(() => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   }, [page]);
 
@@ -82,8 +82,8 @@ const PostsSection = ({ categoryList }: { categoryList: string[] }) => {
             onChange={handleInputChange}
           />
           <div className="flex h-8 items-center gap-2 text-gray-500">
-            {isTyping && "Typing..."}
-            {isLoading && "Loading..."}
+            {isTyping && 'Typing...'}
+            {isLoading && 'Loading...'}
             {!isTyping && !isLoading && totalPages > 0 && (
               <Pagination
                 page={page}

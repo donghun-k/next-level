@@ -1,4 +1,4 @@
-import { client } from "./sanity";
+import { client } from './sanity';
 
 export const getCategoryList = async () => {
   return client

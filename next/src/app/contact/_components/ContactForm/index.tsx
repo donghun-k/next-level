@@ -1,12 +1,12 @@
-"use client";
-import { IoIosMail } from "react-icons/io";
-import { useRef } from "react";
+'use client';
+import { IoIosMail } from 'react-icons/io';
+import { useRef } from 'react';
 
-import { sendMailAction } from "@/actions/mail";
-import useToast from "@/hooks/useToast";
+import { sendMailAction } from '@/actions/mail';
+import useToast from '@/hooks/useToast';
 
-import MailSendingProgress from "./MailSendingProgress";
-import Toast from "../../../_components/Toast";
+import MailSendingProgress from './MailSendingProgress';
+import Toast from '../../../_components/Toast';
 
 const ContactForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -18,17 +18,17 @@ const ContactForm = () => {
       await sendMailAction(formdata);
       setToastInfo({
         show: true,
-        message: "Mail successfully sent.",
-        type: "success",
+        message: 'Mail successfully sent.',
+        type: 'success',
       });
       formRef.current?.reset();
     } catch (error) {
       const message =
-        error instanceof Error ? error.message : "Failed to send mail.";
+        error instanceof Error ? error.message : 'Failed to send mail.';
       setToastInfo({
         show: true,
         message,
-        type: "error",
+        type: 'error',
       });
     }
   };

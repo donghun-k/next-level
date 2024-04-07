@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import { Comment } from "@/models/comment";
-import { deleteCommentAction } from "@/actions/comment";
-import useToast from "@/hooks/useToast";
-import Toast from "@/app/_components/Toast";
+import { Comment } from '@/models/comment';
+import { deleteCommentAction } from '@/actions/comment';
+import useToast from '@/hooks/useToast';
+import Toast from '@/app/_components/Toast';
 
-import CommentItem from "./CommentItem";
-import CommentDeleteDialog from "./CommentDeleteDialog";
-import CommentDeletingProgress from "./CommentDeletingProgress";
+import CommentItem from './CommentItem';
+import CommentDeleteDialog from './CommentDeleteDialog';
+import CommentDeletingProgress from './CommentDeletingProgress';
 
 interface Props {
   comments: Comment[];
@@ -45,16 +45,16 @@ const CommentList = ({ comments }: Props) => {
     if (password.length < 8 || password.length > 20) {
       setToastInfo({
         show: true,
-        message: "Password must be between 8 and 20 characters!",
-        type: "error",
+        message: 'Password must be between 8 and 20 characters!',
+        type: 'error',
       });
       return;
     }
     if (!postId || !commentId) {
       setToastInfo({
         show: true,
-        message: "Something went wrong.",
-        type: "error",
+        message: 'Something went wrong.',
+        type: 'error',
       });
       return;
     }
@@ -68,16 +68,16 @@ const CommentList = ({ comments }: Props) => {
       });
       setToastInfo({
         show: true,
-        message: "Comment successfully deleted.",
-        type: "success",
+        message: 'Comment successfully deleted.',
+        type: 'success',
       });
     } catch (error) {
       const message =
-        error instanceof Error ? error.message : "Failed to delete comment.";
+        error instanceof Error ? error.message : 'Failed to delete comment.';
       setToastInfo({
         show: true,
         message,
-        type: "error",
+        type: 'error',
       });
     } finally {
       setShowDeletingProgress(false);

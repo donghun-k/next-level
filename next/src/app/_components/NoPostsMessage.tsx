@@ -1,4 +1,4 @@
-import { PiSmileySadBold } from "react-icons/pi";
+import { PiSmileySadBold } from 'react-icons/pi';
 
 const NoPostsMessage = () => {
   return (

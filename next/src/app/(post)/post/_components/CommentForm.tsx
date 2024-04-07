@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { useRef } from "react";
-import { useParams } from "next/navigation";
+import { useRef } from 'react';
+import { useParams } from 'next/navigation';
 
-import { postCommentAction } from "@/actions/comment";
-import useToast from "@/hooks/useToast";
-import Toast from "@/app/_components/Toast";
+import { postCommentAction } from '@/actions/comment';
+import useToast from '@/hooks/useToast';
+import Toast from '@/app/_components/Toast';
 
-import CommentPostingProgress from "./CommentPostingProgress";
+import CommentPostingProgress from './CommentPostingProgress';
 
 const CommentForm = () => {
   const { postId } = useParams();
@@ -17,15 +17,15 @@ const CommentForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
 
   const formAction = async (formdata: FormData) => {
-    const name = formdata.get("name") as string;
-    const password = formdata.get("password") as string;
-    const content = formdata.get("content") as string;
+    const name = formdata.get('name') as string;
+    const password = formdata.get('password') as string;
+    const content = formdata.get('content') as string;
 
     if (name.length < 2 || name.length > 10) {
       setToastInfo({
         show: true,
-        message: "Name must be between 2 and 10 characters!",
-        type: "error",
+        message: 'Name must be between 2 and 10 characters!',
+        type: 'error',
       });
       return;
     }
@@ -33,8 +33,8 @@ const CommentForm = () => {
     if (password.length < 8 || password.length > 20) {
       setToastInfo({
         show: true,
-        message: "Password must be between 8 and 20 characters!",
-        type: "error",
+        message: 'Password must be between 8 and 20 characters!',
+        type: 'error',
       });
       return;
     }
@@ -42,28 +42,28 @@ const CommentForm = () => {
     if (content.length < 10 || content.length > 100) {
       setToastInfo({
         show: true,
-        message: "Content must be between 10 and 100 characters!",
-        type: "error",
+        message: 'Content must be between 10 and 100 characters!',
+        type: 'error',
       });
       return;
     }
 
     try {
-      formdata.append("postId", Array.isArray(postId) ? postId[0] : postId);
+      formdata.append('postId', Array.isArray(postId) ? postId[0] : postId);
       await postCommentAction(formdata);
       formRef.current?.reset();
       setToastInfo({
         show: true,
-        message: "Comment successfully added.",
-        type: "success",
+        message: 'Comment successfully added.',
+        type: 'success',
       });
     } catch (error) {
       const message =
-        error instanceof Error ? error.message : "Failed to post comment";
+        error instanceof Error ? error.message : 'Failed to post comment';
       setToastInfo({
         show: true,
         message,
-        type: "error",
+        type: 'error',
       });
     }
   };

@@ -1,13 +1,13 @@
-import { getCategoryList } from "@/services/category";
+import { getCategoryList } from '@/services/category';
 
-import CategoryList from "./CategoryList";
+import CategoryList from './CategoryList';
 
 const CategorySidebar = async ({
   currentCategory,
 }: {
   currentCategory?: string;
 }) => {
-  const categoryList = ["All", ...(await getCategoryList())];
+  const categoryList = ['All', ...(await getCategoryList())];
 
   return (
     <aside className="sticky top-[140px] hidden w-[180px] self-start px-4 py-6 sm:block">

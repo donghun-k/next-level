@@ -7,6 +7,6 @@ export interface Post {
   content: string;
   publishedAt: string;
 }
-export interface SimplePost extends Omit<Post, "content"> {
+export interface SimplePost extends Omit<Post, 'content'> {
   contentPreview: string;
 }
