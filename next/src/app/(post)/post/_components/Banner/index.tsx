@@ -21,7 +21,7 @@ const Banner = ({ post }: { post: Post }) => {
           </h3>
         </Link>
         <h2 className="mb-10 text-2xl font-bold text-white sm:mb-20 sm:text-3xl">
-          {series && <span className="text-gray-500">[{series}] </span>}
+          {series && <span className="text-gray-300">[{series}] </span>}
           {title}
         </h2>
         <div className="flex items-center gap-2 text-xs text-gray-300 sm:text-sm">
