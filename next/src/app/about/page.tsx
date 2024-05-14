@@ -13,6 +13,7 @@ import JavaScriptIcon from '@/app/about/_components/JavaScriptIcon';
 import ReduxIcon from '@/app/about/_components/ReduxIcon';
 import SWRIcon from '@/app/about/_components/SWRIcon';
 import StyledComponentsIcon from '@/app/about/_components/StyledComponentsIcon';
+import ShadcnIcon from './_components/ShadcnIcon';
 
 export const metadata: Metadata = {
   title: 'About Me ┃ NEXT LEVEL',
@@ -37,10 +38,10 @@ const AboutPage = () => {
         <div className="flex flex-col items-center gap-6 sm:gap-10">
           <div className="flex flex-col items-center gap-3">
             <p className="text-2xl font-extrabold drop-shadow-custom sm:text-4xl">
-              DongHun, Kim
+              Donghun Kim
             </p>
             <p className="text-md sm:text-md font-bold text-gray-500">
-              Front-end Web Developer
+              Front-End Web Developer
             </p>
           </div>
           <div className="flex flex-col items-center gap-4 text-gray-700">
@@ -60,6 +61,7 @@ const AboutPage = () => {
                 <TailwindCSSIcon />
                 <StyledComponentsIcon />
                 <MUIIcon />
+                <ShadcnIcon />
               </div>
               <div className="flex gap-2">
                 <ReduxIcon />
