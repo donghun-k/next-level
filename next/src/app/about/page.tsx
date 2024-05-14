@@ -13,6 +13,7 @@ import JavaScriptIcon from '@/app/about/_components/JavaScriptIcon';
 import ReduxIcon from '@/app/about/_components/ReduxIcon';
 import SWRIcon from '@/app/about/_components/SWRIcon';
 import StyledComponentsIcon from '@/app/about/_components/StyledComponentsIcon';
+
 import ShadcnIcon from './_components/ShadcnIcon';
 
 export const metadata: Metadata = {
