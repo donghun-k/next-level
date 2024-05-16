@@ -5,7 +5,7 @@ import IconWrapper from './IconWrapper';
 const ShadcnIcon = () => {
   return (
     <IconWrapper>
-      <SiShadcnui className="ydrop-shadow-custom size-7 duration-500 hover:text-[#000000]" />
+      <SiShadcnui className="size-7 hover:text-[#000000]" />
     </IconWrapper>
   );
 };

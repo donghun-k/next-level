@@ -5,7 +5,7 @@ import IconWrapper from './IconWrapper';
 const HTMLIcon = () => {
   return (
     <IconWrapper>
-      <SiHtml5 className="h-9 w-9 drop-shadow-custom duration-500 hover:text-[#dd4b25]" />
+      <SiHtml5 className="size-9 hover:text-[#dd4b25]" />
     </IconWrapper>
   );
 };

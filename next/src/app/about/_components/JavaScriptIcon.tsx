@@ -5,7 +5,7 @@ import IconWrapper from './IconWrapper';
 const JavaScriptIcon = () => {
   return (
     <IconWrapper>
-      <BiLogoJavascript className="h-11 w-11 drop-shadow-custom duration-500 hover:text-[#efd81d]" />
+      <BiLogoJavascript className="size-11 hover:text-[#efd81d]" />
     </IconWrapper>
   );
 };

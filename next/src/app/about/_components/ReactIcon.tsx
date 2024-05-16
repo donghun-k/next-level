@@ -6,7 +6,7 @@ import IconWrapper from './IconWrapper';
 const ReactIcon = () => {
   return (
     <IconWrapper>
-      <SiReact className="h-9 w-9 drop-shadow-custom duration-500 hover:text-[#61dafb]" />
+      <SiReact className="size-9 hover:text-[#61dafb]" />
     </IconWrapper>
   );
 };

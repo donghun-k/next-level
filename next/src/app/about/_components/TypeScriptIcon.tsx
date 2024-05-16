@@ -5,7 +5,7 @@ import IconWrapper from './IconWrapper';
 const TypeScriptIcon = () => {
   return (
     <IconWrapper>
-      <BiLogoTypescript className="h-11 w-11 drop-shadow-custom duration-500 hover:text-[#3178c6]" />
+      <BiLogoTypescript className="size-11 hover:text-[#3178c6]" />
     </IconWrapper>
   );
 };

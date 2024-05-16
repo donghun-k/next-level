@@ -5,7 +5,7 @@ import IconWrapper from './IconWrapper';
 const SWRIcon = () => {
   return (
     <IconWrapper>
-      <SiSwr className="h-9 w-9 drop-shadow-custom duration-500 hover:text-[#000000]" />
+      <SiSwr className="size-9 hover:text-[#000000]" />
     </IconWrapper>
   );
 };

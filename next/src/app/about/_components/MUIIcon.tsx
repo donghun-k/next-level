@@ -6,7 +6,7 @@ import IconWrapper from './IconWrapper';
 const MUIIcon = () => {
   return (
     <IconWrapper>
-      <SiMui className="h-8 w-8 drop-shadow-custom duration-500 hover:text-[#007fff]" />
+      <SiMui className="size-8 hover:text-[#007fff]" />
     </IconWrapper>
   );
 };

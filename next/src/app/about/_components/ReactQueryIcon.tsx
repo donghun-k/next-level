@@ -5,7 +5,7 @@ import IconWrapper from './IconWrapper';
 const ReactQueryIcon = () => {
   return (
     <IconWrapper>
-      <SiReactquery className="h-9 w-9 drop-shadow-custom duration-500 hover:text-[#fd4153]" />
+      <SiReactquery className="size-9 hover:text-[#fd4153]" />
     </IconWrapper>
   );
 };
