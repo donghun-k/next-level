@@ -26,7 +26,7 @@ const CategoryList = ({ categoryList, currentCategoryProp }: Props) => {
               href={`/posts/${category}`}
               className={`text-md flex items-center duration-300 ${
                 category === currentCategory
-                  ? 'font-extrabold text-black drop-shadow-custom'
+                  ? 'drop-shadow-custom font-extrabold text-black'
                   : 'font-bold text-gray-500'
               }`}
             >

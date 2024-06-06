@@ -38,7 +38,7 @@ const AboutPage = () => {
         />
         <div className="flex flex-col items-center gap-6 sm:gap-10">
           <div className="flex flex-col items-center gap-3">
-            <p className="text-2xl font-extrabold drop-shadow-custom sm:text-4xl">
+            <p className="drop-shadow-custom text-2xl font-extrabold sm:text-4xl">
               Donghun Kim
             </p>
             <p className="text-md sm:text-md font-bold text-gray-500">

@@ -15,7 +15,7 @@ const Navigation = ({ linkList }: { linkList: LinkItem[] }) => {
             href={path}
             className={`${
               currentPath === '/' + path.split('/')[1]
-                ? 'font-extrabold text-black drop-shadow-custom'
+                ? 'drop-shadow-custom font-extrabold text-black'
                 : 'font-bold text-gray-500'
             } duration-300`}
           >
