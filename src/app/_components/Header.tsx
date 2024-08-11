@@ -1,4 +1,9 @@
+import { Dialog, DialogTrigger } from '@/components/ui/dialog';
+import { IoSearch } from 'react-icons/io5';
+
 import Link from 'next/link';
+import { DialogContent } from '@radix-ui/react-dialog';
+import { Input } from '@/components/ui/input';
 
 const Header = () => {
   return (
@@ -17,6 +22,9 @@ const Header = () => {
             </li>
             <li>
               <Link href="/posts">Posts</Link>
+            </li>
+            <li>
+              <IoSearch role="button" className="size-6" />
             </li>
           </ul>
         </nav>
