@@ -13,6 +13,9 @@ const Header = () => {
         <nav>
           <ul className="flex items-center gap-4">
             <li>
+              <ModeToggle />
+            </li>
+            <li>
               <Link href="/">Home</Link>
             </li>
             <li>
@@ -20,9 +23,6 @@ const Header = () => {
             </li>
             <li>
               <Link href="/posts">Posts</Link>
-            </li>
-            <li>
-              <ModeToggle />
             </li>
             <li>
               <IoSearch role="button" className="size-6" />
