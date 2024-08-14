@@ -1,9 +1,7 @@
 import Link from 'next/link';
-import { IoSearch } from 'react-icons/io5';
-
-import { Button } from '@/components/ui/button';
 
 import { ModeToggle } from './ModeToggle';
+import SearchButton from './SearchButton';
 
 const Header = () => {
   return (
@@ -26,13 +24,7 @@ const Header = () => {
           </ul>
           <div className="flex items-center gap-2">
             <ModeToggle />
-            <Button
-              variant="outline"
-              size="icon"
-              className="border-none shadow-none focus-visible:ring-0"
-            >
-              <IoSearch className="size-6" />
-            </Button>
+            <SearchButton />
           </div>
         </nav>
       </div>
