@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { IoSearch } from 'react-icons/io5';
 
+import { Button } from '@/components/ui/button';
+
 import { ModeToggle } from './ModeToggle';
 
 const Header = () => {
@@ -10,11 +12,8 @@ const Header = () => {
         <Link className="text-4xl font-extrabold" href="/">
           NEXT LEVEL
         </Link>
-        <nav>
+        <nav className="flex items-center gap-6">
           <ul className="flex items-center gap-4">
-            <li>
-              <ModeToggle />
-            </li>
             <li>
               <Link href="/">Home</Link>
             </li>
@@ -24,10 +23,17 @@ const Header = () => {
             <li>
               <Link href="/posts">Posts</Link>
             </li>
-            <li>
-              <IoSearch role="button" className="size-6" />
-            </li>
           </ul>
+          <div className="flex items-center gap-2">
+            <ModeToggle />
+            <Button
+              variant="outline"
+              size="icon"
+              className="border-none shadow-none focus-visible:ring-0"
+            >
+              <IoSearch className="size-6" />
+            </Button>
+          </div>
         </nav>
       </div>
     </header>
