@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { IoSearch } from 'react-icons/io5';
 
+import { ModeToggle } from './ModeToggle';
+
 const Header = () => {
   return (
     <header className="sticky inset-0 flex h-[80px] w-full items-center px-[30px]">
@@ -9,7 +11,7 @@ const Header = () => {
           NEXT LEVEL
         </Link>
         <nav>
-          <ul className="flex gap-4">
+          <ul className="flex items-center gap-4">
             <li>
               <Link href="/">Home</Link>
             </li>
@@ -18,6 +20,9 @@ const Header = () => {
             </li>
             <li>
               <Link href="/posts">Posts</Link>
+            </li>
+            <li>
+              <ModeToggle />
             </li>
             <li>
               <IoSearch role="button" className="size-6" />
