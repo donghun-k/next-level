@@ -11,6 +11,7 @@ const CodeBlock = ({ className, children, ...rest }: any) => {
   const match = /language-(\w+)/.exec(className || '');
 
   const { theme } = useTheme();
+
   return match ? (
     <SyntaxHighlighter
       PreTag="div"
