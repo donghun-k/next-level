@@ -18,6 +18,7 @@ const MDXComponent = ({ source }: Props) => {
               rehypePrettyCode,
               {
                 theme: 'red',
+                keepBackground: false,
               },
             ],
           ],
