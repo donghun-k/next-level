@@ -14,17 +14,16 @@ const ProfilePage = async () => {
   return (
     <main>
       <section className="mx-auto flex h-[calc(100vh-80px)] max-w-screen-xl items-center justify-center gap-[100px] pb-[80px]">
-        <Avatar className="size-[360px] ring-4 ring-slate-300 dark:ring-slate-800">
-          <AvatarImage
-            src="https://avatars.githubusercontent.com/u/60064471"
-            alt="Donghun Kim"
-          />
-          <AvatarFallback>DH</AvatarFallback>
-        </Avatar>
         <Card>
-          <CardContent className="w-[500px] overflow-hidden rounded-xl bg-[rgb(39,33,46)] p-2">
-            {/* <Markdown content={profileMarkdown} /> */}
+          <CardContent className="flex w-fit max-w-[1000px] items-center justify-center gap-16 overflow-hidden rounded-xl bg-[rgb(57,0,0)] px-8 py-4">
             <MDXComponent source={profileMarkdown} />
+            <Avatar className="size-[360px] shadow-xl">
+              <AvatarImage
+                src="https://avatars.githubusercontent.com/u/60064471"
+                alt="Donghun Kim"
+              />
+              <AvatarFallback>DH</AvatarFallback>
+            </Avatar>
           </CardContent>
         </Card>
       </section>

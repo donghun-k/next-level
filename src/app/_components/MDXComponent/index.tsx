@@ -17,7 +17,7 @@ const MDXComponent = ({ source }: Props) => {
             [
               rehypePrettyCode,
               {
-                theme: 'laserwave',
+                theme: 'red',
               },
             ],
           ],
