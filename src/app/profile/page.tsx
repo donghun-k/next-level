@@ -2,7 +2,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Card, CardContent } from '@/components/ui/card';
 import { fetchGitHubFileContent } from '@/services/github';
 
-import Markdown from '../_components/Markdown';
+import MDXComponent from '../_components/MDXComponent';
 
 const ProfilePage = async () => {
   const profileMarkdown = await fetchGitHubFileContent({
@@ -21,9 +21,10 @@ const ProfilePage = async () => {
           />
           <AvatarFallback>DH</AvatarFallback>
         </Avatar>
-        <Card className="bg-[#fafafa] dark:bg-[rgb(47,47,47)]">
-          <CardContent className="w-[500px] p-0">
-            <Markdown content={profileMarkdown} />
+        <Card>
+          <CardContent className="w-[500px] overflow-hidden rounded-xl bg-[rgb(39,33,46)] p-2">
+            {/* <Markdown content={profileMarkdown} /> */}
+            <MDXComponent source={profileMarkdown} />
           </CardContent>
         </Card>
       </section>
