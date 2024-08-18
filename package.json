@@ -37,7 +37,10 @@
     "react-markdown": "^9.0.1",
     "react-spinners": "^0.14.1",
     "react-syntax-highlighter": "^15.5.0",
+    "rehype": "^13.0.1",
+    "rehype-pretty-code": "^0.13.2",
     "remark-gfm": "^4.0.0",
+    "shiki": "^1.14.1",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^0.9.1"
