@@ -11,10 +11,10 @@ const ProfilePage = async () => {
   });
 
   return (
-    <main className="bg-black">
+    <main>
       <section className="mx-auto flex h-[calc(100vh-80px)] max-w-screen-xl items-center justify-center gap-[100px] pb-[80px]">
         <div className="flex w-fit max-w-[1000px] items-center justify-center gap-16 overflow-hidden rounded-xl px-8 py-4">
-          <MDXComponent source={profileMarkdown} />
+          <MDXComponent source={profileMarkdown} hideCodeBorder />
           <Avatar className="size-[360px] shadow-xl">
             <AvatarImage
               src="https://avatars.githubusercontent.com/u/60064471"
