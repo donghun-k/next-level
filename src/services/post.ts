@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import fs from 'fs';
 import { sync } from 'glob';
 import matter from 'gray-matter';
@@ -22,6 +23,10 @@ export interface PostMetaData {
   thumbnail: string;
 }
 
+export interface PostData extends PostMetaData {
+  content: string;
+}
+
 export const parsePostFile = (filePath: string) => {
   const file = fs.readFileSync(filePath, 'utf8');
   const { data, content } = matter(file);
@@ -31,5 +36,14 @@ export const parsePostFile = (filePath: string) => {
     desc: data.desc,
     tags: data.tags,
     thumbnail: data.thumbnail,
+  };
+  const dateString = dayjs(metaData.date)
+    .locale('ko')
+    .format('YYYY년 MM월 DD일');
+
+  return {
+    ...metaData,
+    date: dateString,
+    content,
   };
 };
