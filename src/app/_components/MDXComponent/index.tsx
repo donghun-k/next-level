@@ -3,16 +3,16 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypePrettyCode from 'rehype-pretty-code';
 import remarkGfm from 'remark-gfm';
 
+import { cn } from '@/lib/utils';
+
 interface Props {
   source: string;
-  hideCodeBorder?: boolean;
+  className?: string;
 }
 
-const MDXComponent = ({ source, hideCodeBorder = false }: Props) => {
+const MDXComponent = ({ source, className = '' }: Props) => {
   return (
-    <div
-      className={`prose dark:prose-invert ${hideCodeBorder ? '[&_pre]:border-none' : ''}`}
-    >
+    <div className={cn('prose dark:prose-invert', className)}>
       <MDXRemote
         source={source}
         components={{
@@ -29,7 +29,6 @@ const MDXComponent = ({ source, hideCodeBorder = false }: Props) => {
                     light: 'vitesse-light',
                     dark: 'vitesse-dark',
                   },
-                  keepBackground: false,
                 },
               ],
             ],
