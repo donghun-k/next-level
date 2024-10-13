@@ -3,7 +3,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypePrettyCode from 'rehype-pretty-code';
 import remarkGfm from 'remark-gfm';
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/utils/className';
 
 interface Props {
   source: string;
