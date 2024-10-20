@@ -4,6 +4,8 @@ import { Button } from '@/components/ui/button';
 import type { PostData } from '@/services/post';
 import { stripMarkdown } from '@/utils/markdown';
 
+import TagButton from './TagButton';
+
 interface Props {
   postData: PostData;
 }
@@ -24,15 +26,11 @@ const MostRecentPostCard = ({ postData }: Props) => {
           <h2 className="mt-4 break-keep text-4xl font-bold leading-[3rem]">
             {postData.title}
           </h2>
-          <ul className="mt-4 flex gap-2 overflow-x-scroll">
+          <div className="mt-4 flex gap-2 overflow-x-scroll">
             {postData.tags.map((tag) => (
-              <li key={tag} className="inline-block">
-                <Button className="rounded-full px-4 py-2 text-sm font-bold">
-                  {tag}
-                </Button>
-              </li>
+              <TagButton key={tag} tag={tag} />
             ))}
-          </ul>
+          </div>
         </div>
         <p className="line-clamp-4 text-lg leading-8">
           {stripMarkdown(postData.content)}
