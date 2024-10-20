@@ -37,9 +37,7 @@ export const parsePostFile = (filePath: string) => {
     tags: data.tags,
     thumbnail: data.thumbnail,
   };
-  const dateString = dayjs(metaData.date)
-    .locale('ko')
-    .format('YYYY년 MM월 DD일');
+  const dateString = dayjs(metaData.date).locale('en').format('MMMM D, YYYY');
 
   return {
     ...metaData,

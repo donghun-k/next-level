@@ -9,7 +9,6 @@ interface Props {
 }
 
 const MostRecentPostCard = ({ postData }: Props) => {
-  console.log(postData);
   return (
     <article className="flex flex-row justify-between">
       <Image
@@ -21,7 +20,7 @@ const MostRecentPostCard = ({ postData }: Props) => {
       />
       <div className="flex w-[500px] flex-col justify-between pl-[30px]">
         <div>
-          <p className="text-base">{postData.date}</p>
+          <p className="text-sm">{postData.date}</p>
           <h2 className="mt-4 break-keep text-4xl font-bold leading-[3rem]">
             {postData.title}
           </h2>
@@ -35,7 +34,7 @@ const MostRecentPostCard = ({ postData }: Props) => {
             ))}
           </ul>
         </div>
-        <p className="line-clamp-4 text-xl leading-8">
+        <p className="line-clamp-4 text-lg leading-8">
           {stripMarkdown(postData.content)}
         </p>
         <Button className="size-fit rounded-full px-6 py-4 text-xl font-bold">
