@@ -1,9 +1,8 @@
-import Image from 'next/image';
-
 import { Button } from '@/components/ui/button';
 import type { PostData } from '@/services/post';
 import { stripMarkdown } from '@/utils/markdown';
 
+import NextImage from './NextImage';
 import TagButton from './TagButton';
 
 interface Props {
@@ -13,7 +12,7 @@ interface Props {
 const MostRecentPostCard = ({ postData }: Props) => {
   return (
     <article className="flex flex-row justify-between">
-      <Image
+      <NextImage
         src={postData.thumbnail}
         className="aspect-[10/7] w-[700px] rounded-2xl object-cover"
         alt={postData.title}

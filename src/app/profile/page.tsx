@@ -20,6 +20,7 @@ const ProfilePage = async () => {
           />
           <Avatar className="size-[360px] shadow-xl">
             <AvatarImage
+              className="mono"
               src="https://avatars.githubusercontent.com/u/60064471"
               alt="Donghun Kim"
             />

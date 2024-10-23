@@ -1,7 +1,6 @@
-import Image from 'next/image';
-
 import type { PostData } from '@/services/post';
 
+import NextImage from './NextImage';
 import TagButton from './TagButton';
 
 interface Props {
@@ -11,7 +10,7 @@ interface Props {
 const PostListItemCard = ({ postData }: Props) => {
   return (
     <li className="h-fit w-[calc(1180px/3)]">
-      <Image
+      <NextImage
         src={postData.thumbnail}
         className="aspect-[10/7] w-full rounded-xl object-cover"
         alt={postData.title}

@@ -22,9 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={cn(inter.className, 'min-w-[1280px] grayscale contrast:')}
-      >
+      <body className={cn(inter.className, 'min-w-[1280px]')}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
           {children}
