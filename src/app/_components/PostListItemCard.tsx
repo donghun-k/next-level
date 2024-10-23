@@ -19,7 +19,7 @@ const PostListItemCard = ({ postData }: Props) => {
         height={600}
       />
       <p className="mt-2 line-clamp-1 text-2xl font-bold">{postData.title}</p>
-      <div className="mt-2 flex gap-2 overflow-x-scroll">
+      <div className="mt-1 flex gap-2 overflow-x-scroll">
         {postData.tags.map((tag) => (
           <TagButton key={tag} tag={tag} />
         ))}

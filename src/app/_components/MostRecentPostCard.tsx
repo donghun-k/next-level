@@ -23,7 +23,7 @@ const MostRecentPostCard = ({ postData }: Props) => {
       <div className="flex w-[500px] flex-col justify-between pl-[30px]">
         <div>
           <p className="text-sm">{postData.date}</p>
-          <h2 className="mt-4 break-keep text-4xl font-bold leading-[3rem]">
+          <h2 className="mt-4 line-clamp-2 break-keep text-4xl font-bold leading-[3rem]">
             {postData.title}
           </h2>
           <div className="mt-4 flex gap-2 overflow-x-scroll">
@@ -32,7 +32,7 @@ const MostRecentPostCard = ({ postData }: Props) => {
             ))}
           </div>
         </div>
-        <p className="line-clamp-4 text-lg leading-8">
+        <p className="line-clamp-5 text-lg leading-8">
           {stripMarkdown(postData.content)}
         </p>
         <Button className="size-fit rounded-full px-6 py-4 text-xl font-bold">
