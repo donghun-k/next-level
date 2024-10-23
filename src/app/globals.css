@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .mono {
+    @apply grayscale hover:grayscale-0 duration-500;
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
