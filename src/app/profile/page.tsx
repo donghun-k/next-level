@@ -16,7 +16,7 @@ const ProfilePage = async () => {
         <div className="flex w-fit max-w-[1000px] items-center justify-center gap-16 overflow-hidden rounded-xl px-8 py-4">
           <MDXComponent
             source={profileMarkdown}
-            className="[&_pre]:border-none"
+            className="[&_pre]:border-none [&_pre]:bg-transparent"
           />
           <Avatar className="size-[360px] shadow-xl">
             <AvatarImage
