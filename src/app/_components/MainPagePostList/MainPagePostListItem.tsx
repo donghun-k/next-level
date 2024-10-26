@@ -1,13 +1,13 @@
 import type { PostData } from '@/services/post';
 
-import NextImage from './NextImage';
-import TagButton from './TagButton';
+import NextImage from '../NextImage';
+import TagButton from '../TagButton';
 
 interface Props {
   postData: PostData;
 }
 
-const PostListItemCard = ({ postData }: Props) => {
+const MainPagePostListItem = ({ postData }: Props) => {
   return (
     <li className="h-fit w-[calc(1180px/3)]">
       <NextImage
@@ -28,4 +28,4 @@ const PostListItemCard = ({ postData }: Props) => {
   );
 };
 
-export default PostListItemCard;
+export default MainPagePostListItem;

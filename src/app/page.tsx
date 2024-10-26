@@ -1,7 +1,7 @@
 import { getPostFilePaths, parsePostFile } from '@/services/post';
 
+import MainPagePostList from './_components/MainPagePostList';
 import MostRecentPostCard from './_components/MostRecentPostCard';
-import PostListItemCard from './_components/PostListItemCard';
 
 const HomePage = () => {
   const paths = getPostFilePaths();
@@ -17,12 +17,7 @@ const HomePage = () => {
   return (
     <main className="mx-auto w-full max-w-screen-xl px-[30px] py-[50px]">
       <MostRecentPostCard postData={mostRecentPostData!} />
-      <ul className="mt-14 flex flex-wrap gap-x-[20px] gap-y-[30px]">
-        {mostRecentPostData &&
-          postDataList.map((postData) => (
-            <PostListItemCard key={postData.title} postData={postData} />
-          ))}
-      </ul>
+      <MainPagePostList postDataList={postDataList} />
     </main>
   );
 };
