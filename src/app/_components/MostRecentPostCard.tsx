@@ -34,9 +34,7 @@ const MostRecentPostCard = ({ postData }: Props) => {
         <p className="line-clamp-5 text-lg leading-8">
           {stripMarkdown(postData.content)}
         </p>
-        <Button className="size-fit rounded-full px-6 py-4 text-xl font-bold">
-          Continue reading
-        </Button>
+        <Button className="size-fit px-6 py-4 text-xl">Continue reading</Button>
       </div>
     </article>
   );

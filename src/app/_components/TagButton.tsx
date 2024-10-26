@@ -6,7 +6,12 @@ interface Props {
 
 const TagButton = ({ tag }: Props) => {
   return (
-    <Button className="rounded-full px-4 py-2 text-sm font-bold">{tag}</Button>
+    <Button
+      variant="secondary"
+      className="size-fit rounded-full px-4 py-1 text-sm"
+    >
+      {tag}
+    </Button>
   );
 };
 

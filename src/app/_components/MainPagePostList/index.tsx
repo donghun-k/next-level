@@ -32,12 +32,7 @@ const MainPagePostList = ({ postDataList }: Props) => {
       </ul>
       {displayedPostDataList.length < postDataList.length && (
         <div className="flex w-full items-center justify-center pb-[30px] pt-[60px]">
-          <Button
-            onClick={handleLoadMore}
-            className="h-[50px] w-[200px] rounded-full"
-          >
-            Load more
-          </Button>
+          <Button onClick={handleLoadMore}>Load more</Button>
         </div>
       )}
     </>
