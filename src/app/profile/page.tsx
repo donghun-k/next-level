@@ -1,4 +1,3 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { fetchGitHubFileContent } from '@/services/github';
 
 import MDXComponent from '../_components/MDXComponent';
@@ -18,14 +17,6 @@ const ProfilePage = async () => {
             source={profileMarkdown}
             className="[&_pre]:border-none [&_pre]:bg-transparent"
           />
-          <Avatar className="size-[360px] shadow-xl">
-            <AvatarImage
-              className="mono"
-              src="https://avatars.githubusercontent.com/u/60064471"
-              alt="Donghun Kim"
-            />
-            <AvatarFallback>DH</AvatarFallback>
-          </Avatar>
         </div>
       </section>
     </main>
