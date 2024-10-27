@@ -9,20 +9,20 @@ import { Button } from '@/components/ui/button';
 const NotFound = () => {
   const router = useRouter();
   return (
-    <div className="flex h-[calc(100vh-60px)] w-full items-center justify-center">
-      <div className="flex h-fit flex-col items-center pb-[10vw]">
+    <div className="flex h-[calc(100vh-80px)] w-full items-center justify-center pb-[80px]">
+      <div className="flex h-fit flex-col items-center">
         <Frown className="size-[200px]" />
         <p className="mt-[20px] flex items-center gap-8 text-[64px] font-[600]">
-          PAGE NOT FOUND
+          Page not found
         </p>
         <div className="mt-10 flex gap-4">
           <Link href="/">
             <Button variant="default" className="size-fit text-xl">
-              HOME
+              Home
             </Button>
           </Link>
           <Button onClick={() => router.back()} className="size-fit text-xl">
-            BACK
+            Back
           </Button>
         </div>
       </div>
