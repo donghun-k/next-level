@@ -45,3 +45,15 @@ export const parsePostFile = (filePath: string) => {
     content,
   };
 };
+
+export const getPostDataList = () => {
+  const filePaths = getPostFilePaths();
+
+  const postDataList = filePaths
+    .map((filePath) => {
+      return parsePostFile(filePath);
+    })
+    .sort((a, b) => (a.date > b.date ? -1 : 1));
+
+  return postDataList;
+};

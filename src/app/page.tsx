@@ -1,16 +1,10 @@
-import { getPostFilePaths, parsePostFile } from '@/services/post';
+import { getPostDataList } from '@/services/post';
 
 import MainPagePostList from './_components/MainPagePostList';
 import MostRecentPostCard from './_components/MostRecentPostCard';
 
 const HomePage = () => {
-  const paths = getPostFilePaths();
-
-  const postDataList = paths
-    .map((path) => {
-      return parsePostFile(path);
-    })
-    .sort((a, b) => (a.date > b.date ? -1 : 1));
+  const postDataList = getPostDataList();
 
   const mostRecentPostData = postDataList.shift();
 
