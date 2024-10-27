@@ -5,15 +5,12 @@ import remarkGfm from 'remark-gfm';
 import { cn } from '@/utils/className';
 
 import NextImage from '../NextImage';
+import CodeBlock from './CodeBlock';
 
 interface Props {
   source: string;
   className?: string;
 }
-
-const CodeBlock = ({ className, ...rest }: any) => {
-  return <code className={cn('mono', className)} {...rest} />;
-};
 
 const MDXComponent = ({ source, className = '' }: Props) => {
   return (
