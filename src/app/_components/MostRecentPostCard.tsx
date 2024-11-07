@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { Button } from '@/components/ui/button';
 import type { PostData } from '@/services/post';
 import { stripMarkdown } from '@/utils/markdown';
@@ -34,7 +36,11 @@ const MostRecentPostCard = ({ postData }: Props) => {
         <p className="line-clamp-5 text-lg leading-8">
           {stripMarkdown(postData.content)}
         </p>
-        <Button className="size-fit px-6 py-4 text-xl">Continue reading</Button>
+        <Link href={`/post/${postData.id}`}>
+          <Button className="size-fit px-6 py-4 text-xl">
+            Continue reading
+          </Button>
+        </Link>
       </div>
     </article>
   );
