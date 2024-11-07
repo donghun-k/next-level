@@ -16,6 +16,7 @@ export const getPostFilePaths = () => {
 };
 
 export interface PostMetaData {
+  id: string;
   title: string;
   date: string;
   desc: string;
@@ -29,14 +30,18 @@ export interface PostData extends PostMetaData {
 
 export const parsePostFile = (filePath: string) => {
   const file = fs.readFileSync(filePath, 'utf8');
+
   const { data, content } = matter(file);
+
   const metaData: PostMetaData = {
+    id: filePath.split('/').pop()!.replace('.mdx', ''), // 파일 이름을 ID로 사용
     title: data.title,
     date: data.date,
     desc: data.desc,
     tags: data.tags,
     thumbnail: data.thumbnail,
   };
+
   const dateString = dayjs(metaData.date).locale('en').format('MMMM D, YYYY');
 
   return {
