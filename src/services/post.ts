@@ -29,8 +29,6 @@ export interface PostData extends PostMetaData {
   content: string;
 }
 
-const postCache = new Map<string, PostData>();
-
 export const parsePostFile = (filePath: string) => {
   const file = fs.readFileSync(filePath, 'utf8');
 
@@ -54,7 +52,10 @@ export const parsePostFile = (filePath: string) => {
   };
 };
 
+let postDataListCache: PostData[] | null = null;
+
 export const getPostDataList = () => {
+  if (postDataListCache) return postDataListCache;
   const filePaths = getPostFilePaths();
 
   const postDataList = filePaths
@@ -63,9 +64,11 @@ export const getPostDataList = () => {
     })
     .sort((a, b) => (a.date > b.date ? -1 : 1));
 
+  postDataListCache = postDataList;
   return postDataList;
 };
 
+const postCache = new Map<string, PostData>();
 /**
  * 특정 ID의 포스트 데이터를 가져옵니다.
  * @param postId - 찾고자 하는 포스트의 ID (파일명)
@@ -75,17 +78,12 @@ export const getPostData = (postId: string): PostData | null => {
   if (postCache.has(postId)) {
     return postCache.get(postId)!;
   }
-  const filePaths = getPostFilePaths();
-  const targetPath = filePaths.find((filePath) => {
-    const fileName = filePath.split('/').pop()!.replace('.mdx', '');
-    return fileName === postId;
-  });
+  const postDataList = getPostDataList();
 
-  if (!targetPath) {
-    return null;
-  }
+  const postData = postDataList.find((data) => data.id === postId);
 
-  const postData = parsePostFile(targetPath);
+  if (!postData) return null;
+
   postCache.set(postId, postData);
   return postData;
 };
