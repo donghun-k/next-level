@@ -62,3 +62,22 @@ export const getPostDataList = () => {
 
   return postDataList;
 };
+
+/**
+ * 특정 ID의 포스트 데이터를 가져옵니다.
+ * @param postId - 찾고자 하는 포스트의 ID (파일명)
+ * @returns PostData | null - 포스트를 찾으면 데이터를 반환하고, 없으면 null 반환
+ */
+export const getPostData = (postId: string): PostData | null => {
+  const filePaths = getPostFilePaths();
+  const targetPath = filePaths.find((filePath) => {
+    const fileName = filePath.split('/').pop()!.replace('.mdx', '');
+    return fileName === postId;
+  });
+
+  if (!targetPath) {
+    return null;
+  }
+
+  return parsePostFile(targetPath);
+};
