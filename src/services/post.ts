@@ -7,12 +7,13 @@ import path from 'path';
 const BASE_PATH = 'public/posts';
 const POSTS_PATH = path.join(process.cwd(), ...BASE_PATH.split('/'));
 
-/**
- * 포스트 폴더 내의 모든 MDX 파일 경로를 가져옵니다.
- */
+let postPathsCache: string[] | null = null;
+
 export const getPostFilePaths = () => {
-  const paths: string[] = sync(`${POSTS_PATH}/**/*.mdx`);
-  return paths;
+  if (postPathsCache) return postPathsCache;
+
+  postPathsCache = sync(`${POSTS_PATH}/**/*.mdx`);
+  return postPathsCache;
 };
 
 export interface PostMetaData {
