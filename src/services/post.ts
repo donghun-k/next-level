@@ -29,6 +29,8 @@ export interface PostData extends PostMetaData {
   content: string;
 }
 
+const postCache = new Map<string, PostData>();
+
 export const parsePostFile = (filePath: string) => {
   const file = fs.readFileSync(filePath, 'utf8');
 
@@ -70,6 +72,9 @@ export const getPostDataList = () => {
  * @returns PostData | null - 포스트를 찾으면 데이터를 반환하고, 없으면 null 반환
  */
 export const getPostData = (postId: string): PostData | null => {
+  if (postCache.has(postId)) {
+    return postCache.get(postId)!;
+  }
   const filePaths = getPostFilePaths();
   const targetPath = filePaths.find((filePath) => {
     const fileName = filePath.split('/').pop()!.replace('.mdx', '');
@@ -80,5 +85,7 @@ export const getPostData = (postId: string): PostData | null => {
     return null;
   }
 
-  return parsePostFile(targetPath);
+  const postData = parsePostFile(targetPath);
+  postCache.set(postId, postData);
+  return postData;
 };
