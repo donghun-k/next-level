@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
-import type { PostData } from '@/services/post';
+import type { PostData } from '@/types/post';
 
 import MainPagePostListItem from './MainPagePostListItem';
 

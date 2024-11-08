@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import { Button } from '@/components/ui/button';
-import type { PostData } from '@/services/post';
+import type { PostData } from '@/types/post';
 import { stripMarkdown } from '@/utils/markdown';
 
 import NextImage from './NextImage';

@@ -4,6 +4,8 @@ import { sync } from 'glob';
 import matter from 'gray-matter';
 import path from 'path';
 
+import type { PostData, PostMetaData } from '@/types/post';
+
 const BASE_PATH = 'public/posts';
 const POSTS_PATH = path.join(process.cwd(), ...BASE_PATH.split('/'));
 
@@ -15,19 +17,6 @@ export const getPostFilePaths = () => {
   postPathsCache = sync(`${POSTS_PATH}/**/*.mdx`);
   return postPathsCache;
 };
-
-export interface PostMetaData {
-  id: string;
-  title: string;
-  date: string;
-  desc: string;
-  tags: string[];
-  thumbnail: string;
-}
-
-export interface PostData extends PostMetaData {
-  content: string;
-}
 
 export const parsePostFile = (filePath: string) => {
   const file = fs.readFileSync(filePath, 'utf8');

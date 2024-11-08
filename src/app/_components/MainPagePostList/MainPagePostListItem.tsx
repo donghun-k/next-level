@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import type { PostData } from '@/services/post';
+import type { PostData } from '@/types/post';
 
 import NextImage from '../NextImage';
 import TagButton from '../TagButton';

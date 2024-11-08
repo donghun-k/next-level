@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import NextImage from '@/app/_components/NextImage';
 import TagButton from '@/app/_components/TagButton';
-import type { PostData } from '@/services/post';
+import type { PostData } from '@/types/post';
 import { stripMarkdown } from '@/utils/markdown';
 
 interface Props {
