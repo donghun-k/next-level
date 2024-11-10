@@ -10,15 +10,17 @@ const BASE_PATH = 'public/posts';
 const POSTS_PATH = path.join(process.cwd(), ...BASE_PATH.split('/'));
 
 let postPathsCache: string[] | null = null;
+let postDataListCache: PostData[] | null = null;
+const postCache = new Map<string, PostData>();
 
-export const getPostFilePaths = () => {
+const getPostFilePaths = () => {
   if (postPathsCache) return postPathsCache;
 
   postPathsCache = sync(`${POSTS_PATH}/**/*.mdx`);
   return postPathsCache;
 };
 
-export const parsePostFile = (filePath: string) => {
+const parsePostFile = (filePath: string) => {
   const file = fs.readFileSync(filePath, 'utf8');
 
   const { data, content } = matter(file);
@@ -41,8 +43,6 @@ export const parsePostFile = (filePath: string) => {
   };
 };
 
-let postDataListCache: PostData[] | null = null;
-
 export const getPostDataList = () => {
   if (postDataListCache) return postDataListCache;
   const filePaths = getPostFilePaths();
@@ -57,7 +57,6 @@ export const getPostDataList = () => {
   return postDataList;
 };
 
-const postCache = new Map<string, PostData>();
 /**
  * 특정 ID의 포스트 데이터를 가져옵니다.
  * @param postId - 찾고자 하는 포스트의 ID (파일명)
