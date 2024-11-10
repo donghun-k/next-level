@@ -5,7 +5,7 @@ import SearchButton from './SearchButton';
 
 const Header = () => {
   return (
-    <header className="sticky inset-0 z-50 flex h-[80px] w-full items-center bg-background shadow-sm">
+    <header className="sticky inset-0 z-50 flex h-[80px] w-full items-center bg-background/80 shadow-sm backdrop-blur-sm">
       <div className="mx-auto flex w-full max-w-screen-xl items-center justify-between px-[30px]">
         <Link className="text-4xl font-extrabold" href="/">
           NEXT LEVEL
