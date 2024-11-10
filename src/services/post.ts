@@ -2,12 +2,9 @@ import dayjs from 'dayjs';
 import fs from 'fs';
 import { sync } from 'glob';
 import matter from 'gray-matter';
-import path from 'path';
 
+import { POSTS_PATH } from '@/constants/path';
 import type { PostData, PostMetaData } from '@/types/post';
-
-const BASE_PATH = 'public/posts';
-const POSTS_PATH = path.join(process.cwd(), ...BASE_PATH.split('/'));
 
 let postPathsCache: string[] | null = null;
 let postDataListCache: PostData[] | null = null;
