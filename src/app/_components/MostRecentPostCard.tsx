@@ -14,19 +14,23 @@ interface Props {
 const MostRecentPostCard = ({ postData }: Props) => {
   return (
     <article className="flex flex-row justify-between">
-      <NextImage
-        src={postData.thumbnail}
-        className="aspect-[10/7] w-[700px] rounded-2xl object-cover"
-        alt={postData.title}
-        width={1000}
-        height={600}
-      />
+      <Link href={`/post/${postData.id}`}>
+        <NextImage
+          src={postData.thumbnail}
+          className="aspect-[10/7] w-[700px] rounded-2xl object-cover"
+          alt={postData.title}
+          width={1000}
+          height={600}
+        />
+      </Link>
       <div className="flex w-[500px] flex-col justify-between pl-[30px]">
         <div>
           <p className="text-sm">{postData.date}</p>
-          <h2 className="mt-4 line-clamp-2 break-keep text-4xl font-bold leading-[3rem]">
-            {postData.title}
-          </h2>
+          <Link href={`/post/${postData.id}`}>
+            <h2 className="mt-4 line-clamp-2 break-keep text-4xl font-bold leading-[3rem] hover:underline">
+              {postData.title}
+            </h2>
+          </Link>
           <div className="mt-4 flex gap-2 overflow-x-scroll">
             {postData.tags.map((tag) => (
               <TagButton key={tag} tag={tag} />
