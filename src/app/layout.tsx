@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { Toaster } from '@/components/ui/sonner';
 import { cn } from '@/utils/className';
 
 import Header from './_components/Header';
@@ -26,6 +27,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
           {children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
