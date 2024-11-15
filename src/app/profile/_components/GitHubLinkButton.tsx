@@ -13,7 +13,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 const PROFILE_IMAGE_URL = 'https://avatars.githubusercontent.com/u/60064471';
 const PROFILE_PAGE_URL = 'https://github.com/donghun-k';
 
-const GitHubHoverCard = () => {
+const GitHubLinkButton = () => {
   return (
     <HoverCard openDelay={0}>
       <HoverCardTrigger asChild>
@@ -42,4 +42,4 @@ const GitHubHoverCard = () => {
   );
 };
 
-export default GitHubHoverCard;
+export default GitHubLinkButton;

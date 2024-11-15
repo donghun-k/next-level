@@ -1,4 +1,4 @@
-import GitHubHoverCard from './_components/GitHubHoverCard';
+import GitHubLinkButton from './_components/GitHubLinkButton';
 import ProfileCodeBlock from './_components/ProfileCodeBlock';
 
 const ProfilePage = () => {
@@ -8,7 +8,7 @@ const ProfilePage = () => {
         <div className="flex w-fit max-w-[1000px] flex-col items-center justify-center gap-16 overflow-hidden rounded-xl px-8 py-4">
           <ProfileCodeBlock />
           <div>
-            <GitHubHoverCard />
+            <GitHubLinkButton />
           </div>
         </div>
       </section>
