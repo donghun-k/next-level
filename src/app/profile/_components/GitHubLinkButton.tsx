@@ -15,7 +15,7 @@ const PROFILE_PAGE_URL = 'https://github.com/donghun-k';
 
 const GitHubLinkButton = () => {
   return (
-    <HoverCard openDelay={0}>
+    <HoverCard openDelay={0} closeDelay={0}>
       <HoverCardTrigger asChild>
         <Link href={PROFILE_PAGE_URL} target="_blank">
           <Button type="button">
