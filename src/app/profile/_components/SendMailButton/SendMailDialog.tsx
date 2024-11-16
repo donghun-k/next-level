@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import type { Dispatch, SetStateAction } from 'react';
 import type { SubmitErrorHandler, SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 import { z } from 'zod';
 
 import { Button } from '@/components/ui/button';
@@ -19,15 +20,17 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 
+import { sendEmailAction } from '../../_actions/email';
+
 interface Props {
   open: boolean;
   onOpenChange: Dispatch<SetStateAction<boolean>>;
 }
 
 const mailFormSchema = z.object({
-  from: z.string().email('올바른 이메일 주소를 입력해주세요'),
-  subject: z.string().min(1, '제목을 입력해주세요'),
-  message: z.string().min(10, '메시지는 최소 10자 이상 입력해주세요'),
+  from: z.string().email('Please enter a valid email address'),
+  subject: z.string().min(1, 'Please enter a subject'),
+  message: z.string().min(10, 'Message must be at least 10 characters long'),
 });
 
 type MailFormData = z.infer<typeof mailFormSchema>;
@@ -44,17 +47,31 @@ const SendMailDialog = ({ open, onOpenChange }: Props) => {
 
   const onSubmit: SubmitHandler<MailFormData> = async (data: MailFormData) => {
     try {
-      console.log('Form data:', data);
-      // TODO: Implement email sending logic
-      onOpenChange(false);
-      reset();
+      const formData = new FormData();
+      formData.append('from', data.from);
+      formData.append('subject', data.subject);
+      formData.append('message', data.message);
+
+      const result = await sendEmailAction(formData);
+
+      if (result.success) {
+        toast.success(result.message);
+        onOpenChange(false);
+        reset();
+      } else {
+        toast.error(result.message);
+      }
     } catch (error) {
-      console.error('Failed to send email:', error);
+      toast.error('An error occurred while sending the email.');
     }
   };
 
   const onError: SubmitErrorHandler<MailFormData> = (errors) => {
-    console.error('Form validation error:', errors);
+    Object.values(errors).forEach((error) => {
+      if (error.message) {
+        toast.error(error.message);
+      }
+    });
   };
 
   return (
