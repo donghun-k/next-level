@@ -25,7 +25,7 @@ const MainPagePostList = ({ postDataList }: Props) => {
   };
   return (
     <>
-      <ul className="mt-14 flex flex-wrap gap-x-[20px] gap-y-[30px]">
+      <ul className="mt-10 flex flex-wrap gap-[30px]">
         {displayedPostDataList.map((postData) => (
           <MainPagePostListItem key={postData.title} postData={postData} />
         ))}

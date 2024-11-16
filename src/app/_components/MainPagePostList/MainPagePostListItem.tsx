@@ -11,27 +11,29 @@ interface Props {
 
 const MainPagePostListItem = ({ postData }: Props) => {
   return (
-    <li className="h-fit w-[calc(1180px/3)]">
+    <li className="h-fit w-[calc(1160px/3)] overflow-hidden rounded-md bg-card shadow-sm duration-300 hover:-translate-y-1">
       <Link href={`/post/${postData.id}`}>
         <NextImage
           src={postData.thumbnail}
-          className="aspect-[10/7] w-full rounded-xl object-cover"
+          className="aspect-[10/7] w-full object-cover"
           alt={postData.title}
           width={1000}
           height={600}
         />
       </Link>
-      <Link href={`/post/${postData.id}`}>
-        <p className="mt-2 line-clamp-1 text-2xl font-bold hover:underline">
-          {postData.title}
-        </p>
-      </Link>
-      <div className="mt-1 flex gap-2 overflow-x-scroll">
-        {postData.tags.map((tag) => (
-          <TagButton key={tag} tag={tag} />
-        ))}
+      <div className="p-4">
+        <Link href={`/post/${postData.id}`}>
+          <p className="line-clamp-1 text-xl font-bold hover:underline">
+            {postData.title}
+          </p>
+        </Link>
+        <div className="mt-1 flex gap-2 overflow-x-scroll">
+          {postData.tags.map((tag) => (
+            <TagButton key={tag} tag={tag} />
+          ))}
+        </div>
+        <p className="mt-2 text-sm text-muted-foreground">{postData.date}</p>
       </div>
-      <p className="mt-2 text-sm">{postData.date}</p>
     </li>
   );
 };

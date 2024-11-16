@@ -10,21 +10,21 @@ interface Props {
 }
 const PostsPagePostListItem = ({ postData }: Props) => {
   return (
-    <li className="flex w-full gap-[20px]">
+    <li className="flex w-full gap-8 rounded-md bg-card p-8 shadow-sm">
       <Link href={`/post/${postData.id}`}>
         <NextImage
           src={postData.thumbnail}
-          className="h-[300px] w-[400px] rounded-xl object-cover"
+          className="aspect-[4/3] w-80 rounded-md object-cover"
           alt={postData.title}
           width={400}
           height={300}
         />
       </Link>
-      <div className="flex w-[calc(100%-420px)] flex-col justify-start">
+      <div className="flex w-[calc(100%-352px)] flex-col justify-start">
         <div>
-          <p className="text-sm">{postData.date}</p>
-          <Link href={`/post/${postData.id}`}>
-            <p className="mt-2 line-clamp-2 break-keep text-2xl font-bold leading-[3rem] hover:underline">
+          <p className="text-sm text-muted-foreground">{postData.date}</p>
+          <Link href={`/post/${postData.id}`} className="size-fit">
+            <p className="mt-1 truncate break-keep text-xl font-bold hover:underline">
               {postData.title}
             </p>
           </Link>
@@ -34,7 +34,7 @@ const PostsPagePostListItem = ({ postData }: Props) => {
             ))}
           </div>
         </div>
-        <p className="mt-4 line-clamp-5 text-lg leading-8">
+        <p className="mt-4 line-clamp-4 leading-8">
           {stripMarkdown(postData.content)}
         </p>
       </div>

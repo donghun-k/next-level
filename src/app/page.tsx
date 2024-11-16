@@ -1,3 +1,4 @@
+import { Separator } from '@/components/ui/separator';
 import { getPostDataList } from '@/services/post';
 
 import MainPagePostList from './_components/MainPagePostList';
@@ -11,6 +12,7 @@ const HomePage = () => {
   return (
     <main className="mx-auto w-full max-w-screen-xl px-[30px] py-[50px]">
       <MostRecentPostCard postData={mostRecentPostData!} />
+      <Separator className="mt-10" />
       <MainPagePostList postDataList={postDataList} />
     </main>
   );
