@@ -4,8 +4,8 @@ import { Button } from '@/components/ui/button';
 import type { PostData } from '@/types/post';
 import { stripMarkdown } from '@/utils/markdown';
 
-import NextImage from './NextImage';
-import TagButton from './TagButton';
+import NextImage from '../../components/NextImage';
+import TagButton from '../../components/TagButton';
 
 interface Props {
   postData: PostData;

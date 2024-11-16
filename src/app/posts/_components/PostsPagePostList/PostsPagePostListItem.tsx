@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import NextImage from '@/app/_components/NextImage';
-import TagButton from '@/app/_components/TagButton';
+import NextImage from '@/components/NextImage';
+import TagButton from '@/components/TagButton';
 import type { PostData } from '@/types/post';
 import { stripMarkdown } from '@/utils/markdown';
 

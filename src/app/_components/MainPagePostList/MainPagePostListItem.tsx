@@ -2,8 +2,8 @@ import Link from 'next/link';
 
 import type { PostData } from '@/types/post';
 
-import NextImage from '../NextImage';
-import TagButton from '../TagButton';
+import NextImage from '../../../components/NextImage';
+import TagButton from '../../../components/TagButton';
 
 interface Props {
   postData: PostData;
