@@ -88,7 +88,12 @@ const SendMailDialog = ({ open, onOpenChange }: Props) => {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent
+        className="sm:max-w-[425px]"
+        onInteractOutside={(e) => {
+          e.preventDefault();
+        }}
+      >
         <DialogHeader>
           <DialogTitle>Send email</DialogTitle>
         </DialogHeader>
@@ -98,7 +103,7 @@ const SendMailDialog = ({ open, onOpenChange }: Props) => {
               <Label htmlFor="to" className="text-left">
                 To
               </Label>
-              <Input id="to" defaultValue="donghun.kdh@gmail.com" disabled />
+              <Input id="to" defaultValue="donghun.kdh@gmail.com" readOnly />
             </div>
             <div className="flex flex-col gap-2">
               <Label htmlFor="from" className="text-left">
