@@ -1,7 +1,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import type { Dispatch, SetStateAction } from 'react';
+import { type Dispatch, type SetStateAction, useState } from 'react';
 import type { SubmitErrorHandler, SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
@@ -36,6 +36,8 @@ const mailFormSchema = z.object({
 type MailFormData = z.infer<typeof mailFormSchema>;
 
 const SendMailDialog = ({ open, onOpenChange }: Props) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const { register, handleSubmit, reset } = useForm<MailFormData>({
     resolver: zodResolver(mailFormSchema),
     defaultValues: {
@@ -46,7 +48,10 @@ const SendMailDialog = ({ open, onOpenChange }: Props) => {
   });
 
   const onSubmit: SubmitHandler<MailFormData> = async (data: MailFormData) => {
-    try {
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+
+    const sendMailPromise = async () => {
       const formData = new FormData();
       formData.append('from', data.from);
       formData.append('subject', data.subject);
@@ -54,16 +59,23 @@ const SendMailDialog = ({ open, onOpenChange }: Props) => {
 
       const result = await sendEmailAction(formData);
 
-      if (result.success) {
-        toast.success(result.message);
-        onOpenChange(false);
-        reset();
-      } else {
-        toast.error(result.message);
+      if (!result.success) {
+        setIsSubmitting(false);
+        throw new Error(result.message);
       }
-    } catch (error) {
-      toast.error('An error occurred while sending the email.');
-    }
+
+      onOpenChange(false);
+      reset();
+      setIsSubmitting(false);
+      return result.message;
+    };
+
+    toast.promise(sendMailPromise(), {
+      loading: 'Sending email...',
+      success: (message) => message,
+      error: (err) =>
+        err.message || 'An error occurred while sending the email.',
+    });
   };
 
   const onError: SubmitErrorHandler<MailFormData> = (errors) => {
@@ -113,11 +125,11 @@ const SendMailDialog = ({ open, onOpenChange }: Props) => {
           </div>
         </form>
         <DialogFooter>
-          <Button form="send-mail-form" type="submit">
+          <Button form="send-mail-form" type="submit" disabled={isSubmitting}>
             Send
           </Button>
           <DialogClose asChild>
-            <Button type="button" variant="outline">
+            <Button type="button" variant="outline" disabled={isSubmitting}>
               Cancel
             </Button>
           </DialogClose>
