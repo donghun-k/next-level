@@ -5,7 +5,7 @@ import MainPagePostList from './_components/MainPagePostList';
 import MostRecentPostCard from './_components/MostRecentPostCard';
 
 const HomePage = () => {
-  const postDataList = getPostDataList();
+  const postDataList = [...getPostDataList()];
 
   const mostRecentPostData = postDataList.shift();
 
