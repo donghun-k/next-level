@@ -10,7 +10,7 @@ interface Props {
 }
 const PostsPagePostListItem = ({ postData }: Props) => {
   return (
-    <li className="flex w-full gap-8 rounded-md bg-card p-8 shadow-sm">
+    <li className="flex w-full gap-8 rounded-md bg-card p-4 pr-8 shadow-sm">
       <Link href={`/post/${postData.id}`}>
         <NextImage
           src={postData.thumbnail}

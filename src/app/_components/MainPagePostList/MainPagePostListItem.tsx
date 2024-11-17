@@ -11,7 +11,7 @@ interface Props {
 
 const MainPagePostListItem = ({ postData }: Props) => {
   return (
-    <li className="h-fit w-[calc(1160px/3)] overflow-hidden rounded-md bg-card shadow-sm duration-300 hover:-translate-y-1">
+    <li className="h-fit w-[calc(1156px/3)] overflow-hidden rounded-md bg-card shadow-sm duration-300 hover:-translate-y-1">
       <Link href={`/post/${postData.id}`}>
         <NextImage
           src={postData.thumbnail}
