@@ -10,6 +10,7 @@ import type { PostData, PostMetaData } from '@/types/post';
 let postPathsCache: string[] | null = null;
 let postDataListCache: PostData[] | null = null;
 const postCache = new Map<string, PostData>();
+let tagListCache: string[] | null = null;
 
 const getPostFilePaths = () => {
   if (postPathsCache) {
@@ -89,4 +90,26 @@ export const getPostData = (postId: string): PostData | null => {
 
   postCache.set(postId, immutablePost);
   return immutablePost;
+};
+
+export const getTagList = (searchQuery?: string): string[] => {
+  if (!tagListCache) {
+    const postDataList = getPostDataList();
+    const uniqueTags = new Set<string>();
+
+    postDataList.forEach((post) => {
+      post.tags.forEach((tag) => uniqueTags.add(tag));
+    });
+
+    tagListCache = Array.from(uniqueTags).sort();
+  }
+
+  if (!searchQuery) {
+    return [...tagListCache];
+  }
+
+  const normalizedQuery = searchQuery.toLowerCase();
+  return tagListCache.filter((tag) =>
+    tag.toLowerCase().includes(normalizedQuery)
+  );
 };
