@@ -92,7 +92,7 @@ export const getPostData = (postId: string): PostData | null => {
   return immutablePost;
 };
 
-export const getTagList = (searchQuery?: string): string[] => {
+export const getTagList = (): string[] => {
   if (!tagListCache) {
     const postDataList = getPostDataList();
     const uniqueTags = new Set<string>();
@@ -101,15 +101,8 @@ export const getTagList = (searchQuery?: string): string[] => {
       post.tags.forEach((tag) => uniqueTags.add(tag));
     });
 
-    tagListCache = Array.from(uniqueTags).sort();
+    tagListCache = Array.from(uniqueTags).sort((a, b) => a.localeCompare(b));
   }
 
-  if (!searchQuery) {
-    return [...tagListCache];
-  }
-
-  const normalizedQuery = searchQuery.toLowerCase();
-  return tagListCache.filter((tag) =>
-    tag.toLowerCase().includes(normalizedQuery)
-  );
+  return [...tagListCache];
 };
