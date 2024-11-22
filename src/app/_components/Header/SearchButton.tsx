@@ -17,8 +17,8 @@ import {
 } from '@/components/ui/command';
 import type { PostData } from '@/types/post';
 
-import { getPostDataListAction } from '../../../actions/posts';
-import { getTagListAction } from '../../../actions/tags';
+import { getPostDataListAction } from '../../../actions/post';
+import { getTagListAction } from '../../../actions/tag';
 
 const SearchButton = () => {
   const [open, setOpen] = useState(false);
