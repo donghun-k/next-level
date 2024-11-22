@@ -106,3 +106,45 @@ export const getTagList = (): string[] => {
 
   return [...tagListCache];
 };
+
+/**
+ * 태그와 검색어로 블로그 포스트를 필터링하는 함수
+ * @param options - 검색 옵션 객체
+ * @param options.tag - 필터링할 태그 (선택사항)
+ * @param options.query - 제목과 설명에서 검색할 문자열 (선택사항)
+ * @returns 필터링된 PostData 객체 배열
+ *
+ * @example
+ * // javascript 태그가 있는 모든 포스트 가져오기
+ * const taggedPosts = searchPosts({ tag: 'javascript' });
+ *
+ * // 제목에 'react'가 포함된 포스트 검색
+ * const searchedPosts = searchPosts({ query: 'react' });
+ *
+ * // javascript 태그가 있으면서 react 관련 포스트 검색
+ * const filteredPosts = searchPosts({ tag: 'javascript', query: 'react' });
+ */
+export const searchPosts = (options?: {
+  tag?: string;
+  query?: string;
+}): PostData[] => {
+  const postDataList = getPostDataList();
+
+  return produce(postDataList, (draft) => {
+    let filteredPosts = draft;
+
+    if (options?.tag) {
+      filteredPosts = filteredPosts.filter((post) =>
+        post.tags.includes(options.tag!)
+      );
+    }
+
+    if (options?.query) {
+      filteredPosts = filteredPosts.filter((post) =>
+        post.title.toLowerCase().includes(options.query!.toLowerCase())
+      );
+    }
+
+    return filteredPosts;
+  });
+};
