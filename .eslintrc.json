@@ -20,7 +20,8 @@
         "@typescript-eslint",
         "unused-imports",
         "tailwindcss",
-        "simple-import-sort"
+        "simple-import-sort",
+        "@tanstack/query"
       ],
       "extends": [
         "plugin:tailwindcss/recommended",
