@@ -106,7 +106,6 @@ export const searchPosts = (options?: {
   totalPages: number;
   currentPage: number;
 } => {
-  // 기본값 설정
   const {
     page = 1,
     pageSize = 5,
@@ -115,8 +114,7 @@ export const searchPosts = (options?: {
   } = options || {};
 
   const postDataList = getPostDataList();
-
-  // 필터링
+  
   let filteredPosts = postDataList;
 
   if (options?.tag) {
@@ -130,8 +128,7 @@ export const searchPosts = (options?: {
       post.title.toLowerCase().includes(options.query!.toLowerCase())
     );
   }
-
-  // 정렬
+  
   filteredPosts = produce(filteredPosts, (draft) => {
     draft.sort((a, b) => {
       const compareValue =
@@ -143,14 +140,12 @@ export const searchPosts = (options?: {
     });
   });
 
-  // 페이지네이션 계산
   const totalItems = filteredPosts.length;
   const totalPages = Math.ceil(totalItems / pageSize);
   const normalizedPage = Math.max(1, Math.min(page, totalPages));
   const startIndex = (normalizedPage - 1) * pageSize;
   const endIndex = Math.min(startIndex + pageSize, totalItems);
 
-  // 페이지에 해당하는 포스트만 선택
   const paginatedPosts = filteredPosts.slice(startIndex, endIndex);
 
   return {
