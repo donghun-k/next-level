@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 
 import { useSearchQuery } from '../../_hooks/useSearchQuery';
 
-const PostSearchFilter = () => {
+const PostFilterSections = () => {
   const { searchQuery, setSearchQuery } = useSearchQuery();
 
   const handleSearchChange: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -29,4 +29,4 @@ const PostSearchFilter = () => {
   );
 };
 
-export default PostSearchFilter;
+export default PostFilterSections;
