@@ -1,4 +1,4 @@
-import MDXComponent from '@/components/MDXComponent';
+import MDXComponent from '@/components/common/MDXComponent';
 
 const ProfileCodeBlock = async () => {
   const response = await fetch(

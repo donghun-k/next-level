@@ -3,8 +3,8 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
-import TanStackProvider from '@/components/TanstackProvider';
-import { ThemeProvider } from '@/components/ThemeProvider';
+import TanStackProvider from '@/components/providers/TanstackProvider';
+import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { Toaster } from '@/components/ui/sonner';
 import { cn } from '@/utils/className';
 
