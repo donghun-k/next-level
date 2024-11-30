@@ -114,7 +114,7 @@ export const searchPosts = (options?: {
   } = options || {};
 
   const postDataList = getPostDataList();
-  
+
   let filteredPosts = postDataList;
 
   if (options?.tag) {
@@ -128,7 +128,7 @@ export const searchPosts = (options?: {
       post.title.toLowerCase().includes(options.query!.toLowerCase())
     );
   }
-  
+
   filteredPosts = produce(filteredPosts, (draft) => {
     draft.sort((a, b) => {
       const compareValue =
