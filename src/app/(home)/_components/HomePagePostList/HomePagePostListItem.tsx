@@ -8,7 +8,7 @@ interface Props {
   postData: PostData;
 }
 
-const MainPagePostListItem = ({ postData }: Props) => {
+const HomePagePostListItem = ({ postData }: Props) => {
   return (
     <li className="h-fit w-[calc(1156px/3)] overflow-hidden rounded-md bg-card shadow-sm duration-300 hover:-translate-y-1">
       <Link href={`/post/${postData.id}`}>
@@ -37,4 +37,4 @@ const MainPagePostListItem = ({ postData }: Props) => {
   );
 };
 
-export default MainPagePostListItem;
+export default HomePagePostListItem;

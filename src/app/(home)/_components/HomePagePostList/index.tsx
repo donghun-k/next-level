@@ -5,13 +5,13 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import type { PostData } from '@/types/post';
 
-import MainPagePostListItem from './MainPagePostListItem';
+import HomePagePostListItem from './HomePagePostListItem';
 
 interface Props {
   postDataList: PostData[];
 }
 
-const MainPagePostList = ({ postDataList }: Props) => {
+const HomePagePostList = ({ postDataList }: Props) => {
   const [displayedPostDataList, setDisplayedPostDataList] = useState<
     PostData[]
   >(postDataList.slice(0, 6));
@@ -27,7 +27,7 @@ const MainPagePostList = ({ postDataList }: Props) => {
     <>
       <ul className="mt-10 flex flex-wrap gap-[30px]">
         {displayedPostDataList.map((postData) => (
-          <MainPagePostListItem key={postData.title} postData={postData} />
+          <HomePagePostListItem key={postData.title} postData={postData} />
         ))}
       </ul>
       {displayedPostDataList.length < postDataList.length && (
@@ -39,4 +39,4 @@ const MainPagePostList = ({ postDataList }: Props) => {
   );
 };
 
-export default MainPagePostList;
+export default HomePagePostList;
