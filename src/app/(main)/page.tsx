@@ -4,7 +4,7 @@ import { getPostDataList } from '@/services/post';
 import MainPagePostList from './_components/MainPagePostList';
 import MostRecentPostCard from './_components/MostRecentPostCard';
 
-const HomePage = () => {
+const MainPage = () => {
   const postDataList = [...getPostDataList()];
 
   const mostRecentPostData = postDataList.shift();
@@ -18,4 +18,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default MainPage;
