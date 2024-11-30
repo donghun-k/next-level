@@ -3,6 +3,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
+import TanStackProvider from '@/components/TanstackProvider';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { Toaster } from '@/components/ui/sonner';
 import { cn } from '@/utils/className';
@@ -24,11 +25,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(inter.className, 'min-w-[1280px]')}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Header />
-          {children}
-          <Toaster />
-        </ThemeProvider>
+        <TanStackProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <Header />
+            {children}
+            <Toaster />
+          </ThemeProvider>
+        </TanStackProvider>
       </body>
     </html>
   );
