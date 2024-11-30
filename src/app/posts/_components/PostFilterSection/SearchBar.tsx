@@ -14,11 +14,14 @@ const SearchBar = () => {
     setSearchQuery(e.target.value);
   };
   return (
-    <div className="relative h-12 w-full max-w-xl">
-      <Search className="absolute left-4 top-1/2 -translate-y-1/2" />
+    <div className="relative h-12 w-[400px]">
+      <Search
+        size={16}
+        className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
+      />
       <Input
         value={searchQuery}
-        className="size-full pl-12 text-xl"
+        className="size-full pl-10"
         placeholder="Search posts by title"
         onChange={handleSearchChange}
       />
