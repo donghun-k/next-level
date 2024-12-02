@@ -1,14 +1,16 @@
 'use client';
 
 import { ChevronsUpDown } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
+import { getTagListAction } from '@/actions/tag';
 import { Button } from '@/components/ui/button';
 import {
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
+  CommandItem,
   CommandList,
 } from '@/components/ui/command';
 import {
@@ -22,7 +24,19 @@ import { useTagFilter } from '../../_hooks/useTagFilter';
 
 const TagFilter = () => {
   const [open, setOpen] = useState(false);
-  const { tagFilter } = useTagFilter();
+  const [tagList, setTagList] = useState<string[]>([]);
+  const { tagFilter, setTagFilter } = useTagFilter();
+
+  useEffect(() => {
+    (async () => {
+      setTagList(await getTagListAction());
+    })();
+  }, []);
+
+  const handleSelect = (tag: string) => {
+    setTagFilter(tag);
+    setOpen(false);
+  };
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -46,24 +60,11 @@ const TagFilter = () => {
           <CommandList>
             <CommandEmpty>No tag found.</CommandEmpty>
             <CommandGroup>
-              {/* {frameworks.map((framework) => (
-            <CommandItem
-              key={framework.value}
-              value={framework.value}
-              onSelect={(currentValue) => {
-                setValue(currentValue === value ? "" : currentValue)
-                setOpen(false)
-              }}
-            >
-              {framework.label}
-              <Check
-                className={cn(
-                  "ml-auto",
-                  value === framework.value ? "opacity-100" : "opacity-0"
-                )}
-              />
-            </CommandItem>
-          ))} */}
+              {tagList.map((tag) => (
+                <CommandItem key={tag} onSelect={handleSelect}>
+                  {tag}
+                </CommandItem>
+              ))}
             </CommandGroup>
           </CommandList>
         </Command>
