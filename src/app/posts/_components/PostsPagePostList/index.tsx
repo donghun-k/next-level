@@ -1,3 +1,5 @@
+/* eslint-disable react/no-array-index-key */
+
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -8,10 +10,11 @@ import type { PostData } from '@/types/post';
 import { useSearchQuery } from '../../_hooks/useSearchQuery';
 import { useTagFilter } from '../../_hooks/useTagFilter';
 import PostsPagePostListItem from './PostsPagePostListItem';
+import PostsPagePostListItemSkeleton from './PostsPagePostListItemSkeleton';
 
 const PostsPagePostList = () => {
   const { tagFilter } = useTagFilter();
-  const { searchQuery } = useSearchQuery();
+  const { searchQuery, isTyping } = useSearchQuery();
 
   const [postDataList, setPostDataList] = useState<PostData[]>([]);
 
@@ -27,9 +30,13 @@ const PostsPagePostList = () => {
 
   return (
     <ul className="mt-10 flex flex-col gap-6">
-      {postDataList.map((postData) => (
-        <PostsPagePostListItem key={postData.title} postData={postData} />
-      ))}
+      {isTyping
+        ? Array.from({ length: 5 }).map((_, index) => (
+            <PostsPagePostListItemSkeleton key={index} />
+          ))
+        : postDataList.map((postData) => (
+            <PostsPagePostListItem key={postData.title} postData={postData} />
+          ))}
     </ul>
   );
 };
