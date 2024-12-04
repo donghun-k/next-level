@@ -3,9 +3,11 @@ import { useCallback } from 'react';
 
 type SearchQuery = string;
 const searchQueryAtom = atom<SearchQuery>('');
+const isTypingAtom = atom<boolean>(false);
 
 export const useSearchQuery = () => {
   const [searchQuery, setSearchQuery] = useAtom(searchQueryAtom);
+  const [isTyping, setIsTyping] = useAtom(isTypingAtom);
 
   const handleSearchChange = useCallback(
     (query: string) => {
@@ -18,5 +20,7 @@ export const useSearchQuery = () => {
   return {
     searchQuery,
     setSearchQuery: handleSearchChange,
+    isTyping,
+    setIsTyping,
   };
 };
