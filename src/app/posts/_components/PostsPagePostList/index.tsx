@@ -1,9 +1,30 @@
-import { getPostDataList } from '@/services/post';
+'use client';
 
+import { useEffect, useState } from 'react';
+
+import { searchPostsAction } from '@/actions/search';
+import type { PostData } from '@/types/post';
+
+import { useSearchQuery } from '../../_hooks/useSearchQuery';
+import { useTagFilter } from '../../_hooks/useTagFilter';
 import PostsPagePostListItem from './PostsPagePostListItem';
 
 const PostsPagePostList = () => {
-  const postDataList = getPostDataList().slice(0, 5);
+  const { tagFilter } = useTagFilter();
+  const { searchQuery } = useSearchQuery();
+
+  const [postDataList, setPostDataList] = useState<PostData[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      const { posts } = await searchPostsAction({
+        tag: tagFilter || undefined,
+        query: searchQuery,
+      });
+      setPostDataList(posts);
+    })();
+  }, [tagFilter, searchQuery]);
+
   return (
     <ul className="mt-10 flex flex-col gap-6">
       {postDataList.map((postData) => (
