@@ -17,19 +17,24 @@ const PostsPagePostList = () => {
   const { searchQuery, isTyping } = useSearchQuery();
 
   const [postDataList, setPostDataList] = useState<PostData[]>([]);
+  const [resultCount, setResultCount] = useState(0);
 
   useEffect(() => {
     (async () => {
-      const { posts } = await searchPostsAction({
+      const { posts, totalItems } = await searchPostsAction({
         tag: tagFilter || undefined,
         query: searchQuery,
       });
+      setResultCount(totalItems);
       setPostDataList(posts);
     })();
   }, [tagFilter, searchQuery]);
 
   return (
-    <ul className="mt-10 flex flex-col gap-6">
+    <ul className="mt-4 flex flex-col gap-6">
+      <p className="text-lg font-semibold">
+        {resultCount} result{resultCount !== 1 ? 's' : ''} found
+      </p>
       {isTyping
         ? Array.from({ length: 5 }).map((_, index) => (
             <PostsPagePostListItemSkeleton key={index} />
