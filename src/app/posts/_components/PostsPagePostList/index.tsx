@@ -3,6 +3,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { toast } from 'sonner';
 
 import { searchPostsAction } from '@/actions/search';
 import PaginationBar from '@/components/common/PaginationBar';
@@ -24,22 +25,40 @@ const PostsPagePostList = () => {
   const [lastPage, setLastPage] = useState(1);
   const [postDataList, setPostDataList] = useState<PostData[]>([]);
   const [resultCount, setResultCount] = useState(0);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
+    if (isError) return;
     setIsLoading(true);
     (async () => {
-      const { posts, totalItems, totalPages } = await searchPostsAction({
-        tag: tagFilter || undefined,
-        query: searchQuery,
-        page,
-        pageSize: ITEMS_PER_PAGE,
-      });
-      setResultCount(totalItems);
-      setLastPage(totalPages);
-      setPostDataList(posts);
-      setIsLoading(false);
+      try {
+        const { posts, totalItems, totalPages } = await searchPostsAction({
+          tag: tagFilter || undefined,
+          query: searchQuery,
+          page,
+          pageSize: ITEMS_PER_PAGE,
+        });
+        setResultCount(totalItems);
+        setLastPage(totalPages);
+        setPostDataList(posts);
+      } catch (error) {
+        setIsError(true);
+        toast.error('Failed to fetch posts');
+      } finally {
+        setIsLoading(false);
+      }
     })();
   }, [tagFilter, searchQuery, page]);
+
+  if (isError) {
+    return (
+      <div className="mt-4 flex h-24 w-full items-center justify-center text-center text-2xl">
+        Something went wrong.
+        <br />
+        Please try again later.
+      </div>
+    );
+  }
 
   return (
     <>
