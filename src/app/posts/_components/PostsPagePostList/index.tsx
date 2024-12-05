@@ -19,12 +19,14 @@ const PostsPagePostList = () => {
   const { tagFilter } = useTagFilter();
   const { searchQuery, isTyping } = useSearchQuery();
 
+  const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [lastPage, setLastPage] = useState(1);
   const [postDataList, setPostDataList] = useState<PostData[]>([]);
   const [resultCount, setResultCount] = useState(0);
 
   useEffect(() => {
+    setIsLoading(true);
     (async () => {
       const { posts, totalItems, totalPages } = await searchPostsAction({
         tag: tagFilter || undefined,
@@ -35,16 +37,21 @@ const PostsPagePostList = () => {
       setResultCount(totalItems);
       setLastPage(totalPages);
       setPostDataList(posts);
+      setIsLoading(false);
     })();
   }, [tagFilter, searchQuery, page]);
 
   return (
     <>
       <p className="mt-4 text-xl">
-        {resultCount} result{resultCount !== 1 ? 's' : ''}
+        {isTyping && 'Typing...'}
+        {isLoading && 'Loading...'}
+        {!isTyping &&
+          !isLoading &&
+          `Found ${resultCount} result${resultCount !== 1 ? 's' : ''}`}
       </p>
       <ul className="mt-4 flex flex-col gap-6">
-        {isTyping
+        {isTyping || isLoading
           ? Array.from({ length: 5 }).map((_, index) => (
               <PostsPagePostListItemSkeleton key={index} />
             ))
