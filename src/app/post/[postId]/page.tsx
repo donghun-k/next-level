@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation';
 
+import PostBody from '@/app/post/[postId]/_components/PostBody';
 import PostHeader from '@/app/post/[postId]/_components/PostHeader';
 import { Separator } from '@/components/ui/separator';
 import { getPostData } from '@/services/post';
@@ -16,7 +17,8 @@ const PostPage = ({ params: { postId } }: Props) => {
   return (
     <main className="mx-auto min-h-[calc(100vh-80px)] max-w-screen-xl px-8 py-10">
       <PostHeader postData={postData} />
-      <Separator className="my-10" />
+      <Separator className="mx-auto my-10 max-w-[800px]" />
+      <PostBody postData={postData} />
     </main>
   );
 };
