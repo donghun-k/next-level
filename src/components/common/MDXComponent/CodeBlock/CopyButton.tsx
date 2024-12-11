@@ -30,16 +30,16 @@ const CopyButton = ({ codeNode }: Props) => {
       <Button
         variant="secondary"
         onClick={copyToClipboard}
-        className="absolute right-0 top-0 h-fit py-1 text-sm font-normal"
+        className="absolute right-2 top-2 h-fit py-1 text-xs font-normal"
       >
         {isCopied ? (
           <>
-            <ClipboardCheck className="mr-1 size-[16px]" />
+            <ClipboardCheck className="mr-1 size-3.5" />
             Copied!
           </>
         ) : (
           <>
-            <Clipboard className="mr-1 size-[16px]" />
+            <Clipboard className="mr-1 size-3.5" />
             Copy
           </>
         )}

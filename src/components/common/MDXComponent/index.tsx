@@ -6,6 +6,7 @@ import { cn } from '@/utils/className';
 
 import NextImage from '../NextImage';
 import CodeBlock from './CodeBlock';
+import InlineCode from './InlineCode';
 
 interface Props {
   source: string;
@@ -19,7 +20,8 @@ const MDXComponent = ({ source, className = '' }: Props) => {
         source={source}
         components={{
           img: NextImage as any,
-          code: CodeBlock,
+          pre: CodeBlock,
+          code: InlineCode,
         }}
         options={{
           mdxOptions: {
