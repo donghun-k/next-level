@@ -2,7 +2,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 
 import PaginationBar from '@/components/common/PaginationBar';
@@ -26,6 +26,13 @@ const PostsPagePostList = () => {
     page,
     pageSize: ITEMS_PER_PAGE,
   });
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, [page]);
 
   if (isError) {
     toast.error('Failed to fetch posts');
