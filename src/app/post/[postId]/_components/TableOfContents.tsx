@@ -33,9 +33,21 @@ const TableOfContents = ({ toc }: Props) => {
     };
   }, []);
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+      window.history.pushState({}, '', `#${id}`);
+    }
+  };
+
   return (
     <nav className="max-h-[calc(100vh-160px)] w-full overflow-y-auto">
-      <ul className="space-y-2 text-sm">
+      <ul className="space-y-1 text-sm">
         {toc.map((item) => (
           <li
             key={item.id}
@@ -43,8 +55,9 @@ const TableOfContents = ({ toc }: Props) => {
           >
             <a
               href={`#${item.id}`}
+              onClick={(e) => handleClick(e, item.id)}
               className={cn(
-                'block py-1 text-muted-foreground hover:text-foreground transition-colors',
+                'block py-1 break-keep text-muted-foreground hover:text-foreground transition-colors',
                 activeId === item.id && 'text-foreground font-medium'
               )}
             >
