@@ -8,6 +8,7 @@ import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { Toaster } from '@/components/ui/sonner';
 import { cn } from '@/utils/className';
 
+import Footer from './_components/Footer';
 import Header from './_components/Header';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -28,7 +29,8 @@ export default function RootLayout({
         <TanStackProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Header />
-            {children}
+            <main className="min-h-screen">{children}</main>
+            <Footer />
             <Toaster />
           </ThemeProvider>
         </TanStackProvider>
