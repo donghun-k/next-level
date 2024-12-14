@@ -40,14 +40,17 @@ const PostsPagePostList = () => {
 
   return (
     <>
-      <p className="mt-4 text-xl">
+      <p className="ml-4 mt-4 text-xl text-muted-foreground">
         {isTyping && 'Typing...'}
         {isLoading && 'Loading...'}
         {!isTyping &&
           !isLoading &&
           `Found ${data?.totalItems ?? 0} result${
             data?.totalItems !== 1 ? 's' : ''
-          }`}
+          } (Showing ${((data?.currentPage ?? 1) - 1) * ITEMS_PER_PAGE + 1}-${Math.min(
+            ((data?.currentPage ?? 1) - 1) * ITEMS_PER_PAGE + ITEMS_PER_PAGE,
+            data?.totalItems ?? 0
+          )} of ${data?.totalItems ?? 0})`}
       </p>
       <ul className="mt-4 flex flex-col gap-6">
         {isTyping || isLoading
