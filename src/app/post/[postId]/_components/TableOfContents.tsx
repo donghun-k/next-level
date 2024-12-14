@@ -34,7 +34,7 @@ const TableOfContents = ({ toc }: Props) => {
   }, []);
 
   return (
-    <nav className="sticky top-[120px] max-h-[calc(100vh-160px)] w-[200px] overflow-y-auto">
+    <nav className="max-h-[calc(100vh-160px)] w-full overflow-y-auto">
       <ul className="space-y-2 text-sm">
         {toc.map((item) => (
           <li

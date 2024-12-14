@@ -12,12 +12,14 @@ const PostBody = ({ postData }: Props) => {
   const toc = extractToc(postData.content);
 
   return (
-    <section className="relative mx-auto flex max-w-screen-xl justify-center gap-[60px]">
+    <section className="relative mx-auto flex max-w-screen-xl justify-center">
       <article className="w-full max-w-screen-md [&_.prose]:max-w-none">
         <MDXComponent source={postData.content} />
       </article>
-      <aside className="absolute right-0 top-0 hidden xl:block">
-        <TableOfContents toc={toc} />
+      <aside className="hidden xl:block">
+        <div className="fixed top-1/2 w-[200px] -translate-y-1/2">
+          <TableOfContents toc={toc} />
+        </div>
       </aside>
     </section>
   );
