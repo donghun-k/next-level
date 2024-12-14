@@ -10,7 +10,7 @@ const HomePage = () => {
   const mostRecentPostData = postDataList.shift();
 
   return (
-    <main className="mx-auto w-full max-w-screen-xl px-8 py-10">
+    <main className="mx-auto min-h-[calc(100vh-196px)] w-full max-w-screen-xl px-8 py-10">
       <MostRecentPostCard postData={mostRecentPostData!} />
       <Separator className="mt-10" />
       <HomePagePostList postDataList={postDataList} />

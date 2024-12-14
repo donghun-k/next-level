@@ -4,16 +4,14 @@ import SendMailButton from './_components/SendMailButton';
 
 const ProfilePage = () => {
   return (
-    <main>
-      <section className="mx-auto flex h-[calc(100vh-80px)] max-w-screen-xl items-center justify-center gap-[100px] pb-[80px]">
-        <div className="flex w-fit max-w-[1000px] flex-col items-center justify-center overflow-hidden rounded-xl px-8 py-4">
-          <ProfileCodeBlock />
-          <div className="mt-8 flex gap-4">
-            <GitHubLinkButton />
-            <SendMailButton />
-          </div>
+    <main className="mx-auto flex min-h-[calc(100vh-196px)] items-center justify-center gap-[100px]">
+      <div className="flex w-fit max-w-[1000px] flex-col items-center justify-center overflow-hidden rounded-xl px-8 py-4">
+        <ProfileCodeBlock />
+        <div className="mt-8 flex gap-4">
+          <GitHubLinkButton />
+          <SendMailButton />
         </div>
-      </section>
+      </div>
     </main>
   );
 };

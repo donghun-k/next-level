@@ -29,7 +29,7 @@ export default function RootLayout({
         <TanStackProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Header />
-            <main className="min-h-screen">{children}</main>
+            {children}
             <Footer />
             <Toaster />
           </ThemeProvider>
