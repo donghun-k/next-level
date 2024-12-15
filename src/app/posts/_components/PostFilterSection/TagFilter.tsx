@@ -60,6 +60,12 @@ const TagFilter = () => {
           <CommandList>
             <CommandEmpty>No tag found.</CommandEmpty>
             <CommandGroup>
+              <CommandItem
+                className="text-muted-foreground"
+                onSelect={() => handleSelect('')}
+              >
+                All
+              </CommandItem>
               {tagList.map((tag) => (
                 <CommandItem key={tag} onSelect={handleSelect}>
                   {tag}
