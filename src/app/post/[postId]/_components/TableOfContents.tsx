@@ -1,5 +1,6 @@
 'use client';
 
+import type { MouseEvent } from 'react';
 import { useEffect, useState } from 'react';
 
 import { cn } from '@/utils/className';
@@ -33,13 +34,18 @@ const TableOfContents = ({ toc }: Props) => {
     };
   }, []);
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+  const handleClick = (e: MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({
+      const offset = 100;
+      const elementPosition =
+        element.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
         behavior: 'smooth',
-        block: 'start',
       });
       window.history.pushState({}, '', `#${id}`);
     }
