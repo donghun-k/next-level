@@ -46,12 +46,12 @@ const TableOfContents = ({ toc }: Props) => {
   };
 
   return (
-    <nav className="max-h-[calc(100vh-160px)] w-full overflow-y-auto">
+    <nav className="ml-8 max-h-[calc(100vh-160px)] w-full overflow-y-auto border-l pl-4">
       <ul className="space-y-1 text-sm">
         {toc.map((item) => (
           <li
             key={item.id}
-            style={{ paddingLeft: `${(item.level - 1) * 16}px` }}
+            style={{ paddingLeft: `${(item.level - 1) * 8}px` }}
           >
             <a
               href={`#${item.id}`}
