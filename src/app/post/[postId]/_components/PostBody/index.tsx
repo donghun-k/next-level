@@ -1,7 +1,7 @@
 import MDXComponent from '@/components/common/MDXComponent';
 import type { PostData } from '@/types/post';
 
-import { extractToc } from '../_utils/toc';
+import { extractToc } from '../../_utils/toc';
 import TableOfContents from './TableOfContents';
 
 interface Props {

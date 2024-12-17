@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 import { cn } from '@/utils/className';
 
-import type { TocItem } from '../_types/toc';
+import type { TocItem } from '../../_types/toc';
 
 interface Props {
   toc: TocItem[];

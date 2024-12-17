@@ -1,9 +1,10 @@
 import { redirect } from 'next/navigation';
 
-import PostBody from '@/app/post/[postId]/_components/PostBody';
 import PostHeader from '@/app/post/[postId]/_components/PostHeader';
 import { Separator } from '@/components/ui/separator';
 import { getPostData } from '@/services/post';
+
+import PostBody from './_components/PostBody';
 
 interface Props {
   params: {
