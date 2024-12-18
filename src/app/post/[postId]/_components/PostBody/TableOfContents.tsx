@@ -52,7 +52,7 @@ const TableOfContents = ({ toc }: Props) => {
   };
 
   return (
-    <nav className="ml-8 max-h-[calc(100vh-160px)] w-full overflow-y-auto border-l pl-4">
+    <nav className="max-h-[calc(100vh-160px)] w-full overflow-y-auto border-l pl-4">
       <ul className="space-y-1 text-sm">
         {toc.map((item) => (
           <li
