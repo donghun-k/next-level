@@ -2,6 +2,7 @@ import MDXComponent from '@/components/common/MDXComponent';
 import type { PostData } from '@/types/post';
 
 import { extractToc } from '../../_utils/toc';
+import ShareButton from './ShareButton';
 import TableOfContents from './TableOfContents';
 import ToTopButton from './ToTopButton';
 
@@ -16,7 +17,10 @@ const PostBody = ({ postData }: Props) => {
     <section className="relative mx-auto flex max-w-screen-xl justify-center">
       <aside className="hidden xl:block">
         <div className="sticky top-1/2 flex w-[200px] -translate-y-1/2 justify-end pr-10">
-          <ToTopButton />
+          <div className="flex flex-col gap-2 rounded-full bg-card p-2">
+            <ToTopButton />
+            <ShareButton />
+          </div>
         </div>
       </aside>
       <article className="w-full max-w-screen-md [&_.prose]:max-w-none">

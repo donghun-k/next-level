@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react';
 import { IoIosArrowUp } from 'react-icons/io';
 
+import { Button } from '@/components/ui/button';
+
 const ToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -31,7 +33,7 @@ const ToTopButton = () => {
     });
   };
   return isVisible ? (
-    <button
+    <Button
       onClick={scrollToTop}
       className="size-10 rounded-full bg-secondary p-0
                 text-secondary-foreground opacity-70 shadow-lg transition-all duration-300
@@ -40,7 +42,7 @@ const ToTopButton = () => {
       type="button"
     >
       <IoIosArrowUp className="m-auto size-6" />
-    </button>
+    </Button>
   ) : null;
 };
 
