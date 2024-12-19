@@ -1,38 +1,18 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { IoIosArrowUp } from 'react-icons/io';
 
 import { Button } from '@/components/ui/button';
 
 const ToTopButton = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  // 스크롤 위치에 따라 버튼 표시 여부 결정
-  useEffect(() => {
-    const toggleVisibility = () => {
-      if (window.scrollY > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-    };
-
-    window.addEventListener('scroll', toggleVisibility);
-
-    return () => {
-      window.removeEventListener('scroll', toggleVisibility);
-    };
-  }, []);
-
-  // 상단으로 스크롤 이동
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
   };
-  return isVisible ? (
+
+  return (
     <Button
       onClick={scrollToTop}
       className="size-10 rounded-full bg-secondary p-0
@@ -43,7 +23,7 @@ const ToTopButton = () => {
     >
       <IoIosArrowUp className="m-auto size-6" />
     </Button>
-  ) : null;
+  );
 };
 
 export default ToTopButton;
