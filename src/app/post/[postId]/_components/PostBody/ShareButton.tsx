@@ -1,6 +1,6 @@
 'use client';
 
-import { IoShareSocial } from 'react-icons/io5';
+import { FiPaperclip } from 'react-icons/fi';
 import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/button';
@@ -23,7 +23,7 @@ const ShareButton = () => {
       aria-label="현재 페이지 링크 복사"
       type="button"
     >
-      <IoShareSocial className="m-auto size-6" />
+      <FiPaperclip className="m-auto size-6" />
     </Button>
   );
 };

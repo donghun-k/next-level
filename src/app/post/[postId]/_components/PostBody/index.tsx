@@ -17,7 +17,7 @@ const PostBody = ({ postData }: Props) => {
     <section className="relative mx-auto flex max-w-screen-xl justify-center">
       <aside className="hidden xl:block">
         <div className="sticky top-1/2 flex w-[200px] -translate-y-1/2 justify-end pr-10">
-          <div className="flex flex-col gap-2 rounded-full bg-card p-2">
+          <div className="flex flex-col gap-4 rounded-full bg-card p-3">
             <ToTopButton />
             <ShareButton />
           </div>
