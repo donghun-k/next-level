@@ -11,7 +11,7 @@ export const parsePostFile = (filePath: string): PostData => {
 
   const metaData = produce({} as PostMetaData, (draft) => {
     Object.assign(draft, {
-      id: filePath.split('/').pop()!.replace('.mdx', ''),
+      id: data.id,
       title: data.title,
       date: data.date,
       desc: data.desc,
