@@ -25,7 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(inter.className, 'min-w-[1280px]')}>
+      <body
+        className={cn(inter.className, 'max-md:min-w-[375px] min-w-[1280px]')}
+      >
         <TanStackProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Header />
