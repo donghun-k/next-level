@@ -55,7 +55,7 @@ const SearchButton = () => {
         className="border-none shadow-none focus-visible:ring-0"
         onClick={handleOpen}
       >
-        <IoSearch className="size-6" />
+        <IoSearch className="size-6 max-md:size-4" />
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Type a command or search..." />

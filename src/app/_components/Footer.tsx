@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="w-full border-t">
       <div className="mx-auto max-w-7xl px-6 py-12">
-        <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
+        <div className="flex flex-row items-center justify-between gap-6 max-md:flex-col">
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} NEXT LEVEL. All rights reserved.
           </p>
