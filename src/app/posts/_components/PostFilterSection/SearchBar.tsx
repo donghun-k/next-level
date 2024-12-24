@@ -24,7 +24,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="relative h-12 w-[400px]">
+    <div className="relative h-12 w-[400px] max-md:w-full">
       <Search
         size={16}
         className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"

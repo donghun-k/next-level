@@ -46,7 +46,7 @@ const TagFilter = () => {
           role="combobox"
           aria-expanded={open}
           className={cn(
-            'h-12 w-[200px] justify-between text-muted-foreground font-normal',
+            'h-12 max-md:w-full w-[200px] justify-between text-muted-foreground font-normal',
             tagFilter && 'text-primary'
           )}
         >
@@ -54,7 +54,7 @@ const TagFilter = () => {
           <ChevronsUpDown className="opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0">
+      <PopoverContent className="w-[--radix-popover-trigger-width] p-0">
         <Command>
           <CommandInput placeholder="Search tag" />
           <CommandList>
