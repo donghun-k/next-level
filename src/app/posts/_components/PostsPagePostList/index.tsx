@@ -47,7 +47,7 @@ const PostsPagePostList = () => {
 
   return (
     <>
-      <p className="ml-4 mt-4 text-xl text-muted-foreground">
+      <p className="ml-4 mt-4 text-xl text-muted-foreground max-md:text-base">
         {isTyping && 'Typing...'}
         {isLoading && 'Loading...'}
         {!isTyping &&
