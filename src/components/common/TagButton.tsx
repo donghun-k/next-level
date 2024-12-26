@@ -11,7 +11,7 @@ const TagButton = ({ tag }: Props) => {
     <Link href={`/posts?tag=${tag}`}>
       <Button
         variant="secondary"
-        className="size-fit rounded-xl px-4 py-1 text-sm font-semibold"
+        className="size-fit rounded-xl px-4 py-1 text-sm font-semibold max-md:text-xs"
       >
         {tag}
       </Button>

@@ -19,9 +19,9 @@ const PostsPagePostListItemSkeleton = () => {
 
           {/* Tags skeleton */}
           <div className="mt-2 flex gap-2">
-            <Skeleton className="h-7 w-16 rounded-full" />
-            <Skeleton className="h-7 w-20 rounded-full" />
-            <Skeleton className="h-7 w-14 rounded-full" />
+            <Skeleton className="h-7 w-16 rounded-full max-md:h-6" />
+            <Skeleton className="h-7 w-20 rounded-full max-md:h-6" />
+            <Skeleton className="h-7 w-14 rounded-full max-md:h-6" />
           </div>
         </div>
 
