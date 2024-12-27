@@ -16,7 +16,12 @@ interface Props {
 
 const MDXComponent = ({ source, className = '' }: Props) => {
   return (
-    <div className={cn('prose dark:prose-invert', className)}>
+    <div
+      className={cn(
+        'prose dark:prose-invert max-w-none px-4 prose-img:w-full prose-img:rounded-lg prose-pre:max-w-full prose-pre:overflow-x-auto prose-headings:scroll-mt-20',
+        className
+      )}
+    >
       <MDXRemote
         source={source}
         components={{
