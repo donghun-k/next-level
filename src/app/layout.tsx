@@ -2,6 +2,7 @@ import './globals.css';
 
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import type { PropsWithChildren } from 'react';
 
 import TanStackProvider from '@/components/providers/TanstackProvider';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
@@ -18,11 +19,7 @@ export const metadata: Metadata = {
   description: 'Donghun Kim의 블로그',
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html lang="en">
       <body
@@ -39,4 +36,6 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;
